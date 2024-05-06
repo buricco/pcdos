@@ -1,3 +1,24 @@
+; Copyright 1981-1988
+;     International Business Machines Corp. & Microsoft Corp.
+;
+; Permission is hereby granted, free of charge, to any person obtaining a copy
+; of this software and associated documentation files (the Software), to deal
+; in the Software without restriction, including without limitation the rights
+; to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+; copies of the Software, and to permit persons to whom the Software is
+; furnished to do so, subject to the following conditions:
+;
+; The above copyright notice and this permission notice shall be included in
+; all copies or substantial portions of the Software.
+;
+; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+; FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+; LIABILITY, WHETHER IN AN ACTION OF CONTRACT,TORT OR OTHERWISE, ARISING FROM,
+; OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+; THE SOFTWARE.
+
 VGA_TABLE	   LABEL BYTE						       ;AN000;
     MODE_TABLE	 < 1, 1,, 16,  -1,  -1, 40, -1> ; mode	1 Ä¿ To give preference;AN000;
     MODE_TABLE	 < 0, 1,, 16,  -1,  -1, 40, -1> ; mode	0  ³ of COxx over      ;AN000;
@@ -51,4 +72,3 @@ COLOR_TABLE	   LABEL BYTE						       ;AN000;
     MODE_TABLE	 < 5, 2,,  2, 320, 200, 40, 25> ; mode	5		       ;AN000;
     MODE_TABLE	 < 6, 2,,  2, 640, 200, 80, 25> ; mode	6		       ;AN000;
 COLOR_NUM	 EQU  ($ - COLOR_TABLE)/(TYPE MODE_TABLE)		       ;AN000;
-

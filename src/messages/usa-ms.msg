@@ -1182,7 +1182,7 @@ UPDATE   d072 0013
 0190 U 0000 CR,LF,"- Insert next Corrective Service Diskette in drive A",CR,LF
 0200 U 0000 CR,LF,"- Insert Corrective Service Diskette in drive A",CR,LF
 	"  Press any key to restart system . . ."
-0210 U 0000 CR,LF,"- Corrective Service has been successfully instatlled",CR,LF
+0210 U 0000 CR,LF,"- Corrective Service has been successfully installed",CR,LF
 	"  Prepare system to be restarted",CR,LF
 	"  Press any key to restart system . . ."
 0220 U 0000 CR,LF,"Invalid keyboard code specified",CR,LF

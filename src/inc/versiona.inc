@@ -1,18 +1,27 @@
+; Copyright 1981-1988
+;     International Business Machines Corp. & Microsoft Corp.
+;
+; Permission is hereby granted, free of charge, to any person obtaining a copy
+; of this software and associated documentation files (the Software), to deal
+; in the Software without restriction, including without limitation the rights
+; to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+; copies of the Software, and to permit persons to whom the Software is
+; furnished to do so, subject to the following conditions:
+;
+; The above copyright notice and this permission notice shall be included in
+; all copies or substantial portions of the Software.
+;
+; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+; FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+; LIABILITY, WHETHER IN AN ACTION OF CONTRACT,TORT OR OTHERWISE, ARISING FROM,
+; OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+; THE SOFTWARE.
+
+; For OEMID, see ../dos/dosmes.asm and search for "OEMNUM"
 
 major_version	    equ     4	    ;Major DOS version
 minor_version	    equ     03	    ;Minor DOS Version
 
 expected_version    equ     (MINOR_VERSION SHL 8)+MAJOR_VERSION
-
-       if1
-       %OUT  ... for DOS Version 4.03 ...
-       endif
-
-       ;******************************
-       ;Each assembler program should:
-       ;  mov ah,030h			;DOS Get Version function
-       ;  int 021h			;Version ret. in AX,minor version first
-       ;  cmp ax,expected_version	;ALL utilities should check for an
-       ;  jne error_handler		; EXACT version match.
-       ;******************************
-

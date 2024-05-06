@@ -1,8 +1,27 @@
-;	SCCSID = @(#)error.asm	1.1 85/04/10
+; Copyright 1981-1988
+;     International Business Machines Corp. & Microsoft Corp.
+;
+; Permission is hereby granted, free of charge, to any person obtaining a copy
+; of this software and associated documentation files (the Software), to deal
+; in the Software without restriction, including without limitation the rights
+; to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+; copies of the Software, and to permit persons to whom the Software is
+; furnished to do so, subject to the following conditions:
+;
+; The above copyright notice and this permission notice shall be included in
+; all copies or substantial portions of the Software.
+;
+; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+; FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+; LIABILITY, WHETHER IN AN ACTION OF CONTRACT,TORT OR OTHERWISE, ARISING FROM,
+; OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+; THE SOFTWARE.
+
 ;	SCCSID = @(#)error.asm	1.1 85/04/10
 BREAK <Xenix error codes>
 
-;
 ; XENIX calls all return error codes through AX.  If an error occurred then
 ; the carry bit will be set and the error code is in AX.  If no error occurred
 ; then the carry bit is reset and AX contains returned info.
@@ -15,11 +34,9 @@ BREAK <Xenix error codes>
 ; location and a recommended course of action.	The universal error code is
 ; a symptom of the error REGARDLESS of the context in which GetExtendedError
 ; is issued.
-;
 
-;
 ; These are the 2.0 error codes
-;
+
 error_invalid_function		EQU	1
 error_file_not_found		EQU	2
 error_path_not_found		EQU	3
