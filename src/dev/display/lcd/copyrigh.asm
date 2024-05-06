@@ -1,0 +1,10 @@
+CODE	SEGMENT BYTE PUBLIC 'CODE'
+	ASSUME CS:CODE,DS:CODE
+
+	DB	13,10
+	DB	"PC DOS/RE  LCD Display Font File",13,10
+;include copyrigh.inc
+	DB	1Ah
+
+CODE	ENDS
+	END
