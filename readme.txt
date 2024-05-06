@@ -30,6 +30,16 @@ Note on boot disks
   course means that the boot files are IBMBIO.COM and IBMDOS.COM, not IO.SYS
   and MSDOS.SYS.  The relevant tools are mutatis-mutandis.
 
+Where have we gone already?
+===========================
+
+  The code reports PC DOS 4.03 at this time, which will remain in the interim.
+  In src/dos/dosmes.asm the subversion codes (including the new build code)
+  can be found.
+  
+  ATTRIB has been replaced with a version that has the DOS 5 functionality.
+  A clone of CHOICE from DOS 6 has been added.
+
 Where do we go from here?
 =========================
 
@@ -41,3 +51,7 @@ Where do we go from here?
   Some enhancements over both are also on the wishlist/to-do list.
   
   A major reworking of FDISK is on the to-do list.
+
+  If we do not get a drop of DOS 5, the next things to look at are the DIR and
+  VER commands, FORMAT /Q and /U, and support for loading DOS high.  That
+  ought to bring us very close to 5.0 functionality.

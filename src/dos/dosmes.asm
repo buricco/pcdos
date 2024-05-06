@@ -46,8 +46,8 @@ CONSTANTS	SEGMENT WORD PUBLIC 'CONST'
     PUBLIC  UserNum, OEMNum
     Public DMES001S,DMES001E
 DMES001S Label byte
-USERNUM DW	?			; 24 bit user number
-	DB	?
+;USERNUM DW	?			; 24 bit user number
+;	DB	?
 ;IF	IBM
 ;	IF	IBMCOPYRIGHT
 ;	OEMNUM	DB	0			; 8 bit OEM number
@@ -57,6 +57,9 @@ USERNUM DW	?			; 24 bit user number
 ;ELSE
 ;OEMNUM	DB	0FFH
 ;ENDIF
+
+USERNUM   DB        24, 5, 6            ; In PC DOS/RE, this is a date of last
+                                        ; kernel code revision
 
 OEMNUM	DB	0	; appear as PC DOS
 

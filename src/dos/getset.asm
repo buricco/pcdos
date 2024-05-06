@@ -48,7 +48,7 @@ NAME   GETSET
 ;
 ;	A000   version 4.0   Jan. 1988
 ;	A006   D503-- fake version for IBMCACHE
-;	A008   P4070- faske version for MS WINDOWS
+;	A008   P4070- fake version for MS WINDOWS
 
 .xlist
 ;

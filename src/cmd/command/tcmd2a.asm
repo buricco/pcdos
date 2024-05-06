@@ -84,6 +84,13 @@ transpace	ends
 	break	Version
 assume	ds:trangroup,es:trangroup
 
+; uso:
+;   At this point, later versions have extended version reporting.
+;   Our build data comes back from GET_VERSION in BL:CX.
+;   We should probably return that on a VER /R.
+;   DOS 5.0's AX=3306 will return where DOS is, which VER /R should show;
+;   DL is our subversion and DH will tell if DOS is in ROM or loaded high.
+
 VERSION:
 	call	crlf2
 	call	print_version
@@ -91,6 +98,7 @@ VERSION:
 
 print_version:
 	mov	ah,Get_version
+	xor	al, al
 	int	int_command
 	push	ax
 	xor	ah,ah
