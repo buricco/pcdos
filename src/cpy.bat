@@ -5,6 +5,7 @@ copy .\cmd\assign\assign.com %1
 copy .\cmd\attrib\attrib.exe %1
 copy .\cmd\backup\backup.com %1
 copy .\cmd\chkdsk\chkdsk.com %1
+copy .\cmd\choice\choice.com %1
 copy .\cmd\command\command.com %1
 copy .\cmd\comp\comp.com %1
 copy .\cmd\debug\debug.com %1

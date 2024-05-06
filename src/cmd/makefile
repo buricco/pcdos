@@ -11,6 +11,8 @@ all:
 	$(make)
 	cd ..\chkdsk
 	$(make)
+	cd ..\choice
+	$(make)
 	cd ..\debug
 	$(make)
 	cd ..\edlin
