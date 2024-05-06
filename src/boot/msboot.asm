@@ -497,13 +497,13 @@ DOCALL: MOV	AH,ROM_DISKRD		;AC000;=2
 	include boot.cl1			;AN003;
 
 
-	IF IBMCOPYRIGHT
+;	IF IBMCOPYRIGHT
 BIO	DB	"IBMBIO  COM"
 DOS	DB	"IBMDOS  COM"
-	ELSE
-BIO	DB	"IO      SYS"
-DOS	DB	"MSDOS   SYS"
-	ENDIF
+;	ELSE
+;BIO	DB	"IO      SYS"
+;DOS	DB	"MSDOS   SYS"
+;	ENDIF
 
 Free	EQU (cbSec - 4) - ($-$start)		;AC000;
 ;Free	 EQU (cbSec - 5) - ($-$start)
