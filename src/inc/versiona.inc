@@ -22,6 +22,6 @@
 ; For OEMID, see ../dos/dosmes.asm and search for "OEMNUM"
 
 major_version	    equ     4	    ;Major DOS version
-minor_version	    equ     03	    ;Minor DOS Version
+minor_version	    equ     0	    ;Minor DOS Version
 
 expected_version    equ     (MINOR_VERSION SHL 8)+MAJOR_VERSION
