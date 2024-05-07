@@ -58,7 +58,7 @@ DMES001S Label byte
 ;OEMNUM	DB	0FFH
 ;ENDIF
 
-USERNUM   DB        24, 5, 6            ; In PC DOS/RE, this is a date of last
+USERNUM   DB        24, 5, 7            ; In PC DOS/RE, this is a date of last
                                         ; kernel code revision
 
 OEMNUM	DB	0	; appear as PC DOS

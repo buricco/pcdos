@@ -51,7 +51,15 @@ Where do we go from here?
   Some enhancements over both are also on the wishlist/to-do list.
   
   A major reworking of FDISK is on the to-do list.
+  
+  Fix any derps we may have introduced.
 
   If we do not get a drop of DOS 5, the next things to look at are the DIR and
-  VER commands, FORMAT /Q and /U, and support for loading DOS high.  That
-  ought to bring us very close to 5.0 functionality.
+  VER commands, FORMAT /Q and /U, SETVER, and support for loading DOS high.  
+  That ought to bring us very close to 5.0 functionality.
+
+  If we do not get a drop of DOS 6, recreating COMMAND /K and some of the more
+  advanced CONFIG.SYS is in order, and cloning MSD, SCANDISK, MOVE and the new
+  MEM would be nice too.
+
+  Can we do FAT32?
