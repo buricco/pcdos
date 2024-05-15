@@ -17,9 +17,6 @@ H	=..\..\H
 OBJ	= fc.obj \
 	  error.obj \
 	  fgetl.obj \
-	  getl.obj \
-	  itoupper.obj \
-	  $(inc)\kstring.obj \
 	  maxmin.obj \
 	  move.obj \
 	  ntoi.obj \
@@ -33,12 +30,6 @@ OBJ	= fc.obj \
 all:	$(DEST).exe
 
 $(inc)\printf.obj: $(inc)\printf.asm
-
-$(inc)\kstring.obj: $(inc)\kstring.c $(hinc)\internat.h
-
-getl.obj: getl.asm $(inc)\cmacros.inc $(inc)\version.inc
-
-itoupper.obj: itoupper.asm  $(inc)\cmacros.inc $(inc)\version.inc
 
 maxmin.obj: maxmin.asm $(inc)\cmacros.inc $(inc)\version.inc
 
