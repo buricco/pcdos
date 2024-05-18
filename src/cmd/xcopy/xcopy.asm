@@ -1239,16 +1239,17 @@ MH_A_FILE:
 	REP	MOVSB
 
 ; Get Extended Attribute list of the opened file and save in attribute buff.
+; (Deleted by uso)
 
-	MOV	BX,S_HANDLE		;AN005; BX = handle
-	MOV	SI,ALL_ATTR		;AN005; SELECT ALL ATTRIBUTES SIZE
-	MOV	CL, PARAGRAPH		;AN005; PARAGRAPH = 4 FOR DIV BY 16
-	MOV	AX,SIZ_OF_BUFF		;AN005; GET THE SIZE EXPRESSED IN para.
-	SHL	AX, CL			;AN005; GET # OF BYTES FROM para.
-	MOV	CX, AX			;AN005; NEEDS TO BE IN CX
-	MOV	DI, OFFSET ES:ATTRIB_LIST ;AN005; ES:DI = E A LIST IN BUFFER
-	MOV	AX, GET_ATTRIB		;AN005; extended attribute code 5702H
-	INT	21H			;AN005; get extended attribute list
+;	MOV	BX,S_HANDLE		;AN005; BX = handle
+;	MOV	SI,ALL_ATTR		;AN005; SELECT ALL ATTRIBUTES SIZE
+;	MOV	CL, PARAGRAPH		;AN005; PARAGRAPH = 4 FOR DIV BY 16
+;	MOV	AX,SIZ_OF_BUFF		;AN005; GET THE SIZE EXPRESSED IN para.
+;	SHL	AX, CL			;AN005; GET # OF BYTES FROM para.
+;	MOV	CX, AX			;AN005; NEEDS TO BE IN CX
+;	MOV	DI, OFFSET ES:ATTRIB_LIST ;AN005; ES:DI = E A LIST IN BUFFER
+;	MOV	AX, GET_ATTRIB		;AN005; extended attribute code 5702H
+;	INT	21H			;AN005; get extended attribute list
 
 	JC	MH_ERROR		;AN000; jump if error
 
@@ -1736,13 +1737,14 @@ CMP_FILESIZE_TO_BUFFER_LEFT PROC NEAR
 	    CALL    OPEN_A_FILE 	;AN005;OPEN A FILE USING FILE_DTA
 
 ; Get extended Attribute list size.
+; (Deleted by uso)
 
-	    MOV     BX,S_HANDLE 	;AN005; BX = handle
-	    MOV     AX, GET_ATTRIB	;AN005; extended attribute code 5702H
-	    MOV     SI,ALL_ATTR 	;AN005; SELECT ALL ATTRIBUTES SIZE
+;	    MOV     BX,S_HANDLE 	;AN005; BX = handle
+;	    MOV     AX, GET_ATTRIB	;AN005; extended attribute code 5702H
+;	    MOV     SI,ALL_ATTR 	;AN005; SELECT ALL ATTRIBUTES SIZE
 	    XOR     CX,CX		;AN005; JUST QUERY SIZE NEEDED
-	    MOV     DI,NUL_LIST 	;AN005; DI = LIST FOR NO DATA RETURNED
-	    INT     21H 		;AN005; get extended attribute SIZE
+;	    MOV     DI,NUL_LIST 	;AN005; DI = LIST FOR NO DATA RETURNED
+;	    INT     21H 		;AN005; get extended attribute SIZE
 	    ADD     CX,PARA_BOUND	;AN005; TO FIGURE THE NEXT PARAGRAPH
 	    MOV     AX,CX		;AN005;
 	    MOV     CL,PARAGRAPH	;AN005; GET PARAGRAPHS (DIV BY 16)
@@ -2380,6 +2382,7 @@ $$EN146:
 ;-------------------------------------------------------------------------
 ; Use extended open DOS call to create the target file, use attribute list
 ; obtained from the previous Get Extended attribute DOS call
+; (XA stuff was deleted by uso)
 ;-------------------------------------------------------------------------
 	MOV	AX, Ext_Open		;AN000; = 6Ch
 	MOV	BX,CREATE_MODE		;AN000;CREATE MODE = 0002H
@@ -2394,13 +2397,13 @@ $$EN146:
 
 	CALL	CHK_T_RES_DEVICE	;check target handle is a reserved dev
 
-	MOV	AX,SET_ATTRIB		;AN012;5704H
-	CALL	SWITCH_DS_ES		;AN013;now ds - data, es - buffer
-	MOV	BX,T_HANDLE		;AC013;THE FILE HANDLE
-	LEA	DI,ES:ATTRIB_LIST	;AN013;PARAMETER LIST (ES:DI)
-	INT	21H			;AN012;SET EXTENDED ATTRIBUTES
-	CALL	SWITCH_DS_ES		;AN013;now es - data, ds - buffer
-	JC	CAF_ERROR		;AN012;
+;	MOV	AX,SET_ATTRIB		;AN012;5704H
+;	CALL	SWITCH_DS_ES		;AN013;now ds - data, es - buffer
+;	MOV	BX,T_HANDLE		;AC013;THE FILE HANDLE
+;	LEA	DI,ES:ATTRIB_LIST	;AN013;PARAMETER LIST (ES:DI)
+;	INT	21H			;AN012;SET EXTENDED ATTRIBUTES
+;	CALL	SWITCH_DS_ES		;AN013;now es - data, ds - buffer
+;	JC	CAF_ERROR		;AN012;
 
 	OR	ES:FILE_FLAG, CREATED_FLAG ;set created_flag
 	JMP	CAF_EXIT
