@@ -368,40 +368,40 @@ DRIVER   3ac8 0002
 EDLIN    3b42 0027
 0006 U 0000 "*"
 0007 U 0000 "Unidad o nombre de archivo no v lido",CR,LF
-0008 U 0000 "File name must be specified",CR,LF
-0010 U 0000 "File is READ-ONLY",CR,LF
-0011 U 0000 "File Creation Error",CR,LF
-0012 U 0000 "Too many files open",CR,LF
-0013 U 0000 "Read error in:",CR,LF,"%1",CR,LF
-0014 U 0000 "Cannot edit .BAK file--rename file",CR,LF
-0015 U 0000 "No room in directory for file",CR,LF
-0016 U 0000 "Disk full. Edits lost.",CR,LF
+0008 U 0000 "Debe especificarse nombre de archivo",CR,LF
+0010 U 0000 "El archivo es de SOLO LECTURA",CR,LF
+0011 U 0000 "Error en Creaci¢n de Archivo",CR,LF
+0012 U 0000 "Demasiados archivos abiertos",CR,LF
+0013 U 0000 "Error de lectura en:",CR,LF,"%1",CR,LF
+0014 U 0000 "No puede editarse archivo .BAK--c mbiele el nombre",CR,LF
+0015 U 0000 "No hay espacio en el directorio para el archivo",CR,LF
+0016 U 0000 "Disco lleno. Ediciones perdidas.",CR,LF
 0017 U 0000 "Archivo no encontrado",CR,LF
-0018 U 0000 "Entry error",CR,LF
-0019 U 0000 "New file",CR,LF
-0020 U 0000 "Not found",CR,LF
-0021 U 0000 "O.K.? "
-0022 U 0000 "Line too long",CR,LF
-0023 U 0000 "End of input file",CR,LF
-0024 U 0000 "Abort edit (Y/N)? "
-0025 U 0000 "Must specify destination line number",CR,LF
-0026 U 0000 "Not enough room to merge the entire file",CR,LF
+0018 U 0000 "Error de entrada",CR,LF
+0019 U 0000 "Archivo nuevo",CR,LF
+0020 U 0000 "No encontrado",CR,LF
+0021 U 0000 "¨O.K.? "
+0022 U 0000 "L¡nea demasiado larga",CR,LF
+0023 U 0000 "Fin de archivo de entrada",CR,LF
+0024 U 0000 "¨Cancelar la edici¢n (S/N)? "
+0025 U 0000 "Debe especificar el n£mero de l¡nea de destino",CR,LF
+0026 U 0000 "No hay espacio suficiente para fusionar todo el archivo",CR,LF
 0027 U 0000 CR,LF
 0028 U 0000 LF
-0029 U 0000 "Continue (Y/N)?"
-0030 U 0000 "Unable to print message",CR,LF
+0029 U 0000 "¨Continuar (S/N)?"
+0030 U 0000 "No puede imprimirse el mensaje",CR,LF
 0031 U 0000 "%1"
 0032 U 0000 "%1:%2"
-0033 U 0000 "Cannot merge - code page mismatch",CR,LF
+0033 U 0000 "No puede fusionarse - no coincidencia de p gina de c¢digos",CR,LF
 EXE2BIN  3f50 0008
 0002 U 0000 "Memoria insuficiente",CR,LF
-0003 U 0000 "Cannot find messages",CR,LF
+0003 U 0000 "No puede encontrar mensajes",CR,LF
 0004 U 0000 "Acceso denegado",CR,LF
-0005 U 0000 "Archivo no puede ser convertido",CR,LF
+0005 U 0000 "No se puede convertir archivo",CR,LF
 0006 U 0000 "Archivo no encontrado",CR,LF
-0007 U 0000 "Error durante creaci¢n del archivo",CR,LF
-0008 U 0000 "Se requieren arreglos - segmento base (hexa):"
-0012 U 0000 "File name must be specified",CR,LF
+0007 U 0000 "Error al crear archivo",CR,LF
+0008 U 0000 "Se necesitan matrices - segmento base (hexa):"
+0012 U 0000 "Debe especifiar nombre de archivo",CR,LF
 FIND     40ba 0001
 0004 U 0000 "FIND: "
 FORMAT   40e4 0043
@@ -563,19 +563,19 @@ BACKUP   5b2a 0023
 0034 U 0000 CR,LF
 0035 U 0001 CR,LF,"Cannot FORMAT nonremovable drive %1:",CR,LF
 COMP     60f5 0013
-0004 U 0000 "10 Mismatches - ending compare",CR,LF
-0006 U 0000 "Compare error at OFFSET %1",CR,LF
-0007 U 0000 "File 1 = %1",CR,LF
-0008 U 0000 "File 2 = %1",CR,LF
-0009 U 0000 "EOF mark not found",CR,LF
-0010 U 0000 "Files compare OK",CR,LF
-0015 U 0000 CR,LF,CR,LF,"Enter primary filename",CR,LF
-0016 U 0000 CR,LF,CR,LF,"Enter 2nd filename or drive id",CR,LF
-0017 U 0000 "Files are different sizes",CR,LF
-0018 U 0000 "Compare more files (Y/N) ?"
-0019 U 0000 "%1 and %2",CR,LF
+0004 U 0000 "10 Diferencias - finaliza la comparaci¢n",CR,LF
+0006 U 0000 "Error de comparaci¢n en OFFSET %1",CR,LF
+0007 U 0000 "Archivo 1 = %1",CR,LF
+0008 U 0000 "Archivo 2 = %1",CR,LF
+0009 U 0000 "No se encontr¢ marca de EOF",CR,LF
+0010 U 0000 "Comparaci¢n de archivos correcta",CR,LF
+0015 U 0000 CR,LF,CR,LF,"Introduzca el nombre de archivo primario",CR,LF
+0016 U 0000 CR,LF,CR,LF,"Introduzca el segundo nombre de archivo o la ID de unidad",CR,LF
+0017 U 0000 "Los archivos son de tama¤os distintos",CR,LF
+0018 U 0000 "¨Comparar m s archivos (S/N) ?"
+0019 U 0000 "%1 y %2",CR,LF
 0020 U 0000 CR,LF
-0023 U 0000 "Files compare OK",CR,LF
+0023 U 0000 "Comparaci¢n de archivos correcta",CR,LF
 DISKCOMP 6326 0016
 0004 U 0000 "Do not specify filename(s)",CR,LF
 	"Command format: DISKCOMP d: d: [/1][/8]",LF,CR
@@ -742,26 +742,26 @@ REPLACE  860d 0009
 0022 U 0000 CR,LF,"¨Sustituir %1? (S/N) "
 0023 U 0000 CR,LF,"¨A¤adir %1? (S/N) "
 XCOPY    8799 0018
-0004 U 0000 "Does %1 specify a file name",CR,LF
-	"or directory name on the target",CR,LF
-	"(F = file, D = directory)?"
-0005 U 0000 "Press any key to begin copying file(s)"
-0006 U 0000 "Path too long",CR,LF
-0008 U 0000 "Cannot perform a cyclic copy",CR,LF
-0012 U 0000 "Cannot XCOPY from a reserved device",CR,LF
-0021 U 0000 "Invalid number of parameters",CR,LF
-0022 U 0000 "Cannot XCOPY to a reserved device",CR,LF
-0024 U 0000 "File creation error",CR,LF
-0025 U 0000 "Reading source file(s)...",CR,LF
+0004 U 0000 "¨Especifica %1 un nombre de archivo",CR,LF
+	"o un nombre de directorio en el destino",CR,LF
+	"(A = archivo, D = directorio)?"
+0005 U 0000 "Pulse cualquier tecla para comenzar a copiar archivo(s)"
+0006 U 0000 "V¡a de acceso demasiado larga",CR,LF
+0008 U 0000 "No puede ejecutarse una copia c¡clica",CR,LF
+0012 U 0000 "No puede hacerse XCOPY desde un dispositivo reservado",CR,LF
+0021 U 0000 "El n£mero de par metros no es v lido",CR,LF
+0022 U 0000 "No puede hacerse XCOPY a un dispositivo reservado",CR,LF
+0024 U 0000 "Error en creaci¢n de archivo",CR,LF
+0025 U 0000 "Leyendo archivo(s) origen...",CR,LF
 0026 U 0000 CR,LF
-0027 U 0000 "%1 File(s) copied",CR,LF
+0027 U 0000 "%1 Archivo(s) copiado(s)",CR,LF
 0028 U 0000 "%1 Archivo no encontrado",CR,LF
-0029 U 0000 "F D "
+0029 U 0000 "A D "
 0030 U 0000 "%1%2",CR,LF
 0031 U 0000 "%1\%2",CR,LF
 0032 U 0000 "%1",CR,LF
-0033 U 0000 "%1%2 (Y/N)?"
-0034 U 0000 "%1\%2 (Y/N)?"
+0033 U 0000 "%1%2 (S/N)?"
+0034 U 0000 "%1\%2 (S/N)?"
 GRAFTABL 8d4b 0009
 0002 U 0000 "P gina de C¢digos Activa: %1",CR,LF
 0003 U 0000 "P gina de C¢digos Previa: %1",CR,LF
@@ -860,10 +860,10 @@ MEM      9d3c 0042
 0026 U 0000  "Area de Comunicaciones del DOS",0
 0027 U 0000  "IBMBIO",0
 0028 U 0000  "IBMDOS",0
-0029 U 0000  "System Data",0
-0030 U 0000  "System Program",0
-0031 U 0000  "System Device Driver",0
-0032 U 0000  "Installed Device Driver",0
+0029 U 0000  "Datos del Sistema",0
+0030 U 0000  "Programa del Sistema",0
+0031 U 0000  "Controlador de Dispositivo del Sistema",0
+0032 U 0000  "Controlador de Dispositivo Instalado",0
 0033 U 0000  "%1:",0
 0034 U 0000  "%1: - %2:",0
 0035 U 0000  "BUFFERS=",0
