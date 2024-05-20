@@ -237,23 +237,6 @@ COMMAND  14c8 0091
 1076 U 0000 "%1"
 1077 U 0000 " %1  %2"
 1078 U 0000 "Directory already exists",CR,LF
-ATTRIB   2290 0016
-0004 U 0000 "Invalid number of parameters",CR,LF
-0005 U 0000 "Invalid path or file not found",CR,LF
-0006 U 0000 "Syntax error",CR,LF
-0008 U 0000 "  %1"
-0009 U 0000 "%1    %2",CR,LF
-0010 U 0000 "%1",CR,LF,"%2",CR,LF
-0011 U 0000 "%1, Code page mismatch",CR,LF,"Are you sure (Y/N)?"
-0012 U 0000 "%1",CR,LF
-0014 U 0000 CR,LF
-0015 U 0000 "Invalid file type value",CR,LF
-0199 U 0000 "Extended attribute error",CR,LF
-0201 U 0000 "Extended attribute name not found",CR,LF
-0204 U 0000 "Extended attribute name cannot be set",CR,LF
-0205 U 0000 "Extended attribute name known to this file system but not supported",CR,LF
-0206 U 0000 "Extended attribute type mismatch",CR,LF
-0208 U 0000 "Extended attribute value not supported",CR,LF
 ASSIGN   2586 0001
 0002 U 0000 "Original %1: set to %2:",cr,lf
 CHKDSK   25c7 0063
@@ -549,19 +532,10 @@ MSBIO    548a 0019
 BOOT     58c1 0001
 0001 U 0000 13,10,"Non-System disk or disk error",13,10
 	"Replace and press any key when ready",13,10,0
-DBCSDOS  593f 0000
 MSDOS    5953 0003
 0001 U 0001 13,10,"Divide overflow",13,10
 0002 U 0002 "y"
 0003 U 0002 "n"
-PSPRINT  59b4 0007
-0002 U 0000 " error reading file",CR,LF,FORMFD,BELL,"$"
-0003 U 0000 CR,LF,LF,"File canceled by operator",CR,FORMFD,BELL
-0004 U 0000 "File allocation table bad drive "
-0005 U 0000 "A.",CR,LF,"$"
-0006 U 0000 "List output is not assigned to a device",CR,LF
-0007 U 0000 "PSPRINT is allready installed",CR,LF
-0008 U 0000 "PSPRINT/PRINT conflict",CR,LF
 BACKUP   5b2a 0023
 0002 U 0000 CR,LF,"Insufficient memory",CR,LF
 0006 U 0000 CR,LF,"Invalid drive specification",CR,LF
@@ -588,8 +562,6 @@ BACKUP   5b2a 0023
 0032 U 0000 CR,LF,"Disk full error writing to BACKUP Log File",CR,LF
 0034 U 0000 CR,LF
 0035 U 0001 CR,LF,"Cannot FORMAT nonremovable drive %1:",CR,LF
-BASIC    60bb 0001
-0001 U 0001 "Cannot exec BASICA.COM"
 COMP     60f5 0013
 0004 U 0000 "10 Mismatches - ending compare",CR,LF
 0006 U 0000 "Compare error at OFFSET %1",CR,LF
@@ -754,41 +726,6 @@ RESTORE  792b 0020
 	"Replace the file (Y/N)?",CR,LF
 0023 U 0000 "Diskette: %1",CR,LF
 0025 U 0000 07
-SELECT   7e33 0016
-0004 U 0000 "Invalid SELECT boot media",CR,LF,CR,LF
-	"Insert INSTALL diskette in drive A:, then retry"
-0005 U 0000 "Invalid disk/diskette media",cr,lf,cr,lf
-	"Insert INSTALL diskette in drive A:, then retry"
-0006 U 0000 "Invalid parameters on SELECT command line",CR,LF,CR,LF
-	"Make sure the INSTALL diskette is in drive A:,",CR,LF
-	"then press Ctrl+Alt+Del to restart."
-0007 U 0000 BELL,"Unable to install DOS.  Program terminated",CR,LF
-0008 U 0000 "Loading SELECT.  Please wait..."
-0009 U 0000 "You must restart your computer to continue.",CR,LF,CR,LF
-	"Press Ctrl+Alt+Del to continue with DOS installation."
-0010 U 0000 "Insert SELECT diskette in drive A:",CR,LF,CR,LF
-	"Press Enter to continue installing DOS,",CR,LF
-	"or press Esc to exit.",CR,LF
-0011 U 0000 BELL
-0012 U 0000 "Insert SELECT diskette in drive A:",CR,LF,CR,LF
-	"Press Enter to continue.",CR,LF
-0013 U 0001 "Remove the SELECT COPY Diskette from drive A:",CR,LF,CR,LF
-	"Insert the INSTALL Diskette in drive A:",CR,LF,CR,LF,CR,LF
-	"Press Enter to continue.",CR,LF
-0014 U 0001 "Remove the INSTALL Diskette from drive A:",CR,LF,CR,LF
-	"Insert the SELECT COPY Diskette in drive A:",CR,LF,CR,LF,CR,LF
-	"Press Enter to continue.",CR,LF
-0015 U 0001 "Copying diskette . . .",CR,LF
-0016 U 0001 "Drive not ready.  Please close the",CR,LF,CR,LF
-	"diskette drive door and press Enter",CR,LF
-	"to continue, or Esc to exit SELECT.",CR,LF
-0017 U 0001 "Write protect diskette in drive.",CR,LF,CR,LF
-	"Please remove protect tab and",CR,LF
-	"press Enter to continue, or Esc to exit SELECT.",CR,LF
-0018 U 0001 "An error occurred while installing DOS.",CR,LF
-	"Press Enter to continue, or Esc to exit SELECT.",CR,LF
-0019 U 0001 "Insert the INSTALL Diskette in drive A:",CR,LF,CR,LF
-	"Press Enter to continue.",CR,LF
 TREE     854e 0004
 0002 U 0000 "Directory PATH listing for Volume %1",CR,LF
 0003 U 0000 "Directory PATH listing",CR,LF
@@ -825,21 +762,6 @@ XCOPY    8799 0018
 0032 U 0000 "%1",CR,LF
 0033 U 0000 "%1%2 (Y/N)?"
 0034 U 0000 "%1\%2 (Y/N)?"
-VDISK    8aa5 0013
-0002 U 0000 "Insufficient memory",CR,LF
-0003 U 0000 "VDISK virtual disk %1",CR,LF
-0004 U 0000 "   Buffer size adjusted",CR,LF
-0005 U 0000 "   Sector size adjusted",CR,LF
-0006 U 0000 "   Directory entries adjusted",CR,LF
-0007 U 0000 "   Invalid switch character",CR,LF
-0008 U 0000 "   Transfer size adjusted",CR,LF
-0009 U 0000 "   Buffer size:       %1 KB",CR,LF
-0010 U 0000 "   Sector size:       %1",CR,LF
-0011 U 0000 "   Directory entries: %1",CR,LF
-0012 U 0000 "   Transfer size: %1",CR,LF
-0013 U 0000 "VDISK not installed - "
-0014 U 0000 "   Extender Card switches",CR,LF
-	"do not match system memory size",CR,LF,CR,LF
 GRAFTABL 8d4b 0009
 0002 U 0000 "Active Code Page: %1",CR,LF
 0003 U 0000 "Previous Code Page: %1",CR,LF
@@ -918,7 +840,6 @@ KEYB     994d 0016
 0015 U 0000 "Code page specified is inconsistent with the selected code page",CR,LF
 0016 U 0001 "Keyboard ID specified is inconsistent with the selected keyboard layout",CR,LF
 0017 U 0000 "Unable to create KEYB table in resident memory",CR,LF
-REDIRSYS 9d28 0000
 MEM      9d3c 0042
 0010 U 0000  CR,LF
 0011 U 0000  "  Address     Name          Size       Type ",CR,LF
@@ -962,68 +883,6 @@ MEM      9d3c 0042
 0049 U 0000  "Program",0
 0050 U 0000  "Environment",0
 0051 U 0000  "Data",0
-REDIR    a37a 0029
-0004 U 0000 "Network has not been started",CR,LF
-0050 U 0000 "NET809: Network request not supported",CR,LF,0
-0051 U 0000 "NET801: Remote computer not listening",CR,LF,0
-0052 U 0000 "NET802: Duplicate name on network",CR,LF,0
-0053 U 0000 "NET803: Network path not found",CR,LF,0
-0054 U 0000 "NET804: Network busy",CR,LF,0
-0055 U 0000 "NET805: Network device no longer exists",CR,LF,0
-0056 U 0000 "NET806: NETBIOS command limit exceeded",CR,LF,0
-0057 U 0000 "NET807: System error; NETBIOS error",CR,LF,0
-0058 U 0000 "NET808: Incorrect response from network",CR,LF,0
-0059 U 0000 "NET810: Unexpected network error",CR,LF,0
-0060 U 0000 "NET811: Incompatible remote adapter",CR,LF,0
-0061 U 0000 "NET812: Print queue full",CR,LF,0
-0062 U 0000 "NET813: Not enough space for print file",CR,LF,0
-0063 U 0000 "NET814: Print file was cancelled",CR,LF,0
-0064 U 0000 "NET815: Network name was deleted",CR,LF,0
-0065 U 0000 "Access denied",CR,LF,0
-0066 U 0000 "NET817: Network device type incorrect",CR,LF,0
-0067 U 0000 "NET818: Network name not found",CR,LF,0
-0068 U 0004 "NET819: Network name limit exceeded",CR,LF,0
-0069 U 0000 "NET820: NETBIOS session limit exceeded",CR,LF,0
-0070 U 0000 "NET821: Sharing temporarily paused",CR,LF,0
-0071 U 0000 "NET823: Network request not accepted",CR,LF,0
-0072 U 0000 "NET822: Print or disk redirection is paused",CR,LF,0
-0073 U 0000 "NET476: Netbeui not loaded",CR,LF,0
-0074 U 0000 "NET477: Unexpected adapter close",CR,LF,0
-0084 U 0004 "NET819: Network name limit exceeded",CR,LF,0
-0085 U 0004 "NET802: Duplicate name on network",CR,LF,0
-0088 U 0000 "NET825: Network data fault",CR,LF,0
-XMA2EMS  a9f8 0030
-0001 U 0000 CR,LF,"$"
-0002 U 0000 "XMA2EMS: Expanded Memory Manager",CR,LF
-	"(c)Copyright Microsoft Corporation 1988                     All rights reserved",CR,LF,"$"
-0003 U 0000 CR,LF,"Performing XMA diagnostics:   ","$"
-0004 U 0000 CR,LF,"Diagnostics completed ",CR,LF,LF,"$"
-0005 U 0000 "Page Frame starts at........................ "
-0006 U 0000 "XXXX:0",CR,LF,"Pages mapped to conventional memory......... "
-0007 U 0000 "0   ",CR,LF,"$"
-0008 U 0000 "Pages reserved for 3270 PC Control Program.. "
-0009 U 0000 "0   ",CR,LF,"$"
-0010 U 0000 "Pages available for expanded memory......... "
-0011 U 0000 "0   ",CR,LF,"$"
-0012 U 0000 CR,LF,"Adapter error ",CR,LF,"$"
-0013 U 0000 CR,LF,"Cannot find adapter ",CR,LF,"$"
-0014 U 0000 CR,LF,"Parameter syntax or value error ",CR,LF,"$"
-0015 U 0000 CR,LF,"Cannot find XMA Emulator device driver ",CR,LF,"$"
-0016 U 0000 CR,LF,"Incorrect version of XMAEM.SYS ",CR,LF,"$"
-0017 U 0000 CR,LF,"Incorrect version of INDXMAA.SYS ",CR,LF,"$"
-0018 U 0000 CR,LF,"Too many EMS pages requested in /X parameter ",CR,LF,"$"
-0019 U 0000 "Expanded Memory Manager has NOT been installed",CR,LF,"$"
-0020 U 0000 "Specified page address conflicts with installed adapter at address "
-0021 U 0000 "0   ",CR,LF,"$"
-0022 U 0000 "Possible 16KB page available at address  "
-0023 U 0000 "0   ",CR,LF,"$"
-0024 U 0000 CR,LF,"Possible 64KB frame available at address "
-0025 U 0000 "0   ",CR,LF,"$"
-0026 U 0000 "No page addresses specified",CR,LF,"$"
-0027 U 0000 " "
-0028 U 0000 "    "," KB OK","$"
-0029 U 0000 "     ",CR,LF,"$"
-0030 U 0000 "$"
 FILESYS  b03f 0007
 0010 U 0003  "  PAUSED  %1   %2   %3",CR,LF
 0011 U 0001  "          %1   %2   %3",CR,LF
@@ -1155,34 +1014,3 @@ FDISK    b1ba 0122
 1114 U 0001 "Invalid partition table",0
 1115 U 0001 "Error loading operating system",0
 1116 U 0001 "Missing operating system",0
-XMAEM    cdb9 0006
-0001 U 0000 "80386 XMA Emulator Version 1.10",CR,LF
-	"         (C) Copyright IBM Corporation 1987, 1988  All rights reserved",CR,LF,CR,LF,"$"
-0002 U 0000 "80386 XMA Emulator installed",CR,LF,"$"
-0003 U 0004 "80386 XMA Emulator not installed. This system unit",CR,LF
-	"         is not supported.",CR,LF,CR,LF,"$"
-0004 U 0000 "80386 XMA Emulator not installed.",CR,LF
-	"         Protected mode already in use.",CR,LF,CR,LF,"$"
-0005 U 0003 "80386 XMA Emulator not installed",CR,LF
-	"     Parameter value must specify 64 pages or greater",CR,LF,"$"
-0006 U 0000 "80386 XMA Emulator not installed",CR,LF
-	"     Insufficient memory for requested parameter value",CR,LF,"$"
-UPDATE   d072 0013
-0100 U 0000 CR,LF,"- Enter your keyboard code: "
-0110 U 0000 "US"                    ;DEFAULT KEYBOARD CODE
-0120 U 0000 CR,LF,"- Enter the drive which contains files to be",CR,LF
-	"  replaced (target cannot be drive A): "
-0130 U 0000 "C"                     ;DEFAULT DRIVE LETTER
-0140 U 0000 CR,LF,"- Do you want to replace the DOS files",CR,LF
-	"  in all directories (Y/N)?"
-0150 U 0000 "Y"                     ;DEFAULT Y/N PROMPT
-0160 U 0000 CR,LF,"- Enter the target directory name (\ for root): "
-0170 U 0000 "\"                     ;DEFAULT PATH
-0180 U 0000 CR,LF,"- Do you start TUGBOAT from drive C (Y/N)? "
-0190 U 0000 CR,LF,"- Insert next Corrective Service Diskette in drive A",CR,LF
-0200 U 0000 CR,LF,"- Insert Corrective Service Diskette in drive A",CR,LF
-	"  Press any key to restart system . . ."
-0210 U 0000 CR,LF,"- Corrective Service has been successfully installed",CR,LF
-	"  Prepare system to be restarted",CR,LF
-	"  Press any key to restart system . . ."
-0220 U 0000 CR,LF,"Invalid keyboard code specified",CR,LF
