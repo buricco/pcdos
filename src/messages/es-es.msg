@@ -456,27 +456,27 @@ MORE     4b23 0001
 0002 U 0000 "-- M s --"
 PRINT    4b51 0021
 0002 U 0000 CR,LF
-0006 U 0000 " error reading file",CR,LF,"$"
+0006 U 0000 " error leyendo archivo",CR,LF,"$"
 0007 U 0000 "Archivo no encontrado",CR,LF,"$"
-0008 U 0000 CR,LF,LF,"File $"
-0009 U 0000 " canceled by operator$"
-0010 U 0000 CR,LF,LF,"All files canceled by operator$"
+0008 U 0000 CR,LF,LF,"Archivo $"
+0009 U 0000 " cancelado por el operador$"
+0010 U 0000 CR,LF,LF,"Todos los archivos cancelados por el operador$"
 0011 U 0000 "Tabla de asignaci¢n de archivos err¢nea, unidad "
 0012 U 0000 "A.",CR,LF,"$"
-0013 U 0000 "List output is not assigned to a device",CR,LF
-0014 U 0000 "Resident part of PRINT installed",CR,LF
-0015 U 0000 "Cannot use PRINT - Use NET PRINT",CR,LF
-0017 U 0000 "PRINT queue is full",CR,LF
-0018 U 0000 "PRINT queue is empty",CR,LF
+0013 U 0000 "La salida de la impresi¢n no est  asignada a un dispositivo",CR,LF
+0014 U 0000 "Instalada parte residente de PRINT",CR,LF
+0015 U 0000 "No puede utilizarse PRINT - Utilice NET PRINT",CR,LF
+0017 U 0000 "La cola de PRINT est  llena",CR,LF
+0018 U 0000 "La cola de PRINT est  vac¡a",CR,LF
 0019 U 0000 "Acceso denegado",CR,LF
 0020 U 0000 "Especificaci¢n de unidad no v lida",CR,LF
-0021 U 0000 "Errors on list device indicate that it",CR,LF
-	"may be off-line. Please check it.",CR,LF
-0022 U 0000 CR,LF,LF,"  %1 is currently being printed",CR,LF
-0023 U 0000 "  %1 is in queue",CR,LF
-0025 U 0001 "Pathname too long",CR,LF
-0026 U 0001 "File not in PRINT queue",CR,LF
-0027 U 0000 "Name of list device [PRN]: "
+0021 U 0000 "Los errores del dispositivo de impresi¢n indican que",CR,LF
+	"podr¡a estar off-line. Compru‚belo.",CR,LF
+0022 U 0000 CR,LF,LF,"  %1 est  siendo impreso",CR,LF
+0023 U 0000 "  %1 est  en cola",CR,LF
+0025 U 0001 "Nombre de v¡a de acceso demasiado largo",CR,LF
+0026 U 0001 "El archivo no est  en cola de PRINT",CR,LF
+0027 U 0000 "Nombre del dispositivo de impresi¢n [PRN]: "
 RECOVER  4f31 0011
 0002 U 0000 CR,LF,"Archivo no encontrado",CR,LF
 0003 U 0000 CR,LF,"No puede hacerse RECOVER de una unidad bajo mandato ASSIGN o SUBST",CR,LF
