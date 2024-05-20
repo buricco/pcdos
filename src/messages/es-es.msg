@@ -304,26 +304,26 @@ CHKDSK   25c7 0063
 0069 U 0000 "%1%2%3%4"
 0070 U 0000 "%1 unidades de asignaci¢n disponibles en disco"
 DEBUG    319e 0057
-0004 U 0000 "Allocation failed or specified buffer too small",CR,LF
-0006 U 0000 "Bad device name"
-0007 U 0000 "Cannot open list device PRN",CR,LF
-	"Enter name of list device? "
+0004 U 0000 "Fall¢ asignaci¢n o el almacenam. intermedio especificado es demasiado peque¤o",CR,LF
+0006 U 0000 "Nombre de dispositivo err¢neo"
+0007 U 0000 "No puede abrirse el dispositivo de impresi¢n PRN",CR,LF
+	"¨Introducir nombre de dispositivo de impresi¢n? "
 0008 U 0000 CR,LF
-0009 U 0000 CR,LF,"Program terminated normally",CR,LF
+0009 U 0000 CR,LF,"El programa termin¢ normalmente",CR,LF
 0010 U 0001 "Especificaci¢n de unidad no v lida",CR,LF
-0012 U 0001 "File creation error",CR,LF
+0012 U 0001 "Error en creaci¢n de archivo",CR,LF
 0013 U 0001 "Espacio insuficiente en disco",CR,LF
-0014 U 0001 "Disk error reading drive %1",CR,LF
-0015 U 0001 "Disk error writing drive %1",CR,LF
-0016 U 0001 "Write protect error reading drive %1",CR,LF
-0017 U 0001 "Write protect error writing drive %1",CR,LF
+0014 U 0001 "Error de disco al leer desde la unidad %1",CR,LF
+0015 U 0001 "Error de disco al grabar en la unidad %1",CR,LF
+0016 U 0001 "Error de protecci¢n contra grabaci¢n al leer desde la unidad %1",CR,LF
+0017 U 0001 "Error de protecci¢n contra grabaci¢n al grabar en la unidad %1",CR,LF
 0019 U 0000 "%1^ Error"
-0020 U 0001 "Error in EXE or HEX file",CR,LF
-0021 U 0001 "EXE and HEX files cannot be written",CR,LF
-0022 U 0000 "EXEC failure"
-0023 U 0001 "(W)rite error, no destination defined",CR,LF
+0020 U 0001 "Error en archivo EXE o HEX",CR,LF
+0021 U 0001 "No puede grabarse en los archivos EXE y HEX",CR,LF
+0022 U 0000 "Anomal¡a en EXEC"
+0023 U 0001 "Error de grabaci¢n (W), el destino no est  definido",CR,LF
 0024 U 0001 "Acceso denegado",CR,LF
-0025 U 0000 "Parity error or nonexistent memory error detected"
+0025 U 0000 "Detectado error de paridad o error de memoria inexistente"
 0026 U 0000 "-"
 0027 U 0000 "%1 -"
 0032 U 0000 "%1%2"
@@ -332,7 +332,7 @@ DEBUG    319e 0057
 0035 U 0000 "%1 %2",CR,LF,":"
 0036 U 0000 "%1=%2  "
 0037 U 0000 "%1 Error"
-0038 U 0000 "Writing %1 bytes"
+0038 U 0000 "Grabando %1 bytes"
 0039 U 0000 "%1:%2="
 0040 U 0000 "%1"
 0041 U 0000 "%1"
@@ -340,28 +340,28 @@ DEBUG    319e 0057
 0044 U 0000 32,8
 0046 U 0000 "%1"
 0047 U 0000 "%1"
-0050 U 0000 "%1 of a total %2 EMS pages have been allocated",cr,lf
-0051 U 0000 "%1 of a total %2 EMS handles have been allocated",cr,lf
-0055 U 0000 "Handle created = %1 ",cr,lf
-0056 U 0000 "Logical page %1 mapped to physical page %2 ",cr,lf
-0057 U 0001 "EMS hardware/software failure",cr,lf
-0058 U 0000 "Handle not found",cr,lf
-0059 U 0000 "Invalid function code",cr,lf
-0060 U 0000 "No free handles",cr,lf
-0061 U 0000 "Save/Restore error",cr,lf
-0062 U 0000 "Total pages exceeded",cr,lf
-0063 U 0000 "Free pages exceeded",cr,lf
-0064 U 0000 "Parameter error",cr,lf
-0065 U 0000 "Logical Page out of range",cr,lf
-0066 U 0000 "Physical Page out of range",cr,lf
-0067 U 0000 "Save area already in use",cr,lf
-0068 U 0000 "Save area not in use",cr,lf
-0070 U 0001 "General EMS error",cr,lf
-0071 U 0000 "Missing or invalid EMS parameter",cr,lf
-0072 U 0000 "Handle %1 has %2 pages allocated",cr,lf
-0075 U 0000 "Physical page %1 = Frame segment %2",cr,lf
-0076 U 0003 "Handle %1 deallocated",cr,lf
-0078 U 0000 "EMS not installed",cr,lf
+0050 U 0000 "Se han asignado %1 de un total de %2 p ginas EMS",cr,lf
+0051 U 0000 "Se han asignado %1 de un total de %2 manejos EMS",cr,lf
+0055 U 0000 "Manejo creado = %1 ",cr,lf
+0056 U 0000 "P gina l¢gica %1 correlacionada con p gina f¡sica %2 ",cr,lf
+0057 U 0001 "Anomal¡a de hardware/software EMS",cr,lf
+0058 U 0000 "Manejo no encontrado",cr,lf
+0059 U 0000 "C¢digo de funci¢n no v lido",cr,lf
+0060 U 0000 "No se pueden utilizar m s archivos",cr,lf
+0061 U 0000 "Error de Save/Restore",cr,lf
+0062 U 0000 "Total de p ginas excedido",cr,lf
+0063 U 0000 "P ginas libres excedidas",cr,lf
+0064 U 0000 "Error de par metro",cr,lf
+0065 U 0000 "P gina l¢gica fuera de rango",cr,lf
+0066 U 0000 "P gina f¡sica fuera de rango",cr,lf
+0067 U 0000 "Area de salvar ya en uso",cr,lf
+0068 U 0000 "No se utiliza  rea de salvar",cr,lf
+0070 U 0001 "Error general de EMS",cr,lf
+0071 U 0000 "Falta o no es v lido par metro de EMS",cr,lf
+0072 U 0000 "El manejo %1 tiene %2 p ginas asignadas",cr,lf
+0075 U 0000 "P gina f¡sica %1 = Segmento marco %2",cr,lf
+0076 U 0003 "Manejo %1 desasignado",cr,lf
+0078 U 0000 "EMS no instalado",cr,lf
 DRIVER   3ac8 0002
 0002 U 0000 "No se especific¢ unidad",CR,LF
 0003 U 0000 "Cargado Controlador Externo de Disco para La Unidad %1",CR,LF
