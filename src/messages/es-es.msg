@@ -1,83 +1,83 @@
 0085
 COMMON   0006 0038
-0001 U 0000 "Incorrect DOS version",CR,LF
-0002 U 0000 "%1 already installed",CR,LF
-0003 U 0000 "%1 bytes available on disk",CR,LF
-0004 U 0000 "%1 bytes free",CR,LF
-0005 U 0000 "%1 bytes in bad sectors",CR,LF
-0006 U 0000 "%1 bytes total disk space",CR,LF
-0007 U 0000 "%1 bytes total memory",CR,LF
-0008 U 0000 "%1 bytes used by system",CR,LF
-0009 U 0000 "%1 installed",CR,LF
-0010 U 0000 "%1 not installed",CR,LF
-0011 U 0000 "%1 not installed",CR,LF
-0012 U 0000 "Cannot %1 a network drive",CR,LF
+0001 U 0000 "La versi¢n del DOS es incorrecta",CR,LF
+0002 U 0000 "%1 ya est  instalado",CR,LF
+0003 U 0000 "%1 bytes disponibles en disco",CR,LF
+0004 U 0000 "%1 bytes libres",CR,LF
+0005 U 0000 "%1 bytes en sectores defectuosos",CR,LF
+0006 U 0000 "%1 bytes de espacio total en disco",CR,LF
+0007 U 0000 "Total de %1 bytes de memoria",CR,LF
+0008 U 0000 "%1 bytes utilizados por el sistema",CR,LF
+0009 U 0000 "%1 instalado",CR,LF
+0010 U 0000 "%1 no instalado",CR,LF
+0011 U 0000 "%1 no instalado",CR,LF
+0012 U 0000 "No puede hacerse %1 a una unidad de red",CR,LF
 0013 U 0000 "",
-0014 U 0000 "Cannot %1 a SUBSTed or ASSIGNed drive",CR,LF
-0015 U 0000 "Cannot execute %1",CR,LF
-0016 U 0000 "Expanded Memory not available",CR,LF
-0017 U 0000 "File allocation table bad, drive %1",CR,LF
-0018 U 0000 "File cannot be copied onto itself",CR,LF
-0019 U 0000 "Insert target disk in drive %1",CR,LF
-0020 U 0000 "Insufficient disk space",CR,LF
-0021 U 0000 "Invalid characters in volume label",CR,LF
-0022 U 0000 "Invalid code page",CR,LF
-0023 U 0000 "Invalid date",CR,LF
-0024 U 0000 "Invalid time",CR,LF
-0025 U 0000 "Invalid path",CR,LF
-0026 U 0000 "No source drive specified",CR,LF
-0027 U 0000 "No target drive specified",CR,LF
-0028 U 0000 "Press any key to continue . . .",CR,LF
-0029 U 0000 "Source path required",CR,LF
-0030 U 0000 "System transferred",CR,LF
+0014 U 0000 "No puede hacerse %1 a una unidad bajo mandato SUBST o ASSIGN",CR,LF
+0015 U 0000 "No puede ejecutarse %1",CR,LF
+0016 U 0000 "Memoria expandida no disponible",CR,LF
+0017 U 0000 "Tabla de asignaci¢n de archivos err¢nea, unidad %1",CR,LF
+0018 U 0000 "No se puede copiar un archivo sobre si mismo",CR,LF
+0019 U 0000 "Inserte diskette destino en la unidad %1",CR,LF
+0020 U 0000 "Espacio insuficiente en disco",CR,LF
+0021 U 0000 "Caracteres no v lidos en etiqueta de volumen",CR,LF
+0022 U 0000 "P gina de c¢digos no v lida",CR,LF
+0023 U 0000 "Fecha no v lida",CR,LF
+0024 U 0000 "Hora no v lida",CR,LF
+0025 U 0000 "V¡a de acceso no v lida",CR,LF
+0026 U 0000 "Unidad origen no especificada",CR,LF
+0027 U 0000 "Unidad destino no especificada",CR,LF
+0028 U 0000 "Pulse cualquier tecla para continuar . . .",CR,LF
+0029 U 0000 "V¡a de acceso origen necesaria",CR,LF
+0030 U 0000 "Sistema transferido",CR,LF
 0031 U 0000 "",
-0032 U 0000 "Unable to create directory",CR,LF
-0033 U 0000 "Volume in drive %1 has no label",CR,LF
-0034 U 0000 "Volume in drive %1 is %2",CR,LF
-0035 U 0001 "Volume label (11 characters, ENTER for none)? "
-0036 U 0000 "Volume Serial Number is %1-%2",CR,LF
-0037 U 0000 "Incorrect file type",CR,LF
+0032 U 0000 "No se puede crear el directorio",CR,LF
+0033 U 0000 "El volumen en la unidad %1 no tiene etiqueta",CR,LF
+0034 U 0000 "El volumen en la unidad %1 es %2",CR,LF
+0035 U 0001 "¨Etiqueta de volumen (11 caracteres, INTRO para ninguna)? "
+0036 U 0000 "El N£mero de Serie del Volumen es %1-%2",CR,LF
+0037 U 0000 "Tipo de archivo no v lido",CR,LF
 0038 U 0001 CR,LF
 EXTEND   0685 0090
-0001 U 0003 "Invalid function"
-0002 U 0000 "File not found"
-0003 U 0000 "Path not found"
-0004 U 0000 "Too many open files"
-0005 U 0000 "Access denied "
-0006 U 0000 "Invalid handle"
-0007 U 0000 "Memory control blocks destroyed"
-0008 U 0000 "Insufficient memory"
-0009 U 0000 "Invalid memory block address"
-0010 U 0000 "Invalid Environment"
-0011 U 0000 "Invalid format"
-0012 U 0000 "Invalid function parameter"
-0013 U 0000 "Invalid data"
+0001 U 0003 "Funci¢n no v lida"
+0002 U 0000 "Archivo no encontrado"
+0003 U 0000 "V¡a de acceso no encontrada"
+0004 U 0000 "Demasiados archivos abiertos"
+0005 U 0000 "Acceso denegado "
+0006 U 0000 "Manejo no v lido"
+0007 U 0000 "Bloques de memoria de control destruidos"
+0008 U 0000 "Memoria insuficiente"
+0009 U 0000 "Direcci¢n no v lida de bloque de memoria"
+0010 U 0000 "Entorno no v lido"
+0011 U 0000 "Formato no v lido"
+0012 U 0000 "Par metro de funci¢n no v lido"
+0013 U 0000 "Datos no v lidos"
 0014 U 0000 "",
-0015 U 0000 "Invalid drive specification"
-0016 U 0000 "Attempt to remove current directory"
-0017 U 0000 "Not same device"
-0018 U 0000 "No more files"
-0019 U 0000 "Write protect error"
-0020 U 0000 "Invalid unit"
-0021 U 0000 "Not ready"
-0022 U 0000 "Invalid device request"
-0023 U 0000 "Data error"
-0024 U 0000 "Invalid device request parameters"
-0025 U 0000 "Seek error"
-0026 U 0000 "Invalid media type"
-0027 U 0000 "Sector not found"
-0028 U 0000 "Printer out of paper error"
-0029 U 0000 "Write fault error"
-0030 U 0000 "Read fault error"
-0031 U 0000 "General failure"
-0032 U 0000 "Sharing violation"
-0033 U 0000 "Lock violation"
-0034 U 0000 "Invalid disk change"
-0035 U 0000 "FCB unavailable"
-0036 U 0000 "System resource exhausted"
-0037 U 0000 "Code page mismatch"
-0038 U 0000 "Out of input"
-0039 U 0000 "Insufficient disk space"
+0015 U 0000 "Especificaci¢n de unidad no v lida"
+0016 U 0000 "Intento de eliminar el directorio actual"
+0017 U 0000 "No es el mismo dispositivo"
+0018 U 0000 "No hay m s archivos"
+0019 U 0000 "Error de protecci¢n contra grabaci¢n"
+0020 U 0000 "Unidad no v lida"
+0021 U 0000 "No preparado"
+0022 U 0000 "Petici¢n de dispositivo no v lida"
+0023 U 0000 "Error de datos"
+0024 U 0000 "Par metros de petici¢n de dispositivo no v lidos"
+0025 U 0000 "Error de b£squeda"
+0026 U 0000 "Tipo de soporte no v lido"
+0027 U 0000 "Sector no encontrado"
+0028 U 0000 "Error por impresora sin papel"
+0029 U 0000 "Error de grabaci¢n"
+0030 U 0000 "Error de lectura"
+0031 U 0000 "Anomal¡a general"
+0032 U 0000 "Violaci¢n de compartir"
+0033 U 0000 "Violaci¢n de bloqueo"
+0034 U 0000 "Cambio de diskette no v lido"
+0035 U 0000 "FCB no disponible"
+0036 U 0000 "Agotado recurso del sistema"
+0037 U 0000 "No coincidencia de p gina de c¢digos"
+0038 U 0000 "Fuera de entrada"
+0039 U 0000 "Espacio insuficiente en disco"
 0040 U 0000 "",
 0041 U 0000 "",
 0042 U 0000 "",
@@ -88,139 +88,139 @@ EXTEND   0685 0090
 0047 U 0000 "",
 0048 U 0000 "",
 0049 U 0000 "",
-0050 U 0000 "NET809: Network request not supported"
-0051 U 0000 "NET801: Remote computer not listening"
-0052 U 0000 "NET802: Duplicate name on network"
-0053 U 0000 "NET803: Network path not found"
-0054 U 0000 "NET804: Network busy"
-0055 U 0000 "NET805: Network device no longer exists"
-0056 U 0000 "NET806: NETBIOS command limit exceeded"
-0057 U 0000 "NET807: System error; NETBIOS error"
-0058 U 0000 "NET808: Incorrect response from network"
-0059 U 0000 "NET810: Unexpected network error"
-0060 U 0000 "NET811: Incompatible remote adapter"
-0061 U 0000 "NET812: Print queue full"
-0062 U 0000 "NET813: Not enough space for print file"
-0063 U 0000 "NET814: Print file was cancelled"
+0050 U 0000 "NET809: La petici¢n de la red no est  soportada"
+0051 U 0000 "NET801: El sistema remoto no est  escuchando"
+0052 U 0000 "NET802: Nombre duplicado en la red"
+0053 U 0000 "NET803: No se encontr¢ v¡a de acceso a la red"
+0054 U 0000 "NET804: Red ocupada"
+0055 U 0000 "NET805: El dispositivo ya no existe en la red"
+0056 U 0000 "NET806: Ha excedido el l¡mite del mandato NETBIOS"
+0057 U 0000 "NET807: Error del Sistema; Error de NETBIOS"
+0058 U 0000 "NET808: Respuesta incorrecta de la red"
+0059 U 0000 "NET810: Error no esperado en la red"
+0060 U 0000 "NET811: Adaptador remoto incompatible"
+0061 U 0000 "NET812: La cola de impresi¢n est  llena"
+0062 U 0000 "NET813: No hay espacio suficiente para imprimir el archivo"
+0063 U 0000 "NET814: La impresi¢n del archivo ha sido cancelada"
 0064 U 0000 "NET815: Network name was deleted"
-0065 U 0000 "Access denied"
-0066 U 0000 "NET817: Network device type incorrect"
-0067 U 0000 "NET818: Network name not found"
-0068 U 0000 "NET819: Network name limit exceeded"
-0069 U 0000 "NET820: NETBIOS session limit exceeded"
-0070 U 0000 "NET821: Sharing temporarily paused"
-0071 U 0000 "NET823: Network request not accepted"
-0072 U 0000 "NET822: Print or disk redirection is paused"
-0073 U 0000 "NET476: Netbeui not loaded"
-0074 U 0000 "NET477: Unexpected adapter close"
+0065 U 0000 "NET815: Este nombre fue borrado de la red"
+0066 U 0000 "NET817: Tipo incorrecto de dispositivo de red"
+0067 U 0000 "NET818: No se encontr¢ el nombre en la red"
+0068 U 0000 "NET819: L¡mite de nombres en la red excedido"
+0069 U 0000 "NET820: L¡mite de sesi¢n NETBIOS excedido"
+0070 U 0000 "NET821: La compartici¢n est  en pausa"
+0071 U 0000 "NET823: No se acepta la petici¢n de red"
+0072 U 0000 "NET822: El redireccionamiento de disco o impresora est  en pausa"
+0073 U 0000 "NET476: Netbeui no cargado"
+0074 U 0000 "NET477: Cierre inesperado del adaptador"
 0075 U 0000 "",
 0076 U 0000 "",
 0077 U 0004 "",
 0078 U 0004 "",
 0079 U 0004 "",
-0080 U 0004 "File exists"
+0080 U 0004 "El archivo existe"
 0081 U 0004 "",
-0082 U 0004 "Cannot make directory entry"
-0083 U 0004 "Fail on INT 24"
-0084 U 0004 "Too many redirections"
-0085 U 0004 "Duplicate redirection"
-0086 U 0004 "Invalid password"
-0087 U 0004 "Invalid parameter"
-0088 U 0004 "Network data fault"
-0089 U 0004 "Function not supported by network"
-0090 U 0002 "Required system component not installed"
+0082 U 0004 "No puede crearse la entrada en el directorio"
+0083 U 0004 "Error en INT 24"
+0084 U 0004 "Demasiadas redirecciones"
+0085 U 0004 "Redirecci¢n duplicada"
+0086 U 0004 "Contrase¤a no v lida"
+0087 U 0004 "Par metro no v lido"
+0088 U 0004 "Error de datos de la red"
+0089 U 0004 "Funci¢n no soportada por la red"
+0090 U 0002 "Componente necesario del sistema no instalado"
 PARSE    1315 0011
-0001 U 0000 "Too many parameters"
-0002 U 0000 "Required parameter missing"
-0003 U 0000 "Invalid switch"
-0004 U 0000 "Invalid keyword"
+0001 U 0000 "Demasiados par metros"
+0002 U 0000 "Falta par metro necesario"
+0003 U 0000 "Conmutaci¢n no v lida"
+0004 U 0000 "Palabra clave no v lida"
 0005 U 0000 "",
-0006 U 0000 "Parameter value not in allowed range"
-0007 U 0000 "Parameter value not allowed"
-0008 U 0000 "Parameter value not allowed"
-0009 U 0000 "Parameter format not correct"
-0010 U 0000 "Invalid parameter"
-0011 U 0000 "Invalid parameter combination"
+0006 U 0000 "El valor del par metro no est  dentro del rango permitido"
+0007 U 0000 "El valor del par metro no est  permitido"
+0008 U 0000 "El valor del par metro no est  permitido"
+0009 U 0000 "El formato del par metro no es correcto"
+0010 U 0000 "Par metro no v lido"
+0011 U 0000 "La combinaci¢n de par metros no es v lida"
 COMMAND  14c8 0091
-0201 U 0000 "A"
+0201 U 0000 "C"
 0202 U 0000 "R"
 0203 U 0000 "I"
-0204 U 0000 "F"
-0205 U 0000 "Y"
+0204 U 0000 "S"
+0205 U 0000 "S"
 0206 U 0000 "N"
-0210 U 0000 "Abort"
-0211 U 0000 ", Retry"
-0212 U 0000 ", Ignore"
-0213 U 0000 ", Fail"
+0210 U 0000 "¨Cancelar"
+0211 U 0000 ", Reintentar"
+0212 U 0000 ", Ignorar"
+0213 U 0000 ", Seguir"
 0214 U 0000 "?"
-0215 U 0000 "reading",0
-0216 U 0000 "writing",0
-0217 U 0000 " %1 drive %2",CR,LF
-0218 U 0000 " %1 device %2",CR,LF
-0219 U 0000 "Please insert volume %1 serial %2-%3",CR,LF
-0221 U 0000 "Invalid COMMAND.COM",CR,LF
-0222 U 0000 "Insert disk with %1 in drive %2",CR,LF
-0224 U 0000 CR,LF,"Terminate batch job (Y/N)?"
-0225 U 0000 "Cannot execute %1",CR,LF
-0226 U 0000 "Error in EXE file",CR,LF
-0227 U 0000 "Program too big to fit in memory",CR,LF
-0228 U 0000 CR,LF,"No free file handles"
-0229 U 0000 "Bad Command or file name",CR,LF
-0231 U 0000 CR,LF,"Memory allocation error"
-0232 U 0000 CR,LF,"Cannot load COMMAND, system halted",CR,LF
-0233 U 0000 CR,LF,"Cannot start COMMAND, exiting",CR,LF
-0234 U 0000 CR,LF,"Top level process aborted, cannot continue",CR,LF
+0215 U 0000 "leyendo",0
+0216 U 0000 "grabando",0
+0217 U 0000 " %1 unidad %2",CR,LF
+0218 U 0000 " %1 dispositivo %2",CR,LF
+0219 U 0000 "Inserte el volumen %1 serie %2-%3",CR,LF
+0221 U 0000 "COMMAND.COM no v lido",CR,LF
+0222 U 0000 "Inserte el diskette con %1 en la unidad %2",CR,LF
+0224 U 0000 CR,LF,"¨Terminar el trabajo por lotes (S/N)?"
+0225 U 0000 "No puede ejecutarse %1",CR,LF
+0226 U 0000 "Error en archivo EXE",CR,LF
+0227 U 0000 "Programa demasiado grande para caber en memoria",CR,LF
+0228 U 0000 CR,LF,"No se pueden utilizar m s archivos"
+0229 U 0000 "Mandato o nombre de archivo err¢neo",CR,LF
+0231 U 0000 CR,LF,"Error en asignaci¢n de memoria"
+0232 U 0000 CR,LF,"No puede cargarse COMMAND, sistema parado",CR,LF
+0233 U 0000 CR,LF,"No puede arrancarse COMMAND, salir",CR,LF
+0234 U 0000 CR,LF,"Proceso de nivel superior cancelado, no puede continuarse",CR,LF
 0235 U 0000 CR,LF
-0463 U 0000 "Out of environment space",CR,LF
-0464 U 0001 CR,LF,CR,LF,"PC DOS/RE Version 4.03",CR,LF
+0463 U 0000 "Fuera del espacio de entorno",CR,LF
+0464 U 0001 CR,LF,CR,LF,"PC DOS/RE Versi¢n 4.03",CR,LF
 	"             (C)Copyright Microsoft Corp 1981-1988",CR,LF
 	"             (C)Copyright International Business Machines Corp 1981-1988",CR,LF
 	"             (C)Copyright PC DOS/RE Project 2021-2024",CR,LF
-0465 U 0000 "Specified COMMAND search directory bad",CR,LF
-0466 U 0000 "Specified COMMAND search directory bad access denied",CR,LF
-1002 U 0000 "Duplicate file name or file not found",CR,LF
-1003 U 0000 "Invalid path or file name",CR,LF
-1007 U 0000 "Out of environment space",CR,LF
-1008 U 0000 "File creation error",CR,LF
-1009 U 0000 "Batch file missing",CR,LF
-1010 U 0000 CR,LF,"Insert disk with batch file",CR,LF
-1011 U 0000 "Bad command or file name",CR,LF
-1016 U 0000 "Content of destination lost before copy",CR,LF
-1017 U 0000 "Invalid filename or file not found",CR,LF
-1018 U 0000 "%1 File(s) copied",CR,LF
-1019 U 0000 "%1 File(s) "
-1022 U 0000 "Code page %1 not prepared for system",CR,LF
-1023 U 0000  "Code page %1 not prepared for all devices",CR,LF
-1024 U 0000 "Active code page: %1",CR,LF
-1025 U 0000 "NLSFUNC not installed",CR,LF
-1027 U 0000 "Current drive is no longer valid"
-1029 U 0000 "Label not found",CR,LF
-1030 U 0000 "Syntax error",CR,LF
-1032 U 0000 "Current date is %1 %2",CR,LF
-1033 U 0000 "SunMonTueWedThuFriSat"
-1034 U 0000 "Enter new date (%1): "
-1036 U 0000 "Current time is %1",CR,LF
-1037 U 0000 "Enter new time: "
-1038 U 0000 ",    Delete (Y/N)?"
-1039 U 0000 "All files in directory will be deleted!",CR,LF
-	"Are you sure (Y/N)?"
-1040 U 0000 "PC DOS/RE Version %1.%2"
-1044 U 0000 "Invalid directory",CR,LF
-1046 U 0000 "Invalid path, not directory,",CR,LF,"or directory not empty",CR,LF
-1047 U 0000 "Must specify ON or OFF",CR,LF
-1048 U 0000 "Directory of  %1",CR,LF
-1049 U 0000 "No Path",CR,LF
-1050 U 0000 "Invalid drive in search path",CR,LF
-1051 U 0000 "Invalid device",CR,LF
-1052 U 0000 "FOR cannot be nested",CR,LF
-1053 U 0000 "Intermediate file error during pipe",CR,LF
-1054 U 0000 "Cannot do binary reads from a device",CR,LF
-1055 U 0000 "BREAK is %1",CR,LF
-1056 U 0000 "VERIFY is %1",CR,LF
-1057 U 0000 "ECHO is %1",CR,LF
-1059 U 0000 "off",0
-1060 U 0000 "on",0
-1061 U 0000 "Error writing to device",CR,LF
+0465 U 0000 "Especificado directorio err¢neo para b£squeda de COMMAND",CR,LF
+0466 U 0000 "Acceso denegado al directorio err¢neo epecificado para b£squeda de COMMAND",CR,LF
+1002 U 0000 "Nombre de archivo duplicado o archivo no encontrado",CR,LF
+1003 U 0000 "V¡a de acceso o nombre de archivo no v lido",CR,LF
+1007 U 0000 "Fuera del espacio de entorno",CR,LF
+1008 U 0000 "Error en creaci¢n de archivo",CR,LF
+1009 U 0000 "Falta el archivo de proceso por lotes",CR,LF
+1010 U 0000 CR,LF,"Inserte el diskette con el archivo de proceso por lotes",CR,LF
+1011 U 0000 "Mandato o nombre de archivo err¢neo",CR,LF
+1016 U 0000 "Contenido del destino perdido antes de copiar",CR,LF
+1017 U 0000 "Nombre de archivo no v lido o archivo no encontrado",CR,LF
+1018 U 0000 "%1 Archivo(s) copiado(s)",CR,LF
+1019 U 0000 "%1 Archivo(s)  "
+1022 U 0000 "P gina de c¢digos %1 no preparada para el sistema",CR,LF
+1023 U 0000 "P gina de c¢digos %1 no preparada para todos los dispositivos",CR,LF
+1024 U 0000 "P gina de c¢digos activa: %1",CR,LF
+1025 U 0000 "NLSFUNC no instalado",CR,LF
+1027 U 0000 "La unidad actual ya no es v lida"
+1029 U 0000 "Etiqueta no encontrada",CR,LF
+1030 U 0000 "Error de sintaxis",CR,LF
+1032 U 0000 "La fecha actual es %1 %2",CR,LF
+1033 U 0000 "DomLunMarMieJueVieSab"
+1034 U 0000 "Introduzca fecha nueva (%1): "
+1036 U 0000 "La hora actual es %1",CR,LF
+1037 U 0000 "Introduzca hora nueva: "
+1038 U 0000 ",    ¨Suprimir (S/N)?"
+1039 U 0000 "­Se suprimir n todos los archivos del directorio!",CR,LF
+	"¨Est  seguro (S/N)?"
+1040 U 0000 "PC DOS/RE Versi¢n %1.%2"
+1044 U 0000 "Directorio no v lido",CR,LF
+1046 U 0000 "V¡a de acceso no v lida, no es un directorio,",CR,LF,"o el directorio no est  vac¡o",CR,LF
+1047 U 0000 "Debe especificar ON u OFF",CR,LF
+1048 U 0000 "Directorio de  %1",CR,LF
+1049 U 0000 "Sin V¡a de Acceso",CR,LF
+1050 U 0000 "Unidad no v lida en la v¡a de acceso de b£squeda",CR,LF
+1051 U 0000 "Dispositivo no v lido",CR,LF
+1052 U 0000 "No puede anidarse FOR",CR,LF
+1053 U 0000 "Error de archivo intermedio durante la conexi¢n",CR,LF
+1054 U 0000 "No pueden hacerse lecturas binarias desde un dispositivo",CR,LF
+1055 U 0000 "BREAK est  %1",CR,LF
+1056 U 0000 "VERIFY est  %1",CR,LF
+1057 U 0000 "ECHO est  %1",CR,LF
+1059 U 0000 "inactivo (off)",0
+1060 U 0000 "activo (on)",0
+1061 U 0000 "Error al grabar en el dispositivo",CR,LF
 1063 U 0000 "%1"
 1064 U 0000 "%1"
 1065 U 0000 "%1"
@@ -230,79 +230,79 @@ COMMAND  14c8 0091
 1069 U 0000 8," ",8
 1070 U 0000 CR,LF
 1071 U 0000 "%1"
-1072 U 0000 "mm-dd-yy"
-1073 U 0000 "dd-mm-yy"
-1074 U 0000 "yy-mm-dd"
+1072 U 0000 "mm-dd-aa"
+1073 U 0000 "dd-mm-aa"
+1074 U 0000 "aa-mm-dd"
 1075 U 0000 "%1 %2"
 1076 U 0000 "%1"
 1077 U 0000 " %1  %2"
-1078 U 0000 "Directory already exists",CR,LF
+1078 U 0000 "El directorio ya existe",CR,LF
 ASSIGN   2586 0001
-0002 U 0000 "Original %1: set to %2:",cr,lf
+0002 U 0000 "Original %1: establecido en %2:",cr,lf
 CHKDSK   25c7 0063
-0003 U 0000 "Convert lost chains to files (Y/N)?"
-0004 U 0000 "Unrecoverable error in directory"
-0005 U 0000 "Convert directory to file (Y/N)?"
-0007 U 0000 "%1 bytes total disk space"
-0008 U 0000 "%1 bytes in bad sectors"
-0009 U 0000 "%1 bytes in %2 hidden files"
-0010 U 0000 "%1 bytes in %2 directories"
-0011 U 0000 "%1 bytes in %2 user files"
-0012 U 0000 "%1 bytes in %2 recovered files"
-0013 U 0000 "%1 bytes would be in %2 recovered files"
-0014 U 0000 "%1 bytes available on disk"
-0015 U 0000 "%1 total bytes memory"
-0016 U 0000 "%1 bytes free"
-0017 U 0000 "Cannot CHKDSK a network drive"
-0018 U 0000 "Cannot CHKDSK a SUBSTed or ASSIGNed drive"
-0019 U 0000 "Probable non-DOS disk",CR,LF,"Continue (Y/N)?"
-0020 U 0000 "Disk error reading FAT %1",CR,LF
-0021 U 0000 "Directory %1"
-0022 U 0000 "%1 Contains %2 non-contiguous blocks"
-0023 U 0000 "All specified file(s) are contiguous"
-0024 U 0000 "Errors found, F parameter not specified",CR,LF,"Corrections will not be written to disk"
-0025 U 0000 "   Processing cannot continue %1%2"
-0026 U 0000 "   File allocation table bad, drive %1"
-0029 U 0000 "   CHDIR .. failed, trying alternate method"
-0030 U 0001 "   Has invalid allocation unit, file truncated"
-0031 U 0000 "   Invalid sub-directory entry"
-0032 U 0000 "   Does not exist"
-0033 U 0001 "   First allocation unit is invalid, entry truncated"
-0034 U 0000 "   Allocation error, size adjusted"
-0035 U 0000 "   Cannot recover .. entry, processing continued"
-0036 U 0000 "   Directory is totally empty, no . or .."
-0037 U 0000 "   Directory is joined"
-0038 U 0000 "   Cannot recover .. entry"
-0039 U 0000 "   Entry has a bad link"
-0040 U 0000 "   Entry has a bad attribute"
-0041 U 0000 "   Entry has a bad size"
-0042 U 0001 "   Is cross linked on allocation unit %1"
-0043 U 0000 "   Cannot CHDIR to %1,",CR,LF,"tree past this point not processed"
-0044 U 0000 "   tree past this point not processed"
-0045 U 0000 "%1 bytes disk space freed"
-0046 U 0000 "%1 bytes disk space would be freed"
-0047 U 0000 "Volume %1 created %2 %3",CR,LF
-0048 U 0000 "%1 total allocation units on disk"
-0049 U 0000 "%1 bytes in each allocation unit"
-0050 U 0000 "CHKDSK not available on drive %1"
-0051 U 0001 "   Extended Attributes has invalid allocation units, attributes truncated"
-0052 U 0000 "   Extended Attributes allocation error , attributes truncated"
-0053 U 0000 "Invalid parameter"
-0055 U 0000 "Path not found"
-0056 U 0000 "File not found"
-0058 U 0001 "   %1 lost allocation units found in %2 chains."
+0003 U 0000 "¨Convertir cadenas perdidas en archivos (S/N)?"
+0004 U 0000 "Error no recuperable en directorio"
+0005 U 0000 "¨Convertir directorio en archivo (S/N)?"
+0007 U 0000 "%1 bytes de espacio total en disco"
+0008 U 0000 "%1 bytes en sectores defectuosos"
+0009 U 0000 "%1 bytes en %2 archivos ocultos"
+0010 U 0000 "%1 bytes en %2 directorios"
+0011 U 0000 "%1 bytes en %2 archivos de usuario"
+0012 U 0000 "%1 bytes en %2 archivos recuperados"
+0013 U 0000 "%1 bytes estar¡an en %2 archivos recuperados"
+0014 U 0000 "%1 bytes disponibles en disco"
+0015 U 0000 "Total de %1 bytes de memoria"
+0016 U 0000 "%1 bytes libres"
+0017 U 0000 "No puede hacerse CHKDSK a una unidad de red"
+0018 U 0000 "No puede hacerse CHKDSK a una unidad bajo mandato SUBST o ASSIGN"
+0019 U 0000 "Es probable que el disco no sea del DOS",CR,LF,"¨Continuar (S/N)?"
+0020 U 0000 "Error de disco al leer FAT %1",CR,LF
+0021 U 0000 "Directorio %1"
+0022 U 0000 "%1 Contiene %2 bloques no contiguos."
+0023 U 0000 "Todos los archivos especificados son contiguos"
+0024 U 0000 "Encontrados errores, par m. F no especif.",CR,LF,"Correcciones no se grabar n en disco"
+0025 U 0000 "   No puede continuarse el proceso %1%2"
+0026 U 0000 "   Tabla de asignaci¢n de archivos err¢nea, unidad %1"
+0029 U 0000 "   CHDIR .. fall¢, intentando m‚todo alternativo"
+0030 U 0001 "   Tiene una unidad de asignaci¢n no v lida, archivo truncado"
+0031 U 0000 "   Entrada de subdirectorio no v lida"
+0032 U 0000 "   No existe"
+0033 U 0001 "   La primera unidad de asignaci¢n no es v lida, entrada truncada"
+0034 U 0000 "   Error de asignaci¢n, tama¤o ajustado"
+0035 U 0000 "   No puede recuperarse entrada .., contin£a el proceso"
+0036 U 0000 "   El directorio est  completamente vac¡o, no hay . ni .."
+0037 U 0000 "   El directorio est  unido"
+0038 U 0000 "   No puede recuperarse entrada .."
+0039 U 0000 "   La entrada tiene un enlace err¢neo"
+0040 U 0000 "   La entrada tiene un atributo err¢neo"
+0041 U 0000 "   La entrada tiene un tama¤o err¢neo"
+0042 U 0001 "   Tiene enlace cruzado en la unidad de asignaci¢n %1"
+0043 U 0000 "   No puede hacerse CHDIR a %1,",CR,LF,"pasado este punto,  rbol no procesado"
+0044 U 0000 "   pasado este punto,  rbol no procesado"
+0045 U 0000 "%1 bytes de espacio en disco liberados"
+0046 U 0000 "Se liberar¡an %1 bytes de espacio en disco"
+0047 U 0000 "Volumen %1 creado %2 %3",CR,LF
+0048 U 0000 "Total de %1 unidades de asignaci¢n en disco"
+0049 U 0000 "%1 bytes en cada unidad de asignaci¢n"
+0050 U 0000 "CHKDSK no es disponible en la unidad %1"
+0051 U 0001 "   Atributos Ampliados tiene unidades de asignaci¢n no v lidas, atributos truncados"
+0052 U 0000 "   Error de asignaci¢n de Atributos Ampliados, atributos truncados"
+0053 U 0000 "Par metro no v lido"
+0055 U 0000 "V¡a de acceso no encontrada"
+0056 U 0000 "Archivo no encontrado"
+0058 U 0001 "   %1 unidades de asignaci¢n perdidas encontradas en %2 cadenas."
 0059 U 0000 CR,LF
-0060 U 0000 "   Cannot CHDIR to root",CR,LF
-0061 U 0000 "   Disk error writing FAT %1"
+0060 U 0000 "   No puede hacerse CHDIR al directorio ra¡z",CR,LF
+0061 U 0000 "   Error de disco al grabar FAT %1"
 0062 U 0000 "        %1"
-0063 U 0000 "Invalid current directory"
+0063 U 0000 "Directorio actual no v lido"
 0064 U 0000 "%1",CR,LF
-0065 U 0000 "   Insufficient room in root directory",CR,LF,"   Move files from root directory and repeat CHKDSK"
+0065 U 0000 "   Espacio insuficiente en directorio ra¡z",CR,LF,"   Mueva archivos de directorio ra¡z y repita CHKDSK"
 0066 U 0000 "%1 %2 %3"
 0067 U 0000 "%1 %2, %3"
 0068 U 0000 "%1%2%3%4%5"
 0069 U 0000 "%1%2%3%4"
-0070 U 0000 "%1 available allocation units on disk"
+0070 U 0000 "%1 unidades de asignaci¢n disponibles en disco"
 DEBUG    319e 0057
 0004 U 0000 "Allocation failed or specified buffer too small",CR,LF
 0006 U 0000 "Bad device name"
@@ -310,9 +310,9 @@ DEBUG    319e 0057
 	"Enter name of list device? "
 0008 U 0000 CR,LF
 0009 U 0000 CR,LF,"Program terminated normally",CR,LF
-0010 U 0001 "Invalid drive specification",CR,LF
+0010 U 0001 "Especificaci¢n de unidad no v lida",CR,LF
 0012 U 0001 "File creation error",CR,LF
-0013 U 0001 "Insufficient space on disk",CR,LF
+0013 U 0001 "Espacio insuficiente en disco",CR,LF
 0014 U 0001 "Disk error reading drive %1",CR,LF
 0015 U 0001 "Disk error writing drive %1",CR,LF
 0016 U 0001 "Write protect error reading drive %1",CR,LF
@@ -322,7 +322,7 @@ DEBUG    319e 0057
 0021 U 0001 "EXE and HEX files cannot be written",CR,LF
 0022 U 0000 "EXEC failure"
 0023 U 0001 "(W)rite error, no destination defined",CR,LF
-0024 U 0001 "Access denied",CR,LF
+0024 U 0001 "Acceso denegado",CR,LF
 0025 U 0000 "Parity error or nonexistent memory error detected"
 0026 U 0000 "-"
 0027 U 0000 "%1 -"
@@ -363,11 +363,11 @@ DEBUG    319e 0057
 0076 U 0003 "Handle %1 deallocated",cr,lf
 0078 U 0000 "EMS not installed",cr,lf
 DRIVER   3ac8 0002
-0002 U 0000 "No drive specified",CR,LF
-0003 U 0000 "Loaded External Disk Driver for Drive %1",CR,LF
+0002 U 0000 "No se especific¢ unidad",CR,LF
+0003 U 0000 "Cargado Controlador Externo de Disco para La Unidad %1",CR,LF
 EDLIN    3b42 0027
 0006 U 0000 "*"
-0007 U 0000 "Invalid drive or file name",CR,LF
+0007 U 0000 "Unidad o nombre de archivo no v lido",CR,LF
 0008 U 0000 "File name must be specified",CR,LF
 0010 U 0000 "File is READ-ONLY",CR,LF
 0011 U 0000 "File Creation Error",CR,LF
@@ -376,7 +376,7 @@ EDLIN    3b42 0027
 0014 U 0000 "Cannot edit .BAK file--rename file",CR,LF
 0015 U 0000 "No room in directory for file",CR,LF
 0016 U 0000 "Disk full. Edits lost.",CR,LF
-0017 U 0000 "File not found",CR,LF
+0017 U 0000 "Archivo no encontrado",CR,LF
 0018 U 0000 "Entry error",CR,LF
 0019 U 0000 "New file",CR,LF
 0020 U 0000 "Not found",CR,LF
@@ -394,13 +394,13 @@ EDLIN    3b42 0027
 0032 U 0000 "%1:%2"
 0033 U 0000 "Cannot merge - code page mismatch",CR,LF
 EXE2BIN  3f50 0008
-0002 U 0000 "Insufficient memory",CR,LF
+0002 U 0000 "Memoria insuficiente",CR,LF
 0003 U 0000 "Cannot find messages",CR,LF
-0004 U 0000 "Access denied",CR,LF
-0005 U 0000 "File cannot be converted",CR,LF
-0006 U 0000 "File not found",CR,LF
-0007 U 0000 "File creation error",CR,LF
-0008 U 0000 "Fix-ups needed - base segment (hex):"
+0004 U 0000 "Acceso denegado",CR,LF
+0005 U 0000 "Archivo no puede ser convertido",CR,LF
+0006 U 0000 "Archivo no encontrado",CR,LF
+0007 U 0000 "Error durante creaci¢n del archivo",CR,LF
+0008 U 0000 "Se requieren arreglos - segmento base (hexa):"
 0012 U 0000 "File name must be specified",CR,LF
 FIND     40ba 0001
 0004 U 0000 "FIND: "
@@ -431,7 +431,7 @@ FORMAT   40e4 0043
 0035 U 0000 CR,"Error reading partition table",CR,LF
 0037 U 0000 CR,"Format broken",CR,LF
 0038 U 0000 CR,"Format not available on drive %1",CR,LF
-0039 U 0000 CR,"Non-System disk or disk error",CR,LF
+0039 U 0000 CR,"Error diskette o ‚ste no es del Sistema",CR,LF
 0040 U 0000 CR,"Bad Partition Table        ",CR,LF
 0041 U 0000 CR,"Parameters not supported by drive",CR,LF
 0042 U 0000 CR,LF
@@ -451,25 +451,25 @@ FORMAT   40e4 0043
 0054 U 0000 CR,"Must enter both /T and /N parameters",CR,LF
 0055 U 0000 CR,"Attempting to recover allocation unit %1                          ",CR
 JOIN     4ae6 0001
-0002 U 0001 "Directory not empty",CR,LF
+0002 U 0001 "El directorio no est  vac¡o",CR,LF
 MORE     4b23 0001
-0002 U 0000 "-- More --"
+0002 U 0000 "-- M s --"
 PRINT    4b51 0021
 0002 U 0000 CR,LF
 0006 U 0000 " error reading file",CR,LF,"$"
-0007 U 0000 "File not found",CR,LF,"$"
+0007 U 0000 "Archivo no encontrado",CR,LF,"$"
 0008 U 0000 CR,LF,LF,"File $"
 0009 U 0000 " canceled by operator$"
 0010 U 0000 CR,LF,LF,"All files canceled by operator$"
-0011 U 0000 "File allocation table bad drive "
+0011 U 0000 "Tabla de asignaci¢n de archivos err¢nea, unidad "
 0012 U 0000 "A.",CR,LF,"$"
 0013 U 0000 "List output is not assigned to a device",CR,LF
 0014 U 0000 "Resident part of PRINT installed",CR,LF
 0015 U 0000 "Cannot use PRINT - Use NET PRINT",CR,LF
 0017 U 0000 "PRINT queue is full",CR,LF
 0018 U 0000 "PRINT queue is empty",CR,LF
-0019 U 0000 "Access denied",CR,LF
-0020 U 0000 "Invalid drive specification",CR,LF
+0019 U 0000 "Acceso denegado",CR,LF
+0020 U 0000 "Especificaci¢n de unidad no v lida",CR,LF
 0021 U 0000 "Errors on list device indicate that it",CR,LF
 	"may be off-line. Please check it.",CR,LF
 0022 U 0000 CR,LF,LF,"  %1 is currently being printed",CR,LF
@@ -478,67 +478,67 @@ PRINT    4b51 0021
 0026 U 0001 "File not in PRINT queue",CR,LF
 0027 U 0000 "Name of list device [PRN]: "
 RECOVER  4f31 0011
-0002 U 0000 CR,LF,"File not found",CR,LF
-0003 U 0000 CR,LF,"Cannot RECOVER an ASSIGNed or SUBSTed drive",CR,LF
-0004 U 0000 CR,LF,"Invalid drive or file name",CR,LF
-0005 U 0000 CR,LF,"WARNING - directory full",CR,LF
-0006 U 0000 CR,LF,"Cannot RECOVER a network drive", CR,LF
-0008 U 0000 CR,LF,"%1 file(s) recovered",CR,LF
-0009 U 0000 CR,LF,"%1 of %2 bytes recovered",CR,LF
-0010 U 0000 CR,LF,"Press any key to begin recovery of the",CR,LF,"file(s) on drive %1",CR,LF,CR,LF
-0011 U 0000 CR,LF,"Cannot read file allocation table",CR,LF
-0012 U 0000 CR,LF,"Cannot write file allocation table",CR,LF
+0002 U 0000 CR,LF,"Archivo no encontrado",CR,LF
+0003 U 0000 CR,LF,"No puede hacerse RECOVER de una unidad bajo mandato ASSIGN o SUBST",CR,LF
+0004 U 0000 CR,LF,"Unidad o nombre de archivo no v lido",CR,LF
+0005 U 0000 CR,LF,"AVISO - el directorio est  lleno",CR,LF
+0006 U 0000 CR,LF,"No puede hacerse RECOVER de una unidad de red", CR,LF
+0008 U 0000 CR,LF,"%1 archivo(s) recuperado(s)",CR,LF
+0009 U 0000 CR,LF,"%1 de %2 bytes recuperados",CR,LF
+0010 U 0000 CR,LF,"Pulse cualquier tecla para iniciar la recuperaci¢n del",CR,LF,"archivo(s) de la unidad %1",CR,LF,CR,LF
+0011 U 0000 CR,LF,"No puede leerse desde la tabla de asignaci¢n de archivos",CR,LF
+0012 U 0000 CR,LF,"No puede grabarse en la tabla de asignaci¢n de archivos",CR,LF
 0013 U 0000 CR,LF
 SORT     51b1 0001
 0005 U 0000 "SORT: "
 SUBST    51db 0001
-0002 U 0001 "Incorrect number of parameters",CR,LF
+0002 U 0001 "N£mero de par metros incorrecto",CR,LF
 SYS      5223 0008
-0004 U 0000 "Invalid drive specification",CR,LF
-0007 U 0000 "No room for system on destination disk",CR,LF
-0008 U 0001 "Invalid path or System files not found",CR,LF
-0010 U 0000 "No system on default drive",CR,LF
-0011 U 0000 "Cannot specify default drive",CR,LF
-0012 U 0000 "Write failure, diskette unusable",CR,LF
-0014 U 0000 "Insert system disk in drive %1",CR,LF
-0016 U 0000 "Not able to SYS to %1 file system",CR,LF
+0004 U 0000 "Especificaci¢n de unidad no v lida",CR,LF
+0007 U 0000 "No hay espacio para el sistema en el diskette destino",CR,LF
+0008 U 0001 "V¡a de acceso no v lida o archivos del Sistema no encontrados",CR,LF
+0010 U 0000 "No se encontr¢ el sistema en la unidad por omisi¢n",CR,LF
+0011 U 0000 "No puede especificarse unidad por omisi¢n",CR,LF
+0012 U 0000 "Anomal¡a en la grabaci¢n, diskette no utilizable",CR,LF
+0014 U 0000 "Inserte diskette del sistema en la unidad %1",CR,LF
+0016 U 0000 "No puede hacerse SYS a sistema de archivos %1",CR,LF
 SHARE    53e3 0000
 NLSFUNC  53f7 0000
 ANSI     540b 0001
-0010 U 0000 "Invalid parameter - %1",CR,LF
+0010 U 0000 "Par metro no v lido - %1",CR,LF
 IFSFUNC  544b 0001
-0004 U 0001 "Invalid configuration",CR,LF
+0004 U 0001 "Configuraci¢n no v lida",CR,LF
 MSBIO    548a 0019
-0003 U 0000 13,10,"Unrecognized command in CONFIG.SYS"
+0003 U 0000 13,10,"Mandato irreconocible en CONFIG.SYS"
 0004 U 0000 13,10,"$"
-0005 U 0000 13,10,"Sector size too large in file $"
-0006 U 0000 13,10,"Bad or missing $"
-0007 U 0000 "Command Interpreter",0
-0008 U 0000 13,10,"Invalid country code or code page",13,10,"$"
-0009 U 0000 13,10,"Error in COUNTRY command",13,10,"$"
-0010 U 0000 13,10, "Insufficient memory for COUNTRY.SYS file",13,10,"$"
-0011 U 0000 13,10,"Configuration too large for memory",13,10,"$"
-0012 U 0000 13,10,"Too many block devices",13,10,"$"
-0013 U 0000 13,10,"Invalid STACK parameters",13,10,"$"
-0014 U 0000 13,10,"Incorrect order in CONFIG.SYS line ","$"
-0015 U 0000 "Error in CONFIG.SYS line ","$"
-0016 U 0000 13,10,"Memory allocation error ","$"
-0017 U 0001 0DH,0AH,7,0DH,0AH, "Internal stack overflow",0DH,0AH
-	"System halted",0DH,0AH,"$"
-0020 U 0000 13,10,"Insert diskette for drive "
-0021 U 0000 "A: and press any key when ready",13,10,10,0
-0022 U 0000 13,10,"Bad command or parameters - $"
-0023 U 0002 "WARNING! SHARE should be loaded for large media",13,10,"$"
+0005 U 0000 13,10,"Tama¤o de sector demasiado grande en archivo $"
+0006 U 0000 13,10,"Err¢neo o falta: $"
+0007 U 0000 "Interprete de Mandatos",0
+0008 U 0000 13,10,"C¢digo de pa¡s o p gina de c¢digos no v lido",13,10,"$"
+0009 U 0000 13,10,"Error en mandato COUNTRY",13,10,"$"
+0010 U 0000 13,10, "Memoria insuficiente para archivo COUNTRY.SYS",13,10,"$"
+0011 U 0000 13,10,"Configuraci¢n demasiado grande para memoria",13,10,"$"
+0012 U 0000 13,10,"Demasiados dispositivos de bloques",13,10,"$"
+0013 U 0000 13,10,"Par metros de STACK no v lidos",13,10,"$"
+0014 U 0000 13,10,"Orden incorrecto en l¡nea de CONFIG.SYS ","$"
+0015 U 0000 "Error en l¡nea de CONFIG.SYS ","$"
+0016 U 0000 13,10,"Error en asignaci¢n de memoria ","$"
+0017 U 0001 0DH,0AH,7,0DH,0AH, "Desbordamiento en pila interna",0DH,0AH
+        "Sistema parado",0DH,0AH,"$"
+0020 U 0000 13,10,"Inserte el diskette en la unidad "
+0021 U 0000 "A: y pulse cualquier tecla cuando est‚ preparado",13,10,10,0
+0022 U 0000 13,10,"Mandato o par metros err¢neos - $"
+0023 U 0002 "­AVISO! SHARE deber¡a cargarse para un soporte grande",13,10,"$"
 BOOT     58c1 0001
-0001 U 0000 13,10,"Non-System disk or disk error",13,10
-	"Replace and press any key when ready",13,10,0
+0001 U 0000 13,10,"Error diskette o ‚ste no es del Sistema",13,10
+        "Sustit£yalo y pulse cualquier tecla",13,10,0
 MSDOS    5953 0003
-0001 U 0001 13,10,"Divide overflow",13,10
-0002 U 0002 "y"
+0001 U 0001 13,10,"Desbordamiento de divisi¢n",13,10
+0002 U 0002 "s"
 0003 U 0002 "n"
 BACKUP   5b2a 0023
-0002 U 0000 CR,LF,"Insufficient memory",CR,LF
-0006 U 0000 CR,LF,"Invalid drive specification",CR,LF
+0002 U 0000 CR,LF,"Memoria insuficiente",CR,LF
+0006 U 0000 CR,LF,"Especificaci¢n de unidad no v lida",CR,LF
 0014 U 0000 CR,LF,"Source and target drives are the same",CR,LF
 0015 U 0001 CR,LF,"Error executing FORMAT",CR,LF
 0016 U 0001 CR,LF,"Cannot find FORMAT.COM",CR,LF
@@ -579,7 +579,7 @@ COMP     60f5 0013
 DISKCOMP 6326 0016
 0004 U 0000 "Do not specify filename(s)",CR,LF
 	"Command format: DISKCOMP d: d: [/1][/8]",LF,CR
-0005 U 0000 CR,LF,"Invalid drive specification",CR,LF
+0005 U 0000 CR,LF,"Especificaci¢n de unidad no v lida",CR,LF
 	"Specified drive does not exist",CR,LF
 	"or is non-removable",CR,LF
 0006 U 0000 CR,LF,"Cannot DISKCOMP to or from",CR,LF
@@ -605,7 +605,7 @@ DISKCOPY 67b8 0018
 0002 U 0000 CR,LF
 0004 U 0000 "Do not specify filename(s)",CR,LF
 	"Command Format: DISKCOPY d: d: [/1]",CR,LF
-0005 U 0000 CR,LF,"Invalid drive specification",CR,LF
+0005 U 0000 CR,LF,"Especificaci¢n de unidad no v lida",CR,LF
 	"Specified drive does not exist",CR,LF
 	"or is non-removable",CR,LF
 0006 U 0000 CR,LF,"Cannot DISKCOPY to or from",CR,LF
@@ -630,7 +630,7 @@ DISKCOPY 67b8 0018
 0022 U 0000 CR,LF,"SOURCE diskette bad or incompatible"
 0023 U 0000 CR,LF,"TARGET diskette bad or incompatible"
 LABL     6cc4 0001
-0009 U 0003 CR,LF,"Delete current volume label (Y/N)? "
+0009 U 0003 CR,LF,"¨Suprimir la etiqueta actual del volumen (S/N)? "
 MODE     6d11 0068
 0003 U 0000 CR,LF,"Must specify COM1, COM2, COM3 or COM4",CR,LF
 0004 U 0000 CR,LF,"Resident portion of MODE loaded",CR,LF
@@ -703,7 +703,7 @@ MODE     6d11 0068
 RESTORE  792b 0020
 0002 U 0000 CR,LF,"Source and target drives are the same",CR,LF
 0003 U 0000 CR,LF,"Invalid number of parameters",CR,LF
-0006 U 0000 CR,LF,"Invalid drive specification",CR,LF
+0006 U 0000 CR,LF,"Especificaci¢n de unidad no v lida",CR,LF
 0007 U 0000 CR,LF,"WARNING! No files were found to restore",CR,LF
 0008 U 0000 CR,LF,"Insert backup diskette %1 in drive %2:",CR,LF
 0009 U 0000 CR,LF,"Insert restore target in drive %1:",CR,LF
@@ -712,13 +712,13 @@ RESTORE  792b 0020
 0012 U 0000 CR,LF,"The last file was not restored",CR,LF
 0013 U 0000 CR,LF,"*** Files were backed up %1 ***",CR,LF
 0014 U 0000 CR,LF,"Source does not contain backup files",CR,LF
-0015 U 0000 CR,LF,"Insufficient memory",CR,LF
+0015 U 0000 CR,LF,"Memoria insuficiente",CR,LF
 0016 U 0000 CR,LF,"WARNING! File %1",CR,LF
 	"is a read-only file",CR,LF
 	"Replace the file (Y/N)?",CR,LF
 0017 U 0000 CR,LF,"Restore file sequence error",CR,LF
 0018 U 0000 CR,LF,"File creation error",CR,LF
-0019 U 0000 CR,LF,"Insufficient disk space",CR,LF
+0019 U 0000 CR,LF,"Espacio insuficiente en disco",CR,LF
 0020 U 0000 CR,LF,"*** Not able to restore file ***",CR,LF
 0021 U 0000 CR,LF,"*** Restoring files from drive %1: ***",CR,LF
 0022 U 0000 CR,LF,"WARNING! File %1",CR,LF
@@ -727,20 +727,20 @@ RESTORE  792b 0020
 0023 U 0000 "Diskette: %1",CR,LF
 0025 U 0000 07
 TREE     854e 0004
-0002 U 0000 "Directory PATH listing for Volume %1",CR,LF
-0003 U 0000 "Directory PATH listing",CR,LF
-0004 U 0000 "No sub-directories exist",CR,LF,LF
+0002 U 0000 "Listado de VIAS DE ACCESO de directorios para Volumen %1",CR,LF
+0003 U 0000 "Listado de VIAS DE ACCESO de directorios",CR,LF
+0004 U 0000 "No existe ning£n subdirectorio",CR,LF,LF
 0007 U 0000 "ÀÄÃ³"
 REPLACE  860d 0009
-0003 U 0000 CR,LF,"No files replaced",CR,LF
-0004 U 0000 CR,LF,"No files added",CR,LF
-0013 U 0000 CR,LF,"Replacing %1",CR,LF
-0014 U 0000 CR,LF,"Adding %1",CR,LF
-0015 U 0000 CR,LF,"%1 file(s) replaced",CR,LF
-0016 U 0000 CR,LF,"%1 file(s) added",CR,LF
-0017 U 0000 CR,LF,"No files found - %1",CR,LF
-0022 U 0000 CR,LF,"Replace %1? (Y/N)"
-0023 U 0000 CR,LF,"Add %1? (Y/N)"
+0003 U 0000 CR,LF,"No se sustituy¢ ning£n archivo",CR,LF
+0004 U 0000 CR,LF,"No se a¤adi¢ ning£n archivo",CR,LF
+0013 U 0000 CR,LF,"Sustituyendo %1",CR,LF
+0014 U 0000 CR,LF,"A¤adiendo %1",CR,LF
+0015 U 0000 CR,LF,"%1 archivo(s) sustituido(s)",CR,LF
+0016 U 0000 CR,LF,"%1 archivo(s) a¤adido(s)",CR,LF
+0017 U 0000 CR,LF,"No se encontr¢ ning£n archivo - %1",CR,LF
+0022 U 0000 CR,LF,"¨Sustituir %1? (S/N) "
+0023 U 0000 CR,LF,"¨A¤adir %1? (S/N) "
 XCOPY    8799 0018
 0004 U 0000 "Does %1 specify a file name",CR,LF
 	"or directory name on the target",CR,LF
@@ -755,7 +755,7 @@ XCOPY    8799 0018
 0025 U 0000 "Reading source file(s)...",CR,LF
 0026 U 0000 CR,LF
 0027 U 0000 "%1 File(s) copied",CR,LF
-0028 U 0000 "%1 File not found",CR,LF
+0028 U 0000 "%1 Archivo no encontrado",CR,LF
 0029 U 0000 "F D "
 0030 U 0000 "%1%2",CR,LF
 0031 U 0000 "%1\%2",CR,LF
@@ -763,101 +763,101 @@ XCOPY    8799 0018
 0033 U 0000 "%1%2 (Y/N)?"
 0034 U 0000 "%1\%2 (Y/N)?"
 GRAFTABL 8d4b 0009
-0002 U 0000 "Active Code Page: %1",CR,LF
-0003 U 0000 "Previous Code Page: %1",CR,LF
-0004 U 0000 "None",NULL
-0005 U 0000 "Non-standard",NULL
-0006 U 0002 CR,LF,"DOS command line parameters supported",COLON,CR,LF,LF
-0007 U 0002 "    /STA - Request Status only",CR,LF
-	"    ?    - Display this summary of parameters",CR,LF,CR,LF
-0008 U 0002 "    Code Pages available",COLON,CR,LF
-	"    437  - USA Graphic Character Set",CR,LF
-0009 U 0002 "    850  - Multi-lingual Graphic Character Set",CR,LF
-	"    860  - Portuguese Graphic Character Set",CR,LF
-0010 U 0002 "    863  - Canadian French Graphic Character Set",CR,LF
-	"    865  - Nordic Graphic Character Set",CR,LF
+0002 U 0000 "P gina de C¢digos Activa: %1",CR,LF
+0003 U 0000 "P gina de C¢digos Previa: %1",CR,LF
+0004 U 0000 "Ninguna",NULL
+0005 U 0000 "No est ndar",NULL
+0006 U 0002 CR,LF,"Par metros soportados de l¡nea de mandatos del DOS:",COLON,CR,LF,LF
+0007 U 0002 "    /STA - S¢lo Preguntar el Estado",CR,LF
+	"    ?    - Visualizar este resumen de par metros",CR,LF,CR,LF
+0008 U 0002 "    P ginas de C¢digos disponibles:",COLON,CR,LF
+	"    437  - Juego de Caracteres Gr fico de EE.UU.",CR,LF
+0009 U 0002 "    850  - Juego de Caracteres Gr fico de M£ltiples Lenguas",CR,LF
+	"    860  - Juego de Caracteres Gr fico del Portugu‚s",CR,LF
+0010 U 0002 "    863  - Juego de Caracteres Gr fico del Franc‚s del Canad ",CR,LF
+	"    865  - Juego de Caracteres Gr fico N¢rdico",CR,LF
 FASTOPEN 9000 0016
-0004 U 0000 CR,LF,"FASTOPEN installed",CR,LF
-0005 U 0000 CR,LF,"FASTOPEN already installed",CR,LF
-0006 U 0000 CR,LF,"Incorrect parameter",CR,LF
-0007 U 0000 CR,LF,"Too many drive entries",CR,LF
-0008 U 0000 CR,LF,"Same drive specified more than once",CR,LF
-0009 U 0000 CR,LF,"Invalid parameter",CR,LF
-0010 U 0000 CR,LF,"Invalid switch type",CR,LF
-0011 U 0000 CR,LF,"Invalid extent entry",CR,LF
-0012 U 0001 CR,LF,"Invalid file/directory entry",CR,LF
-0013 U 0000 CR,LF,"Cannot setup expanded memory",CR,LF
-0014 U 0000 CR,LF,"Expanded memory not available",CR,LF
-0015 U 0000 CR,LF,"Invalid drive specification %1",CR,LF
-0016 U 0002 CR,LF,"FASTOPEN EMS entry count exceeded.  Use fewer entries",CR,LF
-0017 U 0000 CR,LF,"Cannot use FASTOPEN for drive %1",CR,LF
-0018 U 0000 CR,LF,"Too many extent entries",CR,LF
-0019 U 0000 CR,LF,"Too many file/directory entries",CR,LF
+0004 U 0000 CR,LF,"FASTOPEN instalado",CR,LF
+0005 U 0000 CR,LF,"FASTOPEN ya instalado",CR,LF
+0006 U 0000 CR,LF,"Par metro no v lido",CR,LF
+0007 U 0000 CR,LF,"Demasiadas entradas de unidad",CR,LF
+0008 U 0000 CR,LF,"La misma unidad especificada m s de una vez",CR,LF
+0009 U 0000 CR,LF,"Par metro no v lido",CR,LF
+0010 U 0000 CR,LF,"Conmutaci¢n no v lida",CR,LF
+0011 U 0000 CR,LF,"Entrada de extensi¢n no v lida",CR,LF
+0012 U 0001 CR,LF,"Entrada de archivo/directorio no v lida",CR,LF
+0013 U 0000 CR,LF,"No puede configurarse la memoria expandida",CR,LF
+0014 U 0000 CR,LF,"Memoria expandida no disponible",CR,LF
+0015 U 0000 CR,LF,"La especificaci¢n de unidad no es v lida %1",CR,LF
+0016 U 0002 CR,LF,"Excedida la cuenta de entradas FASTOPEN EMS.  Use menos entradas",CR,LF
+0017 U 0000 CR,LF,"No puede utilizarse FASTOPEN para la unidad %1",CR,LF
+0018 U 0000 CR,LF,"Demasiadas entradas de extensi¢n",CR,LF
+0019 U 0000 CR,LF,"Demasiadas entradas de archivos/directorios",CR,LF
 APPEND   9382 0009
-0001 U 0000 "Incorrect APPEND version",CR,LF
-0002 U 0000 "Invalid path",CR,LF
-0003 U 0000 "Invalid parameter",CR,LF
-0004 U 0000 "Invalid combination of parameters",CR,LF
-0005 U 0000 "No Append",CR,LF
-0006 U 0000 "APPEND / ASSIGN Conflict",CR,LF
-0007 U 0000 "APPEND / TopView Conflict",CR,LF
-0008 U 0000 "Incorrect DOS version",CR,LF
-0009 U 0000 "APPEND already installed",CR,LF
+0001 U 0000 "La versi¢n de APPEND es incorrecta",CR,LF
+0002 U 0000 "V¡a de acceso no v lida",CR,LF
+0003 U 0000 "Par metro no v lido",CR,LF
+0004 U 0000 "La combinaci¢n de par metros no es v lida",CR,LF
+0005 U 0000 "No hay ning£n APPEND",CR,LF
+0006 U 0000 "Conflicto entre APPEND / ASSIGN",CR,LF
+0007 U 0000 "Conflicto entre APPEND / TopView",CR,LF
+0008 U 0000 "La versi¢n del DOS es incorrecta",CR,LF
+0009 U 0000 "APPEND ya instalado",CR,LF
 GRAPHICS 9519 0012
-0005 U 0000 "Invalid parameter:  %1",CR,LF
-0007 U 0000 "Duplicate parameters not allowed",CR,LF
-0009 U 0000 "Cannot find GRAPHICS profile",CR,LF
-0010 U 0000 "Required profile statement missing before line %1",CR,LF
-0011 U 0000 "Invalid profile statement on line %1",CR,LF
-0012 U 0000 "Profile statement out of sequence on line %1",CR,LF
-0013 U 0000 "Error reading GRAPHICS profile",CR,LF
-0014 U 0000 "Syntax errors in GRAPHICS profile",CR,LF
-0015 U 0000 "Printbox ID not in GRAPHICS profile",CR,LF
-0016 U 0000 "Printer type not in GRAPHICS profile",CR,LF
-0017 U 0000 "/B invalid with a black and white printer",CR,LF
-0018 U 0000 "Unable to reload with profile supplied",CR,LF
+0005 U 0000 "Par metro no v lido:  %1",CR,LF
+0007 U 0000 "Par metros duplicados no permitidos",CR,LF
+0009 U 0000 "No puede encontrarse el perfil GRAPHICS",CR,LF
+0010 U 0000 "Falta sentencia de perfil necesaria antes de la l¡nea %1",CR,LF
+0011 U 0000 "Sentencia de perfil no v lida en la l¡nea %1",CR,LF
+0012 U 0000 "Sentencia de perfil fuera de secuencia en la l¡nea %1",CR,LF
+0013 U 0000 "Error al leer perfil GRAPHICS",CR,LF
+0014 U 0000 "Errores de sintaxis en perfil GRAPHICS",CR,LF
+0015 U 0000 "El ID de recuadro de impresi¢n no est  en perfil GRAPHICS",CR,LF
+0016 U 0000 "El tipo de impresora no est  en el perfil GRAPHICS",CR,LF
+0017 U 0000 "/B no es v lido con una impresora en blanco y negro",CR,LF
+0018 U 0000 "No se puede volver a cargar con el perfil suministrado",CR,LF
 DISPLAY  97dd 0003
-0002 U 0000 "%1 code page driver cannot be initialized",CR,LF,BELL
-0008 U 0000 "Insufficient memory",CR,LF,BELL
-0012 U 0000 "Invalid syntax on DISPLAY.SYS code page driver",CR,LF,BELL
+0002 U 0000 "No puede inicializarse el controlador de p gina de c¢digos %1",CR,LF,BELL
+0008 U 0000 "Memoria insuficiente",CR,LF,BELL
+0012 U 0000 "Sintaxis no v lida en el controlador de p gina de c¢digos DISPLAY.SYS",CR,LF,BELL
 PRINTER  98ac 0002
-0002 U 0000 "%1 code page driver cannot be initialized",CR,LF,BELL
-0012 U 0000 "Invalid syntax on PRINTER.SYS code page driver",CR,LF,BELL
+0002 U 0000 "No puede inicializarse el controlador de p gina de c¢digos %1",CR,LF,BELL
+0012 U 0000 "Sintaxis no v lida en el controlador de p gina de c¢digos PRINTER.SYS",CR,LF,BELL
 KEYB     994d 0016
-0002 U 0000 "Current keyboard code: %1"
-0003 U 0000 "Current keyboard ID: %1"
-0004 U 0000 "  code page: %1",CR,LF
-0005 U 0000 "Current CON code page: %1",CR,LF
-0006 U 0000 "Invalid keyboard code specified",CR,LF
-0007 U 0000 "Invalid keyboard ID specified",CR,LF
-0008 U 0000 "Invalid code page specified",CR,LF
-0009 U 0000 "Bad or missing Keyboard Definition File",CR,LF
-0010 U 0000 "KEYB has not been installed",CR,LF
-0011 U 0000 "Active code page not available from CON device",CR,LF
-0012 U 0000 "Code page specified has not been prepared",CR,LF
-0013 U 0000 "One or more CON code pages invalid for given keyboard code",CR,LF
-0014 U 0000 "Code page requested (%1) is not valid for given keyboard code",CR,LF
-0015 U 0000 "Code page specified is inconsistent with the selected code page",CR,LF
-0016 U 0001 "Keyboard ID specified is inconsistent with the selected keyboard layout",CR,LF
-0017 U 0000 "Unable to create KEYB table in resident memory",CR,LF
+0002 U 0000 "C¢digo del teclado actual: %1",CR,LF
+0003 U 0000 "ID del teclado actual: %1",CR,LF
+0004 U 0000 "  p gina de c¢digos: %1",CR,LF
+0005 U 0000 "P gina de c¢digos CON actual: %1",CR,LF
+0006 U 0000 "El c¢digo de teclado especificado no es v lido",CR,LF
+0007 U 0000 "El ID de teclado especificado no es v lido",CR,LF
+0008 U 0000 "El c¢digo de p ginas especificado no es v lido",CR,LF
+0009 U 0000 "El Archivo de Definici¢n de Teclado es err¢neo o falta",CR,LF
+0010 U 0000 "No se ha instalado KEYB",CR,LF
+0011 U 0000 "P gina de c¢digos activa no disponible en dispositivo CON",CR,LF
+0012 U 0000 "No se ha preparado la p gina de c¢digos especificada",CR,LF
+0013 U 0000 "Una o m s p ginas de c¢digos CON no v lidas para el c¢digo de teclado dado",CR,LF
+0014 U 0000 "P gina de c¢digos solicitada (%1) no es v lida para c¢digo de teclado dado",CR,LF
+0015 U 0000 "P gina de c¢digos especificada es incoherente con p g. de c¢d. seleccionada",CR,LF
+0016 U 0001 "ID teclado especificado es incoherente con dise¤o teclado seleccionado",CR,LF
+0017 U 0000 "No puede crearse la tabla KEYB en la memoria residente",CR,LF
 MEM      9d3c 0042
 0010 U 0000  CR,LF
-0011 U 0000  "  Address     Name          Size       Type ",CR,LF
-0012 U 0000  "  ŽŽŽŽŽŽŽ     ŽŽŽŽŽŽŽŽ     ŽŽŽŽŽŽ     ŽŽŽŽŽŽ",CR,LF
-0013 U 0000  "  Handle      EMS Name      Size   ",CR,LF
-0014 U 0000  "  ŽŽŽŽŽŽŽ     ŽŽŽŽŽŽŽŽ     ŽŽŽŽŽŽ  ",CR,LF
+0011 U 0000  "  Direcci¢n   Nombre       Tama¤o      Tipo ",CR,LF
+0012 U 0000  "  ÄÄÄÄÄÄÄÄÄ   ÄÄÄÄÄÄÄÄÄÄ   ÄÄÄÄÄÄ     ÄÄÄÄÄÄ",CR,LF
+0013 U 0000  "  Manejo      Nombre EMS   Tama¤o  ",CR,LF
+0014 U 0000  "  ÄÄÄÄÄÄÄÄÄ   ÄÄÄÄÄÄÄÄÄÄ   ÄÄÄÄÄÄ  ",CR,LF
 0015 U 0000  "  %1      %2     %3     %4",CR,LF
 0016 U 0000  "                %1   %2      %3 ",CR,LF
 0017 U 0000  "                  %1              %2 ",CR,LF
-0018 U 0000  "%1 bytes total memory",CR,LF
-0019 U 0000  "%1 bytes available",CR,LF
-0020 U 0000  "%1 largest executable program size",CR,LF
-0021 U 0000  "%1 bytes total EMS memory",CR,LF
-0022 U 0000  "%1 bytes free EMS memory",CR,LF
-0023 U 0000  "%1 bytes total extended memory",CR,LF
-0024 U 0000  "Interrupt Vector",0
-0025 U 0000  "ROM Communication Area",0
-0026 U 0000  "DOS Communication Area",0
+0018 U 0000  "Total de %1 bytes de memoria",CR,LF
+0019 U 0000  "%1 bytes disponibles",CR,LF
+0020 U 0000  "%1 tama¤o m s grande de programa ejecutable",CR,LF
+0021 U 0000  "Total de %1 bytes de memoria EMS",CR,LF
+0022 U 0000  "%1 bytes de memoria EMS libre",CR,LF
+0023 U 0000  "Total de %1 bytes de memoria ampliada",CR,LF
+0024 U 0000  "Vector de Interrupci¢n",0
+0025 U 0000  "Area de Comunicaciones de ROM",0
+0026 U 0000  "Area de Comunicaciones del DOS",0
 0027 U 0000  "IBMBIO",0
 0028 U 0000  "IBMDOS",0
 0029 U 0000  "System Data",0
@@ -875,21 +875,21 @@ MEM      9d3c 0042
 0041 U 0000  "LASTDRIVE=",0
 0042 U 0000  "----------",0
 0043 U 0000  " ",0
-0044 U 0000  "     %1      %2     %3",CR,LF
+0044 U 0000  "     %1      %2     %3",CR,LF
 0045 U 0001  "INSTALL=",0
-0046 U 0001  "%1 bytes available extended memory",CR,LF
-0047 U 0000  "System Stacks",0
-0048 U 0000  "-- Free --",0
-0049 U 0000  "Program",0
-0050 U 0000  "Environment",0
-0051 U 0000  "Data",0
+0046 U 0001  "%1 bytes disponibles de memoria ampliada",CR,LF
+0047 U 0000  "Pilas del Sistema",0
+0048 U 0000  "-- Libre --",0
+0049 U 0000  "Programa",0
+0050 U 0000  "Entorno",0
+0051 U 0000  "Datos",0
 FILESYS  b03f 0007
-0010 U 0003  "  PAUSED  %1   %2   %3",CR,LF
+0010 U 0003  "  PAUSA   %1   %2   %3",CR,LF
 0011 U 0001  "          %1   %2   %3",CR,LF
 0012 U 0001  "          Local   IFS",CR,LF
-0013 U 0001  "  Status  Device  Name        Parameters",CR,LF
+0013 U 0001  "  Estado  Dispos. Nombre      Par metros",CR,LF
 0014 U 0001  "  ______  ______  _________   ___________________",CR,LF,CR,LF
-0015 U 0003  "No entries found",CR,LF
+0015 U 0003  "No encontrada ninguna entrada",CR,LF
 0016 U 0003  "  ERROR   %1   %2   %3",CR,LF
 FDISK    b1ba 0122
 0004 U 0000 "Cannot FDISK with network loaded",CR,LF
@@ -898,7 +898,7 @@ FDISK    b1ba 0122
 0007 U 0000 "Error writing fixed disk",CR,LF
 0009 U 0003 "Y",0
 0010 U 0003 "N",0
-1001 U 0000 "PC DOS/RE Version 4.03"
+1001 U 0000 "PC DOS/RE Versi¢n 4.03"
 1002 U 0000 "Fixed Disk Setup Program"
 1003 U 0000 "(C)Copyright Microsoft Corp. 1983, 1988"
 1004 U 0000 "FDISK Options"
@@ -974,7 +974,7 @@ FDISK    b1ba 0122
 1074 U 0000 "No fixed disks present."
 1075 U 0000 "Error reading fixed disk."
 1076 U 0000 "Error writing fixed disk."
-1077 U 0000 "Incorrect DOS version."
+1077 U 0000 "La versi¢n del DOS es incorrecta."
 1078 U 0000 "Cannot FDISK with network loaded."
 1079 U 0000 "No Primary DOS Partition to delete."
 1080 U 0000 "No Extended DOS Partition to delete."
