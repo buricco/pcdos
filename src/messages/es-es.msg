@@ -405,51 +405,51 @@ EXE2BIN  3f50 0008
 FIND     40ba 0001
 0004 U 0000 "FIND: "
 FORMAT   40e4 0043
-0002 U 0000 CR,"%1 percent of disk formatted                                        ",CR
-0004 U 0003 CR,"Format complete                                                     ",CR,LF
-0007 U 0000 "Insert new diskette for drive %1:",CR,LF
-0009 U 0000 "Re-insert diskette for drive %1:",CR,LF
-0011 U 0000 CR,"Format not supported on drive %1:", CR,LF
-0012 U 0000 CR,"Invalid device parameters from device driver",CR,LF
-0013 U 0000 CR,"Error in IOCTL call         ",CR,LF
-0014 U 0000 CR,"Not a block device          ",CR,LF
-0015 U 0000 CR,"Error writing FAT           ",CR,LF
-0016 U 0000 CR,"Error writing directory",CR,LF
-0017 U 0000 CR,"Cannot format an ASSIGNed or SUBSTed drive. ",CR,LF
-0018 U 0000 CR,"Cannot find System Files",CR,LF
-0019 U 0000 CR,"Cannot FORMAT a network drive",CR,LF
-0021 U 0000 CR,"Parameters not supported",CR,LF
-0022 U 0003 CR,"Format terminated                                                   ",CR,LF
-0023 U 0000 CR,"Disk unsuitable for system disk",CR,LF
-0024 U 0000 CR,"Invalid media or Track 0 bad - disk unusable",CR,LF
-0025 U 0000 CR,"Unable to write BOOT                        ",CR,LF
-0026 U 0000 CR,"Error reading directory",CR,LF
-0028 U 0000 CR,"and press ENTER when ready..."
-0029 U 0000 CR,"Invalid Volume ID                           ",CR,LF
-0031 U 0000 CR,"Enter current volume label for drive %1: "
-0032 U 0000 CR,"Parameters not compatible",CR,LF,"with fixed disk",CR,LF
-0035 U 0000 CR,"Error reading partition table",CR,LF
-0037 U 0000 CR,"Format broken",CR,LF
-0038 U 0000 CR,"Format not available on drive %1",CR,LF
+0002 U 0000 CR,"%1 por ciento del disco con formato                                 ",CR
+0004 U 0003 CR,"Acci¢n de dar formato finalizada                                    ",CR,LF
+0007 U 0000 "Inserte diskette nuevo en la unidad %1:",CR,LF
+0009 U 0000 "Reinserte diskette en la unidad %1:",CR,LF
+0011 U 0000 CR,"Formato no soportado en la unidad %1:", CR,LF
+0012 U 0000 CR,"Par metros de dispositivo no v lidos en controlador de dispositivo",CR,LF
+0013 U 0000 CR,"Error en llamada IOCTL         ",CR,LF
+0014 U 0000 CR,"No es un dispositivo de bloques",CR,LF
+0015 U 0000 CR,"Error en grabaci¢n de FAT      ",CR,LF
+0016 U 0000 CR,"Error en grabaci¢n de directorio",CR,LF
+0017 U 0000 CR,"No puede darse formato a una unidad bajo mandato ASSIGN o SUBST. ",CR,LF
+0018 U 0000 CR,"No pueden encontrarse los Archivos del Sistema",CR,LF
+0019 U 0000 CR,"No puede utilizarse FORMAT con una unidad de red",CR,LF
+0021 U 0000 CR,"Par metros no soportados",CR,LF
+0022 U 0003 CR,"Acci¢n de dar formato cancelada                                     ",CR,LF
+0023 U 0000 CR,"Disco no adecuado para disco del sistema",CR,LF
+0024 U 0000 CR,"Soporte no v lido o Pista 0 defectuosa - disco no utilizable",CR,LF
+0025 U 0000 CR,"No es posible grabar BOOT                   ",CR,LF
+0026 U 0000 CR,"Error al leer directorio",CR,LF
+0028 U 0000 CR,"y pulse INTRO cuando est‚ preparado..."
+0029 U 0000 CR,"ID de Volumen No V lido                     ",CR,LF
+0031 U 0000 CR,"Introduzca la etiqueta del volumen actual para la unidad %1: "
+0032 U 0000 CR,"Par metros no compatibles",CR,LF,"con disco fijo",CR,LF
+0035 U 0000 CR,"Error al leer la tabla de la partici¢n",CR,LF
+0037 U 0000 CR,"Formato interrumpido",CR,LF
+0038 U 0000 CR,"Formato no disponible en unidad %1",CR,LF
 0039 U 0000 CR,"Error diskette o ‚ste no es del Sistema",CR,LF
-0040 U 0000 CR,"Bad Partition Table        ",CR,LF
-0041 U 0000 CR,"Parameters not supported by drive",CR,LF
+0040 U 0000 CR,"Tabla de la Partici¢n Err¢nea ",CR,LF
+0041 U 0000 CR,"Par metros no soportados por la unidad",CR,LF
 0042 U 0000 CR,LF
 0043 U 0000 CR,LF,LF
-0044 U 0000 CR,"Insert DOS disk in drive %1:",CR,LF
-0045 U 0000 CR,LF,"WARNING, ALL DATA ON NON-REMOVABLE DISK",CR,LF
-	"DRIVE %1: WILL BE LOST!",CR,LF
-	"Proceed with Format (Y/N)?"
-0046 U 0000 CR,"Format another (Y/N)?"
-0047 U 0000 CR,"Error reading partition table",CR,LF
-0048 U 0000 CR,"Error writing partition table",CR,LF
-0049 U 0000 CR,"Parameters not compatible", CR,LF
-0050 U 0000 "%1 allocation units available on disk",CR,LF
-0051 U 0000 "%1 bytes in each allocation unit",CR,LF
-0052 U 0000 CR, "Error writing partition table",CR,LF
-0053 U 0000 CR,"Same parameter entered twice",CR,LF
-0054 U 0000 CR,"Must enter both /T and /N parameters",CR,LF
-0055 U 0000 CR,"Attempting to recover allocation unit %1                          ",CR
+0044 U 0000 CR,"Inserte diskette del DOS en la unidad %1:",CR,LF
+0045 U 0000 CR,LF,"AVISO, ­TODOS LOS DATOS DE LA UNIDAD DE DISCOS",CR,LF
+	"NO DESMONTABLE %1: SE PERDERAN!",CR,LF
+	"¨Continuar con la acci¢n de Dar Formato (S/N)?"
+0046 U 0000 CR,"¨Dar formato a otro diskette (S/N)?"
+0047 U 0000 CR,"Error al leer la tabla de la partici¢n",CR,LF
+0048 U 0000 CR,"Error al grabar la tabla de la partici¢n",CR,LF
+0049 U 0000 CR,"Par metros no compatibles", CR,LF
+0050 U 0000 "%1 unidades de asignaci¢n disponibles en disco",CR,LF
+0051 U 0000 "%1 bytes en cada unidad de asignaci¢n",CR,LF
+0052 U 0000 CR,"Error al grabar la tabla de la partici¢n",CR,LF
+0053 U 0000 CR,"Se ha introducido dos veces el mismo par metro",CR,LF
+0054 U 0000 CR,"Deben introducirse ambos par metros /T y /N",CR,LF
+0055 U 0000 CR,"Intentando recuperar la unidad de asignaci¢n %1                   ",CR
 JOIN     4ae6 0001
 0002 U 0001 "El directorio no est  vac¡o",CR,LF
 MORE     4b23 0001
