@@ -539,29 +539,29 @@ MSDOS    5953 0003
 BACKUP   5b2a 0023
 0002 U 0000 CR,LF,"Memoria insuficiente",CR,LF
 0006 U 0000 CR,LF,"Especificaci¢n de unidad no v lida",CR,LF
-0014 U 0000 CR,LF,"Source and target drives are the same",CR,LF
-0015 U 0001 CR,LF,"Error executing FORMAT",CR,LF
-0016 U 0001 CR,LF,"Cannot find FORMAT.COM",CR,LF
-0017 U 0000 CR,LF,"Error opening logfile",CR,LF
-0018 U 0000 CR,LF,"Logging to file %1",CR,LF
-0019 U 0000 CR,LF,"Last backup diskette not inserted",CR,LF
-0020 U 0000 CR,LF,"WARNING! Files in the target drive",CR,LF
-	"%1:\ root directory will be erased",CR,LF
-0021 U 0000 CR,LF,"WARNING! Files in the target drive",CR,LF
-	"%1:\BACKUP directory will be erased",CR,LF
-0022 U 0000 CR,LF,"*** Backing up files to drive %1: ***",CR,LF
-0023 U 0000 "Diskette Number: %1",CR,LF
-0024 U 0000 CR,LF,"WARNING! No files were found to back up",CR,LF
-0025 U 0000 CR,LF,"Insert backup source diskette in drive %1:",CR,LF
-0026 U 0000 CR,LF,"Insert backup diskette %1 in drive %2:",CR,LF
-0027 U 0000 CR,LF,"*** Not able to backup file ***",CR,LF
-0028 U 0000 CR,LF,"Insert last backup diskette in drive %1:",CR,LF
-0029 U 0000 CR,LF,"Target cannot be used for backup",CR,LF
-0030 U 0000 CR,LF,"*** Last file not backed up ***",CR,LF
-0031 U 0000 CR,LF,"Fixed backup device %1: is full",CR,LF
-0032 U 0000 CR,LF,"Disk full error writing to BACKUP Log File",CR,LF
+0014 U 0000 CR,LF,"Las unidades origen y destino son la misma",CR,LF
+0015 U 0001 CR,LF,"Error al ejecutar FORMAT",CR,LF
+0016 U 0001 CR,LF,"No puede encontrarse FORMAT.COM",CR,LF
+0017 U 0000 CR,LF,"Error al abrir el archivo de registro de errores",CR,LF
+0018 U 0000 CR,LF,"Anotando en el archivo %1",CR,LF
+0019 U 0000 CR,LF,"Ultimo diskette de copia de seguridad no insertado",CR,LF
+0020 U 0000 CR,LF,"­AVISO! Los archivos del directorio",CR,LF
+	"%1:\ ra¡z de la unidad destino se borrar n",CR,LF
+0021 U 0000 CR,LF,"­AVISO! Los archivos del directorio",CR,LF
+	"%1:\BACKUP de la unidad destino se borrar n",CR,LF
+0022 U 0000 CR,LF,"*** Efectuando copia de seguridad de archivos a la unidad %1: ***",CR,LF
+0023 U 0000 "N£mero de Diskette: %1",CR,LF
+0024 U 0000 CR,LF,"­AVISO! No se encontraron archivos para hacer copia de seguridad",CR,LF
+0025 U 0000 CR,LF,"Inserte el diskette origen de copia de seguridad en la unidad %1:",CR,LF
+0026 U 0000 CR,LF,"Insert el diskette de copia de seguridad %1 en la unidad %2:",CR,LF
+0027 U 0000 CR,LF,"*** No es posible hacer copia de seguridad del archivo ***",CR,LF
+0028 U 0000 CR,LF,"Inserte el £ltimo diskette de copia de seguridad en la unidad %1:",CR,LF
+0029 U 0000 CR,LF,"No puede utilizarse el destino para hacer copia de seguridad",CR,LF
+0030 U 0000 CR,LF,"*** No se ha hecho copia de seguridad del £ltimo archivo ***",CR,LF
+0031 U 0000 CR,LF,"El dispositivo fijo de copia de seguridad %1: est  lleno",CR,LF
+0032 U 0000 CR,LF,"Error de disco lleno grabando en Archivo de Registro de Errores de BACKUP",CR,LF
 0034 U 0000 CR,LF
-0035 U 0001 CR,LF,"Cannot FORMAT nonremovable drive %1:",CR,LF
+0035 U 0001 CR,LF,"No puede hacerse FORMAT de una unidad no desmontable %1:",CR,LF
 COMP     60f5 0013
 0004 U 0000 "10 Diferencias - finaliza la comparaci¢n",CR,LF
 0006 U 0000 "Error de comparaci¢n en OFFSET %1",CR,LF
@@ -577,58 +577,58 @@ COMP     60f5 0013
 0020 U 0000 CR,LF
 0023 U 0000 "Comparaci¢n de archivos correcta",CR,LF
 DISKCOMP 6326 0016
-0004 U 0000 "Do not specify filename(s)",CR,LF
-	"Command format: DISKCOMP d: d: [/1][/8]",LF,CR
+0004 U 0000 "No especifique nombre(s) de archivo(s)",CR,LF
+	"Formato del mandato: DISKCOMP d: d: [/1][/8]",LF,CR
 0005 U 0000 CR,LF,"Especificaci¢n de unidad no v lida",CR,LF
-	"Specified drive does not exist",CR,LF
-	"or is non-removable",CR,LF
-0006 U 0000 CR,LF,"Cannot DISKCOMP to or from",CR,LF
-	"a network drive",CR,LF
-0007 U 0000 CR,LF,"Insert FIRST diskette in drive %1:",CR,LF
-0008 U 0000 CR,LF,"Insert SECOND diskette in drive %1:",CR,LF
-0009 U 0000 CR,LF,"FIRST diskette bad or incompatible",CR,LF
-0010 U 0000 CR,LF,"SECOND diskette bad or incompatible",CR,LF
-0014 U 0000 CR,LF,"Compare another diskette (Y/N) ?"
-0015 U 0000 CR,LF,"Comparing %1 tracks",CR,LF
-	"%2 sectors per track, %3 side(s)",CR,LF
-0016 U 0000 CR,LF,"Drive types or diskette types",CR,LF
-	"not compatible",CR,LF
-0017 U 0000 CR,LF,"Unrecoverable read error on drive %2",CR,LF
-	"side %3, track %4",CR,LF
-0018 U 0000 CR,LF,"Compare error on",CR,LF,"side %3, track %4",CR,LF
-0019 U 0000 "Make sure a diskette is inserted into",CR,LF
-	"the drive and the door is closed",CR,LF
-0020 U 0000 CR,LF,"Compare process ended",CR,LF
-0021 U 0000 CR,LF,"Compare OK",CR,LF
+	"La unidad especificada no existe",CR,LF
+	"o no es desmontable",CR,LF
+0006 U 0000 CR,LF,"No puede hacerse DISKCOMP hacia o desde",CR,LF
+	"una unidad de red",CR,LF
+0007 U 0000 CR,LF,"Inserte el PRIMER diskette en la unidad %1:",CR,LF
+0008 U 0000 CR,LF,"Inserte el SEGUNDO diskette en la unidad %1:",CR,LF
+0009 U 0000 CR,LF,"PRIMER diskette err¢neo o incompatible",CR,LF
+0010 U 0000 CR,LF,"SEGUNDO diskette err¢neo o incompatible",CR,LF
+0014 U 0000 CR,LF,"¨Comparar otro diskette (S/N) ?"
+0015 U 0000 CR,LF,"Comparando %1 pistas",CR,LF
+	"%2 sectores por pista, %3 cara(s)",CR,LF
+0016 U 0000 CR,LF,"Tipos de unidades o tipos de diskettes",CR,LF
+	"no compatibles",CR,LF
+0017 U 0000 CR,LF,"Error de lectura no recuperable en la unidad %2",CR,LF
+	"cara %3, pista %4",CR,LF
+0018 U 0000 CR,LF,"Error de comparaci¢n en",CR,LF,"cara %3, pista %4",CR,LF
+0019 U 0000 "Aseg£rese de que hay un diskette insertado en",CR,LF
+	"la unidad y que la puerta est  cerrada",CR,LF
+0020 U 0000 CR,LF,"Proceso de comparaci¢n finalizado",CR,LF
+0021 U 0000 CR,LF,"Comparaci¢n correcta",CR,LF
 0022 U 0000 CR,LF
 DISKCOPY 67b8 0018
 0002 U 0000 CR,LF
-0004 U 0000 "Do not specify filename(s)",CR,LF
+0004 U 0000 "No especifique nombre(s) de archivo(s)",CR,LF
 	"Command Format: DISKCOPY d: d: [/1]",CR,LF
 0005 U 0000 CR,LF,"Especificaci¢n de unidad no v lida",CR,LF
-	"Specified drive does not exist",CR,LF
-	"or is non-removable",CR,LF
-0006 U 0000 CR,LF,"Cannot DISKCOPY to or from",CR,LF
-	"a network drive",CR,LF
-0007 U 0000 CR,LF,"Formatting while copying",CR,LF
-0008 U 0000 CR,LF,"Insert SOURCE diskette in drive %1:",CR,LF
-0009 U 0000 CR,LF,"Insert TARGET diskette in drive %1:",CR,LF
-0010 U 0000 "Make sure a diskette is inserted into",CR,LF
-	"the drive and the door is closed",CR,LF
-0011 U 0000 CR,LF,"Target diskette may be unusable",CR,LF
-0012 U 0000 CR,LF,"Target diskette unusable",CR,LF
-0016 U 0000 CR,LF,"Copy another diskette (Y/N)? "
-0017 U 0000 CR,LF,"Copying %1 tracks",CR,LF
-	"%2 Sectors/Track, %3 Side(s)",CR,LF
-0018 U 0000 CR,LF,"Drive types or diskette types",CR,LF
-	"not compatible",CR,LF
-0019 U 0000 CR,LF,"Unrecoverable read error on drive %1",CR,LF
-	"Side %2, track %3",CR,LF
-0020 U 0000 CR,LF,"Unrecoverable write error on drive %1",CR,LF
-	"Side %2, track %3",CR,LF
-0021 U 0000 CR,LF,"Copy process ended",CR,LF
-0022 U 0000 CR,LF,"SOURCE diskette bad or incompatible"
-0023 U 0000 CR,LF,"TARGET diskette bad or incompatible"
+	"La unidad especificada no existe",CR,LF
+	"o no es desmontable",CR,LF
+0006 U 0000 CR,LF,"No puede hacerse DISKCOPY hacia o desde",CR,LF
+	"una unidad de red",CR,LF
+0007 U 0000 CR,LF,"Se da formato mientras se copia",CR,LF
+0008 U 0000 CR,LF,"Inserte diskette ORIGEN en unidad %1:",CR,LF
+0009 U 0000 CR,LF,"Inserte diskette DESTINO en unidad %1:",CR,LF
+0010 U 0000 "Aseg£rese de que hay un diskette insertado en",CR,LF
+	"la unidad y que la puerta est  cerrada",CR,LF
+0011 U 0000 CR,LF,"El diskette destino puede no ser utilizable",CR,LF
+0012 U 0000 CR,LF,"El diskette destino no es utilizable",CR,LF
+0016 U 0000 CR,LF,"¨Copiar otro diskette (S/N)? "
+0017 U 0000 CR,LF,"Copiando %1 pistas",CR,LF
+	"%2 Sectores/Pista, %3 Cara(s)",CR,LF
+0018 U 0000 CR,LF,"Tipos de unidades o tipos de diskettes",CR,LF
+	"no compatibles",CR,LF
+0019 U 0000 CR,LF,"Error de lectura no recuperable en la unidad %1",CR,LF
+	"Cara %2, pista %3",CR,LF
+0020 U 0000 CR,LF,"Error de grabaci¢n no recuperable en la unidad %1",CR,LF
+	"Cara %2, pista %3",CR,LF
+0021 U 0000 CR,LF,"Proceso de copiar finalizado",CR,LF
+0022 U 0000 CR,LF,"Diskette ORIGEN err¢neo o incompatible"
+0023 U 0000 CR,LF,"Diskette DESTINO err¢neo o incompatible"
 LABL     6cc4 0001
 0009 U 0003 CR,LF,"¨Suprimir la etiqueta actual del volumen (S/N)? "
 MODE     6d11 0068
@@ -701,29 +701,29 @@ MODE     6d11 0068
 0072 U 0002 "selected",0
 0073 U 0002 "system",0
 RESTORE  792b 0020
-0002 U 0000 CR,LF,"Source and target drives are the same",CR,LF
-0003 U 0000 CR,LF,"Invalid number of parameters",CR,LF
+0002 U 0000 CR,LF,"Las unidades origen y destino son la misma",CR,LF
+0003 U 0000 CR,LF,"El n£mero de par metros no es v lido",CR,LF
 0006 U 0000 CR,LF,"Especificaci¢n de unidad no v lida",CR,LF
-0007 U 0000 CR,LF,"WARNING! No files were found to restore",CR,LF
-0008 U 0000 CR,LF,"Insert backup diskette %1 in drive %2:",CR,LF
-0009 U 0000 CR,LF,"Insert restore target in drive %1:",CR,LF
-0011 U 0000 CR,LF,"WARNING! Diskette is out of sequence",CR,LF
-	"Replace diskette or continue if OK",CR,LF
-0012 U 0000 CR,LF,"The last file was not restored",CR,LF
-0013 U 0000 CR,LF,"*** Files were backed up %1 ***",CR,LF
-0014 U 0000 CR,LF,"Source does not contain backup files",CR,LF
+0007 U 0000 CR,LF,"­AVISO! No se encontr¢ ning£n archivo para restaurar",CR,LF
+0008 U 0000 CR,LF,"Inserte el diskette de copia de seguridad %1 en la unidad %2:",CR,LF
+0009 U 0000 CR,LF,"Inserte el destino de restauraci¢n en la unidad %1:",CR,LF
+0011 U 0000 CR,LF,"­AVISO! El diskette est  fuera de secuencia",CR,LF
+	"Sustituya el diskette o contin£e si es correcto",CR,LF
+0012 U 0000 CR,LF,"No se restaur¢ el £ltimo archivo",CR,LF
+0013 U 0000 CR,LF,"*** Se hizo copia de seguridad de los archivos %1 ***",CR,LF
+0014 U 0000 CR,LF,"El origen no contiene archivos de copia de seguridad",CR,LF
 0015 U 0000 CR,LF,"Memoria insuficiente",CR,LF
-0016 U 0000 CR,LF,"WARNING! File %1",CR,LF
-	"is a read-only file",CR,LF
-	"Replace the file (Y/N)?",CR,LF
-0017 U 0000 CR,LF,"Restore file sequence error",CR,LF
-0018 U 0000 CR,LF,"File creation error",CR,LF
+0016 U 0000 CR,LF,"­AVISO! El archivo %1",CR,LF
+	"es un archivo de s¢lo lectura",CR,LF
+	"¨Sustituir el archivo (S/N)?",CR,LF
+0017 U 0000 CR,LF,"Error de secuencia en archivo de restauraci¢n",CR,LF
+0018 U 0000 CR,LF,"Error de creaci¢n de archivo",CR,LF
 0019 U 0000 CR,LF,"Espacio insuficiente en disco",CR,LF
-0020 U 0000 CR,LF,"*** Not able to restore file ***",CR,LF
-0021 U 0000 CR,LF,"*** Restoring files from drive %1: ***",CR,LF
-0022 U 0000 CR,LF,"WARNING! File %1",CR,LF
-	"was changed after it was backed up",CR,LF
-	"Replace the file (Y/N)?",CR,LF
+0020 U 0000 CR,LF,"*** No es posible restaurar el archivo ***",CR,LF
+0021 U 0000 CR,LF,"*** Restaurando archivos desde la unidad %1: ***",CR,LF
+0022 U 0000 CR,LF,"­AVISO! El archivo %1",CR,LF
+	"se cambi¢ despu‚s de hacer copia de seguridad",CR,LF
+	"¨Sustituir el archivo (S/N)?",CR,LF
 0023 U 0000 "Diskette: %1",CR,LF
 0025 U 0000 07
 TREE     854e 0004
