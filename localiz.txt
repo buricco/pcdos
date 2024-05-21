@@ -1,0 +1,15 @@
+Note on Localization
+====================
+
+  Most of the utilities use the main message index.  This is set in 
+  src/setenv.bat and src/messages/makefile.  There are a few exceptions:
+  
+    * attrib: messages.h (Castilian Spanish in msg_eses.h)
+    * choice: would require a bit of manual work
+    * emm386: memm/emmmes.asm and memm/memm_msg.inc
+    * ramdrive: messages.asm (Castilian Spanish in msg_eses.asm)
+    * smartdrv: at the end of smartdrv.asm (Castilian Spanish in smrtdves.asm)
+
+  The Spanish localization is almost complete except for choice (I do have the
+  data to do such a localization), emm386 (too different from any Spanish
+  builds I have) and fdisk (it's complicated).
