@@ -53,5 +53,6 @@ copy .\dev\printer\5202\5202.cpi %1
 copy .\dev\smartdrv\smartdrv.sys %1
 copy .\dev\ramdrive\ramdrive.sys %1
 copy .\dev\driver\driver.sys %1
+copy .\dev\himem\himem.sys %1
 copy .\dev\emm386\memm\emm386.sys %1
 

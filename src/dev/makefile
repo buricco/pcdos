@@ -19,6 +19,8 @@ all:
 	$(make)
 	cd ..\smartdrv
 	$(make)
+	cd ..\himem
+	$(make)
 	cd ..\emm386
 	$(make)
 	cd ..
