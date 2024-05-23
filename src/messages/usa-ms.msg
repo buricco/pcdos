@@ -843,9 +843,9 @@ KEYB     994d 0016
 MEM      9d3c 0042
 0010 U 0000  CR,LF
 0011 U 0000  "  Address     Name          Size       Type ",CR,LF
-0012 U 0000  "  ŽŽŽŽŽŽŽ     ŽŽŽŽŽŽŽŽ     ŽŽŽŽŽŽ     ŽŽŽŽŽŽ",CR,LF
+0012 U 0000  "  ÄÄÄÄÄÄÄ     ÄÄÄÄÄÄÄÄ     ÄÄÄÄÄÄ     ÄÄÄÄÄÄ",CR,LF
 0013 U 0000  "  Handle      EMS Name      Size   ",CR,LF
-0014 U 0000  "  ŽŽŽŽŽŽŽ     ŽŽŽŽŽŽŽŽ     ŽŽŽŽŽŽ  ",CR,LF
+0014 U 0000  "  ÄÄÄÄÄÄÄ     ÄÄÄÄÄÄÄÄ     ÄÄÄÄÄÄ  ",CR,LF
 0015 U 0000  "  %1      %2     %3     %4",CR,LF
 0016 U 0000  "                %1   %2      %3 ",CR,LF
 0017 U 0000  "                  %1              %2 ",CR,LF
