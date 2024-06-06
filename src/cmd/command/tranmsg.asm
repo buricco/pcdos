@@ -306,27 +306,33 @@ SureMes_Ptr	dw	1039				;AN000;message number
 		db	no_subst			;AN000;number of subst
 
 ;  "Microsoft DOS Version %1.%2",13,10
-;
+
 VerMes_Ptr	dw	1040				;AN000;message number
-		db	2				;AN000;number of subst
-		db	parm_block_size 		;AN000;size of sublist
-		db	0				;AN000;reserved
-		dw	OFFSET	TranGroup:Major_Ver_Num ;AN000;offset of arg
-		dw	0				;AN000;segment of arg
-		db	1				;AN000;first subst
-		db	Right_Align+Unsgn_Bin_Word	;AN000;binary to decimal
-		db	1				;AN000;maximum width
-		db	1				;AN000;minimum width
-		db	blank				;AN000;pad character
-		db	parm_block_size 		;AN000;size of sublist
-		db	0				;AN000;reserved
-		dw	OFFSET	TranGroup:Minor_Ver_Num ;AN000;offset of arg
-		dw	0				;AN000;segment of arg
-		db	2				;AN000;second subst
-		db	Right_Align+Unsgn_Bin_Word	;AN000;binary to decimal
-		db	2				;AN000;maximum width
-		db	2				;AN000;minimum width
-		db	"0"                             ;AN000;pad character
+		db	no_subst ;was 2 -uso.				;AN000;number of subst
+
+; Original version of the above when an actual version number was added
+
+; VerMes_Ptr	dw	1040				;AN000;message number
+; 		db	2				;AN000;number of subst
+; 		db	parm_block_size 		;AN000;size of sublist
+; 		db	0				;AN000;reserved
+; 		dw	OFFSET	TranGroup:Major_Ver_Num ;AN000;offset of arg
+; 		dw	0				;AN000;segment of arg
+; 		db	1				;AN000;first subst
+; 		db	Right_Align+Unsgn_Bin_Word	;AN000;binary to decimal
+; 		db	1				;AN000;maximum width
+; 		db	1				;AN000;minimum width
+; 		db	blank				;AN000;pad character
+; 		db	parm_block_size 		;AN000;size of sublist
+; 		db	0				;AN000;reserved
+; 		dw	OFFSET	TranGroup:Minor_Ver_Num ;AN000;offset of arg
+; 		dw	0				;AN000;segment of arg
+; 		db	2				;AN000;second subst
+; 		db	Right_Align+Unsgn_Bin_Word	;AN000;binary to decimal
+; 		db	2				;AN000;maximum width
+; 		db	2				;AN000;minimum width
+; 		db	"0"                             ;AN000;pad character
+
 ;  "Volume in drive %1 has no label",13,10
 ;
 VolMes_Ptr_2	dw	1041				;AN000;message number

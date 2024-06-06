@@ -204,7 +204,7 @@ COMMAND  14c8 0091
 1038 U 0000 ",    Delete (Y/N)?"
 1039 U 0000 "All files in directory will be deleted!",CR,LF
 	"Are you sure (Y/N)?"
-1040 U 0000 "PC DOS/RE Version %1.%2"
+1040 U 0000 "PC DOS/RE Version 4.03"
 1044 U 0000 "Invalid directory",CR,LF
 1046 U 0000 "Invalid path, not directory,",CR,LF,"or directory not empty",CR,LF
 1047 U 0000 "Must specify ON or OFF",CR,LF
@@ -730,7 +730,7 @@ TREE     854e 0004
 0002 U 0000 "Directory PATH listing for Volume %1",CR,LF
 0003 U 0000 "Directory PATH listing",CR,LF
 0004 U 0000 "No sub-directories exist",CR,LF,LF
-0007 U 0000 "ÀÄÃ³"
+0007 U 0000 "·Çü"
 REPLACE  860d 0009
 0003 U 0000 CR,LF,"No files replaced",CR,LF
 0004 U 0000 CR,LF,"No files added",CR,LF
@@ -843,9 +843,9 @@ KEYB     994d 0016
 MEM      9d3c 0042
 0010 U 0000  CR,LF
 0011 U 0000  "  Address     Name          Size       Type ",CR,LF
-0012 U 0000  "  ÄÄÄÄÄÄÄ     ÄÄÄÄÄÄÄÄ     ÄÄÄÄÄÄ     ÄÄÄÄÄÄ",CR,LF
+0012 U 0000  "                 ",CR,LF
 0013 U 0000  "  Handle      EMS Name      Size   ",CR,LF
-0014 U 0000  "  ÄÄÄÄÄÄÄ     ÄÄÄÄÄÄÄÄ     ÄÄÄÄÄÄ  ",CR,LF
+0014 U 0000  "              ",CR,LF
 0015 U 0000  "  %1      %2     %3     %4",CR,LF
 0016 U 0000  "                %1   %2      %3 ",CR,LF
 0017 U 0000  "                  %1              %2 ",CR,LF

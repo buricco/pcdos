@@ -204,7 +204,7 @@ COMMAND  14c8 0091
 1038 U 0000 ",    ¨Suprimir (S/N)?"
 1039 U 0000 "­Se suprimir n todos los archivos del directorio!",CR,LF
 	"¨Est  seguro (S/N)?"
-1040 U 0000 "PC DOS/RE Versi¢n %1.%2"
+1040 U 0000 "PC DOS/RE Versi¢n 4.03"
 1044 U 0000 "Directorio no v lido",CR,LF
 1046 U 0000 "V¡a de acceso no v lida, no es un directorio,",CR,LF,"o el directorio no est  vac¡o",CR,LF
 1047 U 0000 "Debe especificar ON u OFF",CR,LF

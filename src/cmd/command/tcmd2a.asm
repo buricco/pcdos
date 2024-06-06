@@ -110,6 +110,12 @@ assume	ds:trangroup,es:trangroup
 ;   We should probably return that on a VER /R.
 ;   DOS 5.0's AX=3306 will return where DOS is, which VER /R should show;
 ;   DL is our subversion and DH will tell if DOS is in ROM or loaded high.
+;
+;   In former builds, the version information came from AH=30, same as MS-DOS
+;   and PC DOS prior to 6.x; here this has been changed to build it into the
+;   message, because the version number displayed by COMMAND.COM may be out of
+;   synch with what we are reporting to applications (because if we get insane
+;   it can and does cause important stuff like Windows 3.0 & 3.1 to blow up).
 
 VERSION:
 	call	crlf2
@@ -117,19 +123,16 @@ VERSION:
 	jmp	crlf2
 
 print_version:
-	mov	ah,Get_version
-	xor	al, al
-	int	int_command
-	push	ax
-	xor	ah,ah
-	mov	major_ver_num,ax
-	pop	ax
-	xchg	ah,al
-	xor	ah,ah
-	inc al ; uso: fudge 4.03
-	inc al
-	inc al
-	mov	minor_ver_num,ax
+;	mov	ah,Get_version
+;	xor	al, al
+;	int	int_command
+;	push	ax
+;	xor	ah,ah
+;	mov	major_ver_num,ax
+;	pop	ax
+;	xchg	ah,al
+;	xor	ah,ah
+;	mov	minor_ver_num,ax
 	mov	dx,offset trangroup:vermes_ptr
 	jmp	std_printf
 
