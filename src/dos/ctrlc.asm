@@ -517,6 +517,9 @@ GOT_RIGHT_CODE:
 	MOV	AL,3
 	JMP	FailRet
 NoSetFail:
+IF	BUFFERFLAG
+	invoke	RESTORE_USER_MAP	; Restore user's EMS map
+ENDIF
 	MOV	[CONTSTK],SP
 	Context ES
 	fmt TypINT24,LevLog,<"INT 24: AX = $x DI = $x\n">,<AX,DI>
