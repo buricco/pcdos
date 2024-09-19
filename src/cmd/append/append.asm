@@ -2680,54 +2680,54 @@ do_command:				; APPEND process
 ;	APPEND
 
 not_already_there:
-	mov	ah,get_version		; lets find out if we should do it
-	call	int_21			; try the open
-	cmp	ax,expected_version	; compare with DOS version
-	jne	bad_DOS
+;	mov	ah,get_version		; lets find out if we should do it
+;	call	int_21			; try the open
+;	cmp	ax,expected_version	; compare with DOS version
+;	jne	bad_DOS
 
-	jmp	check_assign		; valid range
+;	jmp	check_assign		; valid range
 					; lets see if assign has been loaded
 
 ;	Break it to the user that he's trying to do an APPEND with
 ;	the wrong DOS version
 
-bad_DOS:
-	cmp	al,01			; DOS 1x or below has no handle fcns ; fixed P134 9/10/87 - gga
-	ja	use_STDERR
-;	lea	dx,bad_DOS_msg		; bad DOS message				  ;AN000;
-;	mov	ah,print_string 							  ;AN000;
-;	call	int_21									  ;AN000;
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,8			; message number		 ;AN000;
-	mov	bx,NO_HANDLE		; no handle			 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
-	call	sysdispmsg						 ;AN000;
+;bad_DOS:
+;	cmp	al,01			; DOS 1x or below has no handle fcns ; fixed P134 9/10/87 - gga
+;	ja	use_STDERR
+;;	lea	dx,bad_DOS_msg		; bad DOS message				  ;AN000;
+;;	mov	ah,print_string 							  ;AN000;
+;;	call	int_21									  ;AN000;
+;	call	sysloadmsg						 ;AN000;
+;									 ;AN000;
+;	mov	ax,8			; message number		 ;AN000;
+;	mov	bx,NO_HANDLE		; no handle			 ;AN000;
+;	xor	cx,cx			; sub count			 ;AN000;
+;	xor	dl,dl			; no input			 ;AN000;
+;	mov	dh,-1			; message class 		 ;AN000;
+;	call	sysdispmsg						 ;AN000;
 
 
-	call	ctrl_break_rest
-	int	termpgm 		; return to DOS 		  ; @@05
+;	call	ctrl_break_rest
+;	int	termpgm 		; return to DOS 		  ; @@05
 
-use_STDERR:
-									 ;AN000;
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,8			; message number		 ;AN000;
-	mov	bx,STDERR		; handle			 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
-	call	sysdispmsg						 ;AN000;
+;use_STDERR:
+;									 ;AN000;
+;	call	sysloadmsg						 ;AN000;
+;									 ;AN000;
+;	mov	ax,8			; message number		 ;AN000;
+;	mov	bx,STDERR		; handle			 ;AN000;
+;	xor	cx,cx			; sub count			 ;AN000;
+;	xor	dl,dl			; no input			 ;AN000;
+;	mov	dh,-1			; message class 		 ;AN000;
+;	call	sysdispmsg						 ;AN000;
 
-;	mov	cx,len_bad_DOS_msg	; length of string		 ;AN000;
-;	lea	dx,bad_DOS_msg		; bad DOS message		 ;AN000;
-;	call	print_STDERR		; display error message 	 ;AN000;
+;;	mov	cx,len_bad_DOS_msg	; length of string		 ;AN000;
+;;	lea	dx,bad_DOS_msg		; bad DOS message		 ;AN000;
+;;	call	print_STDERR		; display error message 	 ;AN000;
 
-	call	ctrl_break_rest
-	mov	al,0ffh 		; bad DOS version		  ; @@05
-	call	terminate		; exit to DOS			  ; @@05
+;	call	ctrl_break_rest
+;	mov	al,0ffh 		; bad DOS version		  ; @@05
+;	call	terminate		; exit to DOS			  ; @@05
 
 check_assign:
 	mov	ax,0600h
