@@ -61,8 +61,8 @@
         char    *SingleDrive = "%c:" ;                                                                                           /* ;an000; */
         char    *MultipleDrives = "%c: - %c:" ;                                                                                  /* ;an000; */
         char    *UnOwned = "----------" ;                                                                                        /* ;an000; */
-        char    *Ibmbio = "IO    " ;                                                                                             /* ;an000; */
-        char    *Ibmdos = "MSDOS " ;
+        char    *Ibmbio = "IBMBIO" ;                                                                                             /* ;an000; */
+        char    *Ibmdos = "IBMDOS" ;
                                                                                                                                  /* ;an000; */
   struct sublistx                                                                                                                /* ;an000; */
    {                                                                                                                             /* ;an000; */
