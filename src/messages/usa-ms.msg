@@ -530,8 +530,7 @@ MSBIO    548a 0019
 0022 U 0000 13,10,"Bad command or parameters - $"
 0023 U 0002 "WARNING! SHARE should be loaded for large media",13,10,"$"
 BOOT     58c1 0001
-0001 U 0000 13,10,"Non-System disk or disk error",13,10
-	"Replace and press any key when ready",13,10,0
+0001 U 0000 13,10,"Non-System disk or disk error",13,10,"Replace and press any key when ready",13,10,0
 MSDOS    5953 0003
 0001 U 0001 13,10,"Divide overflow",13,10
 0002 U 0002 "y"

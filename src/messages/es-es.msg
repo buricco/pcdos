@@ -530,8 +530,7 @@ MSBIO    548a 0019
 0022 U 0000 13,10,"Mandato o par metros err¢neos - $"
 0023 U 0002 "­AVISO! SHARE deber¡a cargarse para un soporte grande",13,10,"$"
 BOOT     58c1 0001
-0001 U 0000 13,10,"Error diskette o ‚ste no es del Sistema",13,10
-        "Sustit£yalo y pulse cualquier tecla",13,10,0
+0001 U 0000 13,10,"Error diskette o ‚ste no es del Sistema",13,10,"Sustit£yalo y pulse cualquier tecla",13,10,0
 MSDOS    5953 0003
 0001 U 0001 13,10,"Desbordamiento de divisi¢n",13,10
 0002 U 0002 "s"
