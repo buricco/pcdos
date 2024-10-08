@@ -62,7 +62,7 @@ void getstr (char *util, unsigned id, char *label)
   fgets(linbuf, LNBUFSIZ-2, msg);
   if (feof(msg)&&(!m))
   {
-   fprintf (stderr, "Warning: Could not find message %s in category %s\n",
+   fprintf (stderr, "Warning: Could not find message %u in category %s\n",
             id, cutil);
    return;
   }
