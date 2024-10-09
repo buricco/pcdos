@@ -8,9 +8,9 @@ page	,132				; ;AN000;bgb
 	include pathmac.inc							;an028;bgb
 	include recseg.inc		;AN000;bgb
 	include dossym.inc
-	INCLUDE SYSMSG.INC
-	INCLUDE RECEQU.INC
-	INCLUDE RECMSG.INC
+	include sysmsg.inc
+	include recequ.inc
+	include recmsg.inc
 .list
 ;
 ;*****************************************************************************

@@ -41,9 +41,9 @@ TITLE	DOS - LAD Keyboard Definition File
 ;			DW   OFFSET LA_850_XLAT,0 ; table pointer
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	INCLUDE KEYBSHAR.INC		;
-	INCLUDE POSTEQU.INC		;
-	INCLUDE KEYBMAC.INC		;
+	INCLUDE keybshar.inc		;
+	INCLUDE postequ.inc		;
+	INCLUDE keybmac.inc		;
 					;
 	PUBLIC LA_LOGIC 		;
 	PUBLIC LA_437_XLAT		;

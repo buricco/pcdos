@@ -17,9 +17,9 @@
 ;; Modded from French - DTF 11-Sep-86
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 				       ;;
-	INCLUDE KEYBSHAR.INC	       ;;
-	INCLUDE POSTEQU.INC	       ;;
-	INCLUDE KEYBMAC.INC	       ;;
+	INCLUDE keybshar.inc	       ;;
+	INCLUDE postequ.inc	       ;;
+	INCLUDE keybmac.inc	       ;;
 				       ;;
 	PUBLIC BE_LOGIC 	       ;;
 	PUBLIC BE_437_XLAT	       ;;

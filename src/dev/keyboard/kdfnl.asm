@@ -14,9 +14,9 @@
 ;; Modded from Belgian - DTF 20-Aug-86; 08-Sep-86
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 				       ;;
-	INCLUDE KEYBSHAR.INC	       ;;
-	INCLUDE POSTEQU.INC	       ;;
-	INCLUDE KEYBMAC.INC	       ;;
+	INCLUDE keybshar.inc	       ;;
+	INCLUDE postequ.inc	       ;;
+	INCLUDE keybmac.inc	       ;;
 				       ;;
 	PUBLIC NL_LOGIC 	       ;;
 	PUBLIC NL_437_XLAT	       ;;

@@ -55,7 +55,7 @@
                                        ;;
 CODE    SEGMENT PUBLIC 'CODE' BYTE     ;;
                                        ;;
-        INCLUDE KEYBCMD.INC            ;; Bring in external declarations
+        INCLUDE keybcmd.inc            ;; Bring in external declarations
                                        ;;  for transient command processing
         ASSUME  CS:CODE,DS:CODE        ;;
         ORG   100H                     ;; required for .COM

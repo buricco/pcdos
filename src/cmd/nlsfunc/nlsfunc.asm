@@ -309,15 +309,15 @@ UTILITY 	db	"NLSFUNC",0           ;AC000;
 .xlist
 include copyrigh.inc			;AN000;
 include struc.inc
-include DOESMAC.INC
-include MULT.INC
-include sf.inc				;AN001;
-include DOSCNTRY.INC
-include DEVSYM.INC
-include SYSMSG.INC			;AN000;
-include FUNCDBCS.INC			;AN000;
-include MSG2NLS.INC
-include FUNCPARM.INC			;AN000;
+include doesmac.inc
+include mult.inc
+include sf.inc				;an001;
+include doscntry.inc
+include devsym.inc
+include sysmsg.inc			;an000;
+include funcdbcs.inc			;an000;
+include msg2nls.inc
+include funcparm.inc			;an000;
 
 MSG_UTILNAME <NLSFUNC>			;AN000;
 
@@ -1797,7 +1797,7 @@ INSTALL_NLS	ENDP
 
 msg_services <LOADmsg>				      ;AN000;
 msg_services <DISPLAYmsg,CHARmsg>		      ;AN000;
-msg_services <nlsfunc.cl1,nlsfunc.cl2,nlsfunc.cla>    ;AN000;
+msg_services <NLSFUNC.CL1,NLSFUNC.CL2,NLSFUNC.CLA>    ;AN000;
 
 ;******************************** END OF NLS_INIT_CODE **************************
 NLS_INIT_CODE	 ENDS

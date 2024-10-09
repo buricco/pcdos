@@ -183,7 +183,7 @@ LISTPARM =	1			;AN000;0=SUPPRESS LIST; 1=ALLOW LIST
 	    %OUT    COMPONENT=TREE, MODULE=TREE.SAL... ;AN000;
 	ENDIF				;AN000;
 	HEADER	<MACRO DEFINITIONS>	;AN000;
-	INCLUDE PATHMAC.INC		;AN013;
+	INCLUDE pathmac.inc		;AN013;
 ; =  =	=  =  =  =  =  =  =  =	=  =
 FIXLIST MACRO	LP,DOIT 		;;AN000;
 	IF	LP			;;AN000;
@@ -212,7 +212,7 @@ DOSCALL 			   MACRO FN,SF	   ;;AN000;
 ; =  =	=  =  =  =  =  =  =  =	=  =
 ;	     $SALUT (0,14,19,36)   ;AN000;
 	     HEADER <EQUATES - DOS FUNCTION CALLS> ;AN000;
-	     INCLUDE TREEQU.INC    ;AN000;EQUATES, CONTROL BLOCKS
+	     INCLUDE treequ.inc    ;AN000;EQUATES, CONTROL BLOCKS
 ; =  =	=  =  =  =  =  =  =  =	=  =
 LISTPARM     =	  1		   ;AN000;PERMIT LISTING
 .LIST				   ;AN000;

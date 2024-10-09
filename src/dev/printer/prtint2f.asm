@@ -57,11 +57,11 @@ TITLE	PRINTER.SYS INT2FH Code
 ;****************** END OF SPECIFICATIONS ****************************
 
 .XLIST
-INCLUDE  STRUC.INC								    ;AN000;
+INCLUDE  struc.inc								    ;AN000;
 .LIST
 
 
-INCLUDE   CPSPEQU.INC								    ;AN000;
+INCLUDE   cpspequ.inc								    ;AN000;
 PRIV_LK_CP   EQU    0AD40H	       ; multiplex number and function		    ;AN000;
 LPT1	     EQU    0		       ;					    ;AN000;
 LPT2	     EQU    1		       ;					    ;AN000;

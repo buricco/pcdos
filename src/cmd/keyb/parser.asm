@@ -45,7 +45,7 @@ TITLE	    PARSE CODE AND CONTROL BLOCKS FOR KEYB.COM
 ;
 ;****************** END OF SPECIFICATIONS ****************************
 
-INCLUDE     KEYBDCL.INC 							    ;AN000
+INCLUDE     keybdcl.inc 							    ;AN000
 
 ID_VALID	     EQU  0		;AN000; 				    ;AN000
 ID_INVALID	     EQU  1		;AN000; 					   ;AN000
@@ -84,7 +84,7 @@ INVALID_PARAM	     EQU  10
 VALUE_DISALLOW	     EQU  8
 
 .XLIST
-INCLUDE     STRUC.INC	    ; Structured macros 				    ;AN000
+INCLUDE     struc.inc	    ; Structured macros 				    ;AN000
 .LIST
 
 PUBLIC	    PARSE_PARAMETERS ;AN003;; near procedure for parsing command line		   ;AN000
@@ -118,7 +118,7 @@ CODE	      SEGMENT  PUBLIC 'CODE' BYTE            ;AN000;                       
 	      ASSUME CS:CODE,DS:CODE		     ;AN000;				   ;AN000
 
 .XLIST
-INCLUDE     PARSE.ASM	    ; Parsing code					    ;AN000
+INCLUDE     parse.asm	    ; Parsing code					    ;AN000
 .LIST
 
 

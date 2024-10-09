@@ -8,12 +8,12 @@ TITLE	RECINIT.SAL - MS-DOS File/Disk Recovery Utility
 ;
  .xlist
 	include pathmac.inc
- INCLUDE RECSEG.INC			;AN000;bgb
-	INCLUDE DOSSYM.INC		;AN000;BGB
-INCLUDE SYSCALL.INC			;AN000;BGB
-INCLUDE RECEQU.INC			;AN000;BGB
-INCLUDE RECMACRO.INC			;AN000;BGB
-INCLUDE RECPARSE.INC			;AN000;BGB
+ include recseg.inc			;an000;bgb
+	include dossym.inc		;an000;bgb
+include syscall.inc			;an000;bgb
+include recequ.inc			;an000;bgb
+include recmacro.inc			;an000;bgb
+include recparse.inc			;an000;bgb
  .list
 
 ;

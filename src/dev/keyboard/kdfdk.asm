@@ -13,9 +13,9 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 				       ;;
-	INCLUDE KEYBSHAR.INC	       ;;
-	INCLUDE POSTEQU.INC	       ;;
-	INCLUDE KEYBMAC.INC	       ;;
+	INCLUDE keybshar.inc	       ;;
+	INCLUDE postequ.inc	       ;;
+	INCLUDE keybmac.inc	       ;;
 				       ;;
 	PUBLIC DK_LOGIC 	       ;;
 	PUBLIC DK_865_XLAT	       ;;

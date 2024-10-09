@@ -226,11 +226,11 @@ TITLE	XCOPY	WITH FULL MEMORY USE - Ver. 4.00
 ;--------------------------------
 ;   Include Files
 ;--------------------------------
-INCLUDE XMAINMSG.EQU			;AN000;message file
-INCLUDE DOS.EQU 			;AN000;
-INCLUDE XCOPY.EQU			;AN000;
+include xmainmsg.equ			;an000;message file
+include dos.equ 			;an000;
+include xcopy.equ			;an000;
 
-INCLUDE SYSMSG.INC			;AN000;
+include sysmsg.inc			;an000;
 
 MSG_UTILNAME <XCOPY>			;AN000;
 

@@ -12,9 +12,9 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 				       ;;
-	INCLUDE KEYBSHAR.INC	       ;;
-	INCLUDE POSTEQU.INC	       ;;
-	INCLUDE KEYBMAC.INC	       ;;
+	INCLUDE keybshar.inc	       ;;
+	INCLUDE postequ.inc	       ;;
+	INCLUDE keybmac.inc	       ;;
 				       ;;
 	PUBLIC SF_LOGIC 	       ;;
 	PUBLIC SF_437_XLAT	       ;;

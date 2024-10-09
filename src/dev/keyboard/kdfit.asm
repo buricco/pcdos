@@ -16,9 +16,9 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 				       ;;
-	INCLUDE KEYBSHAR.INC	       ;;
-	INCLUDE POSTEQU.INC	       ;;
-	INCLUDE KEYBMAC.INC	       ;;
+	INCLUDE keybshar.inc	       ;;
+	INCLUDE postequ.inc	       ;;
+	INCLUDE keybmac.inc	       ;;
 				       ;;
 	PUBLIC IT_LOGIC 	       ;;
 	PUBLIC IT_437_XLAT	       ;;

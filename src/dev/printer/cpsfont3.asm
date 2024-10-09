@@ -10,12 +10,12 @@
 ;;		     CPS must be first.  CPSINIT must be last.	Everything
 ;;		     before CPSINIT will be resident.
 ;;  INCLUDE FILES:
-;;			CPSPEQU.INC
+;;			cpspequ.inc
 ;;
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 					;;
-INCLUDE CPSPEQU.INC			;;
+INCLUDE cpspequ.inc			;;
 					;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 					;;

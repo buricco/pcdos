@@ -36,12 +36,12 @@ BREAK	MACRO	subtitle
 	PAGE
 ENDM
 
-	INCLUDE SYSCALL.INC
+	include syscall.inc
 
-	INCLUDE MORE.INC		 ;AN000; ;MORE strucs and equates
+	INCLUDE more.inc		 ;AN000; ;MORE strucs and equates
 	.XLIST				 ;AN000;
-	INCLUDE STRUC.INC		 ;AN000; ;Structured macros
-	INCLUDE SYSMSG.INC		 ;AN000; ;Message retriever code
+	INCLUDE struc.inc		 ;AN000; ;Structured macros
+	INCLUDE sysmsg.inc		 ;AN000; ;Message retriever code
 	.LIST				 ;AN000;
 
 MSG_UTILNAME <MORE>			 ;AN000;

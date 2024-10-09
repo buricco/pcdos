@@ -5,7 +5,7 @@
 
 ; include Extended Atribute support
 
-			include EA.INC
+			include ea.inc
 
 			BREAK <Resident Portion>
 ;

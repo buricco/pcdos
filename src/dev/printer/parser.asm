@@ -187,10 +187,10 @@ TITLE	    PARSE CODE AND CONTROL BLOCKS FOR PRINTER.SYS
 
 
 .XLIST
-INCLUDE     STRUC.INC	     ; Structured macros				    ;AN000;
+INCLUDE     struc.inc	     ; Structured macros				    ;AN000;
 .LIST
 
-INCLUDE     CPSPEQU.INC 							    ;AN000;
+INCLUDE     cpspequ.inc 							    ;AN000;
 
 PUBLIC	    PARSER	     ; near procedure for parsing DEVICE= statement	    ;AN000;
 
@@ -216,7 +216,7 @@ EXTRN	    TABLE:WORD	     ; table for variable storage used by INIT module.	    
 EXTRN	    DEVICE_NUM:WORD							    ;AN000;
 
 .XLIST
-INCLUDE     PARSE.ASM	    ; Parsing code					    ;AN000;
+INCLUDE     parse.asm	    ; Parsing code					    ;AN000;
 .LIST
 
 

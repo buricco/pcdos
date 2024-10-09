@@ -74,11 +74,11 @@ TITLE	    PARSE CODE AND CONTROL BLOCKS FOR ANSI.SYS
 ;******************************************************************************
 
 
-INCLUDE     ANSI.INC	    ; ANSI equates and structures				 ;AN000;
+INCLUDE     ansi.inc	    ; ANSI equates and structures				 ;AN000;
 .XLIST
-INCLUDE     STRUC.INC	    ; Structured macros 					 ;AN000;
+INCLUDE     struc.inc	    ; Structured macros 					 ;AN000;
 
-INCLUDE     SYSMSG.INC	    ; Message retriever code					 ;AN000;
+INCLUDE     sysmsg.inc	    ; Message retriever code					 ;AN000;
 MSG_UTILNAME <ANSI>	    ; Let message retriever know its ANSI.SYS			 ;AN000;
 .LIST
 
@@ -112,7 +112,7 @@ MSG_SERVICES <ANSI.CL1> 								 ;AN000;
 MSG_SERVICES <ANSI.CL2> 								 ;AN000;
 MSG_SERVICES <ANSI.CLA> 								 ;AN000;
 
-INCLUDE     PARSE.ASM	    ; Parsing code						 ;AN000;
+INCLUDE     parse.asm	    ; Parsing code						 ;AN000;
 .LIST
 
 

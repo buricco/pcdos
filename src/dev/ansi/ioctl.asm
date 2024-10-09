@@ -106,9 +106,9 @@ TITLE   ANSI Generic IOCTL Code
 ;AN011; D425 For OS2 compatibiltiy box, /L option status query     01/14/88 J.K.
 ;******************************************************************************
 
-INCLUDE     ANSI.INC                                                                               ;AN000;
+INCLUDE     ansi.inc                                                                               ;AN000;
 .XLIST                                                                                             ;AN000;
-INCLUDE     STRUC.INC                                                                              ;AN000;
+INCLUDE     struc.inc                                                                              ;AN000;
 .LIST                                                                                              ;AN000;
                                                                                                    ;AN000;
 PUBLIC      GENERIC_IOCTL                                                                          ;AN000;

@@ -102,8 +102,8 @@ IF1					;
 	%OUT .		     õ Version 3.30
 	%OUT .Include Files:
 ENDIF					;
-	INCLUDE MACROS.INC		;
-	INCLUDE DEF-EQU.INC		;
+	include macros.inc		;
+	include def-equ.inc		;
 					;
 	PUBLIC	EOF_MARKER		;
 	PUBLIC	CPD_ACTIVE		;
@@ -384,11 +384,11 @@ NO_OPERATION	ENDP			;
 ;	PULL IN THE CODE PAGE FUNCTION CODE
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	INCLUDE INT2FCOM.INC		;
-	INCLUDE INT10COM.INC		;
-	INCLUDE CPS-FUNC.INC		;
-	INCLUDE WRITE.INC		; SPECIAL MARKER IN WRITE.INC
-	INCLUDE F-PARSER.INC		;
+	include int2fcom.inc		;
+	include int10com.inc		;
+	include cps-func.inc		;
+	include write.inc		; special marker in write.inc
+	include f-parser.inc		;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ;      Adjust the assembly-time instruction counter to a paragraph

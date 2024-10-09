@@ -23,7 +23,7 @@
 ;;
 ;; Include Files Required:
 ;; -----------------------
-;;       INCLUDE KEYBEQU.INC
+;;       INCLUDE keybequ.inc
 ;;       INCLUDE KEYBSHAR.INC
 ;;       INCLUDE KEYBMAC.INC
 ;;       INCLUDE KEYBCMD.INC
@@ -45,13 +45,13 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                        ;;
-        INCLUDE KEYBEQU.INC            ;;
-        INCLUDE KEYBSHAR.INC           ;;
-        INCLUDE KEYBMAC.INC            ;;
-        INCLUDE KEYBCMD.INC            ;;
-        INCLUDE KEYBCPSD.INC           ;;
-        INCLUDE POSTEQU.inc            ;;
-        INCLUDE DSEG.inc               ;;
+        include keybequ.inc            ;;
+        include keybshar.inc           ;;
+        include keybmac.inc            ;;
+        include keybcmd.inc            ;;
+        include keybcpsd.inc           ;;
+        include postequ.inc            ;;
+        include dseg.inc               ;;
                                        ;;
         PUBLIC KEYB_INT_48             ;;
                                        ;;

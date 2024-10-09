@@ -10,7 +10,7 @@
 ;;			must be first.	CPSPInn must be last.  Everything
 ;;			before CPSPInn will be resident.
 ;;  INCLUDE FILES:
-;;			CPSPEQU.INC
+;;			cpspequ.inc
 ;;
 ;;  LAYOUT :		This file is divided into two main section :
 ;;			  ++++++++++++++++++++++++
@@ -22,7 +22,7 @@
 ;;			  ++++++++++++++++++++++++
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 					;;
-INCLUDE CPSPEQU.INC			;;
+INCLUDE cpspequ.inc			;;
 					;;
 PUBLIC	INIT				;;
 PUBLIC	CODE_END			;; for MAP listing only

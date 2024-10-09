@@ -46,10 +46,10 @@
 	PUBLIC	COPY_SD_AREA	       ;;
 	PUBLIC	SHARED_DATA	       ;;
 				       ;;
-	INCLUDE STRUC.INC
-	INCLUDE KEYBSHAR.INC	       ;;
-	INCLUDE KEYBCMD.INC	       ;;
-	INCLUDE KEYBTBBL.INC	       ;;
+	include struc.inc
+	include keybshar.inc	       ;;
+	include keybcmd.inc	       ;;
+	include keybtbbl.inc	       ;;
 				       ;;
 CODE	SEGMENT PUBLIC 'CODE'          ;;
 				       ;;

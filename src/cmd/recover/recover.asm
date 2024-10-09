@@ -10,13 +10,13 @@ TITLE	RECOVER.SAL - MS-DOS File/Disk Recovery Utility
 .xlist
 	include recchng.inc		;an000;bgb
 	include recseg.inc		;AN000;bgb
-	INCLUDE DOSSYM.INC		;AN000;bgb
-	INCLUDE RECEQU.INC		;AN000;bgb
-	INCLUDE RECdata.INC		;AN000;bgb
+	include dossym.inc		;an000;bgb
+	include recequ.inc		;an000;bgb
+	include recdata.inc		;an000;bgb
 	INCLUDE recmacro.inc		;AN000;bgb
-	INCLUDE sysmsg.INC		;AN000;bgb
+	include sysmsg.inc		;an000;bgb
 	include pathmac.inc
-	msg_utilname<recover>
+	msg_utilname<RECOVER>
 ;										;AN000;bgb
 ;*****************************************************************************
 ; Extrn Declarations

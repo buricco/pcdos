@@ -1,6 +1,6 @@
 	TITLE	SYS-2-	Program
 	include version.inc
-	INCLUDE SYSHDR.INC
+	include syshdr.inc
 
 	page	80,132
 	BREAK	<SYS2 - Program Organization>

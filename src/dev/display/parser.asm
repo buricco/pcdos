@@ -203,10 +203,10 @@ TITLE	    PARSE CODE AND CONTROL BLOCKS FOR DISPLAY.SYS
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-INCLUDE     DEF-EQU.INC      ; structures and equates					 ;AN000;
+INCLUDE     def-equ.inc      ; structures and equates					 ;AN000;
 
 .XLIST
-INCLUDE     STRUC.INC	     ; Structured macros					 ;AN000;
+INCLUDE     struc.inc	     ; Structured macros					 ;AN000;
 .LIST
 
 PUBLIC	    PARSER	     ; near procedure for parsing DEVICE= statement		 ;AN000;
@@ -232,7 +232,7 @@ CODE	      SEGMENT  PUBLIC BYTE 'CODE'
 
 
 .XLIST
-INCLUDE     PARSE.ASM	    ; Parsing code						 ;AN000;
+INCLUDE     parse.asm	    ; Parsing code						 ;AN000;
 .LIST
 
 

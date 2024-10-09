@@ -59,11 +59,11 @@ NAME    IFSFILE                                                                 
 
 .xlist                                                                                   ;AN000;
 .xcref                                                                                   ;AN000;
-INCLUDE IFSSYM.INC                                                                       ;AN000;
-INCLUDE IFSFSYM.INC                                                                      ;AN000;
-INCLUDE DOSSYM.INC                                                                       ;AN000;
-INCLUDE DEVSYM.INC                                                                       ;AN000;
-INCLUDE DOSCNTRY.INC
+INCLUDE ifssym.inc                                                                       ;AN000;
+INCLUDE ifsfsym.inc                                                                      ;AN000;
+INCLUDE dossym.inc                                                                       ;AN000;
+INCLUDE devsym.inc                                                                       ;AN000;
+INCLUDE doscntry.inc
 .cref                                                                                    ;AN000;
 .list                                                                                    ;AN000;
                                                                                          ;AN000;

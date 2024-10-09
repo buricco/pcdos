@@ -6,8 +6,8 @@ TITLE	RECPROC.SAL
 .xlist
 	include recseg.inc		;AN000;bgb
  include dossym.inc	;AN000;bgb
- INCLUDE SYSCALL.INC	;AN000;bgb
- INCLUDE RECMACRO.INC	;AN000;bgb
+ include syscall.inc	;an000;bgb
+ include recmacro.inc	;an000;bgb
  include recequ.inc	;AN000;bgb
 	include pathmac.inc
 .xcref

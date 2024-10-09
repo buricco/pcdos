@@ -41,9 +41,9 @@ TITLE	ANSI Console device CON$INIT routine
 ;AN004; D493 New INIT request structure for error message	   02/25/88 J.K.
 ;-------------------------------------------------------------------------------
 
-INCLUDE    ANSI.INC		   ; WGR equates and strucs				 ;AN000;
+INCLUDE    ansi.inc		   ; WGR equates and strucs				 ;AN000;
 .XLIST
-INCLUDE    STRUC.INC		   ; WGR structured macros				 ;AN000;
+INCLUDE    struc.inc		   ; WGR structured macros				 ;AN000;
 .LIST
 
 PUBLIC	   CON$INIT		   ; WGR						 ;AN000;
@@ -79,7 +79,7 @@ EXTRN	ABORT:BYTE		       ; WGR						 ;AN000;
 extrn	Display_Loaded_Before_me:byte  ;AN002;Defined in IOCTL.ASM
 extrn	Switch_K:Byte		       ;AN003;
 
-INCLUDE   ANSIVID.INC		       ; WGR video tables data				 ;AN000;
+INCLUDE   ansivid.inc		       ; WGR video tables data				 ;AN000;
 
 CON$INIT:
 	LDS	BX,CS:[PTRSAV]	       ; WGR establish addressability to request header  ;AC000;

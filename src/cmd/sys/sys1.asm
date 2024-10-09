@@ -1,5 +1,5 @@
 	TITLE	SYS-1-	Program
-	INCLUDE SYSHDR.INC
+	include syshdr.inc
 	include version.inc
 	page	80,132
 
@@ -260,7 +260,7 @@ pDOSEnd 		DW   ?		; offset of end of DOS in buffer
 public			boot
 BOOT			LABEL BYTE
 .xlist
-			INCLUDE BOOT.INC
+			INCLUDE boot.inc
 .list
 					;
 					; Following structure used by Generic IOCTL call Get Device Parameters to get

@@ -60,11 +60,11 @@ var = FALSE
 ENDIF
 ENDM
 
-INCLUDE VECTOR.INC
-INCLUDE MULT.INC
-INCLUDE ANSI.INC                ; WGR equates and structures                             ;AN000;
+INCLUDE vector.inc
+INCLUDE mult.inc
+INCLUDE ansi.inc                ; WGR equates and structures                             ;AN000;
 .xlist
-INCLUDE STRUC.INC               ; WGR include STRUC macros                               ;AN000;
+INCLUDE struc.inc               ; WGR include STRUC macros                               ;AN000;
 .list
 
 BREAK <ANSI driver code>

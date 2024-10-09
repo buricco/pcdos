@@ -115,8 +115,8 @@
 	EXTRN  ERR_PART:WORD		;an003;
 ;***CNS
 .xlist
-	INCLUDE STRUC.INC	       ;AN000;;; WGR structured macros			   ;AN000
-	INCLUDE SYSMSG.INC	       ;AN000;;; WGR message retriever			   ;AN000
+	INCLUDE struc.inc	       ;AN000;;; WGR structured macros			   ;AN000
+	INCLUDE sysmsg.inc	       ;AN000;;; WGR message retriever			   ;AN000
 .list
 				       ;;
 MSG_UTILNAME <KEYB>		       ;AN000;;; WGR identify to message retriever	   ;AN000
@@ -124,20 +124,20 @@ MSG_UTILNAME <KEYB>		       ;AN000;;; WGR identify to message retriever	   ;AN00
 CODE	SEGMENT PUBLIC 'CODE'          ;;
 				       ;;
 .xlist				       ;;
-	INCLUDE KEYBEQU.INC	       ;;
-	INCLUDE KEYBSYS.INC	       ;;
-	INCLUDE KEYBI9.INC	       ;;
-	INCLUDE KEYBI9C.INC	       ;;
-	INCLUDE KEYBI2F.INC	       ;;
-	INCLUDE KEYBI48.INC	       ;;
-	INCLUDE KEYBSHAR.INC	       ;;
-	INCLUDE KEYBDCL.INC	       ;;
-	INCLUDE KEYBTBBL.INC	       ;;
-	INCLUDE COMMSUBS.INC	       ;;
-	INCLUDE KEYBCPSD.INC	       ;;
+	include keybequ.inc	       ;;
+	include keybsys.inc	       ;;
+	include keybi9.inc	       ;;
+	include keybi9c.inc	       ;;
+	include keybi2f.inc	       ;;
+	include keybi48.inc	       ;;
+	include keybshar.inc	       ;;
+	include keybdcl.inc	       ;;
+	include keybtbbl.inc	       ;;
+	include commsubs.inc	       ;;
+	include keybcpsd.inc	       ;;
 .xlist
-	INCLUDE POSTEQU.INC	       ;;
-	INCLUDE DSEG.INC	       ;;
+	include postequ.inc	       ;;
+	include dseg.inc	       ;;
 				       ;;
 .list
 	ASSUME	CS:CODE,DS:CODE        ;;

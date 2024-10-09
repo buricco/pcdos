@@ -356,7 +356,7 @@ sb_value_extra  dw      ?               ;AN000; UNUSED SPACE FOR VALUE
 ;-------------------------
 ; Preload messages
 ;-------------------------
-        MSG_SERVICES <SORT.ctl,SORT.cla,SORT.cl1,SORT.cl2>      ;AN000;
+        MSG_SERVICES <SORT.CTL,SORT.CLA,SORT.CL1,SORT.CL2>      ;AN000;
         MSG_SERVICES <DISPLAYmsg,LOADmsg,CHARmsg,NOCHECKSTDIN>          ;AN002; Make retriever services available
 
         mov     ax,cs                   ;AN003; ;load ES to the right area,

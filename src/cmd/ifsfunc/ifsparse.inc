@@ -89,4 +89,4 @@ SwSW	equ	0									 ;AN000;
 Val3SW	equ	0									 ;AN000;
 											 ;AN000;
 											 ;AN000;
-	include PARSE.ASM			;together with PSDATA.INC		 ;AN000;
+	include parse.asm			;together with PSDATA.INC		 ;AN000;

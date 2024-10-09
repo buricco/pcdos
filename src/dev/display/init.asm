@@ -66,7 +66,7 @@ ENDIF					;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 					;
 .XLIST					;
-INCLUDE SYSMSG.INC			; WGR				       ;AN000;
+INCLUDE sysmsg.inc			; WGR				       ;AN000;
 MSG_UTILNAME <DISPLAY>			; WGR				       ;AN000;
 .LIST					;
 					;
@@ -125,9 +125,9 @@ DEVICE_ID_INDEX DW	0		; INDEX VALUE FOR DEVICE SUB-TYPE
 ;	INCLUDE FILES
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	INCLUDE MACROS.INC		; GENERAL PURPOSE 'MACROs'
-	INCLUDE DEF-EQU.INC		; CPS DRIVER STRUCTURES AND EQUATES
-	INCLUDE TABLES.INC		; DEVICE SUB-TYPE CONFIGURATION TABLES
+	include macros.inc		; general purpose 'macros'
+	include def-equ.inc		; cps driver structures and equates
+	include tables.inc		; device sub-type configuration tables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ;	INITIALIZATION ROUTINE

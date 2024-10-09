@@ -1,11 +1,9 @@
-	INCLUDE SYSHDR.INC
-
-; include SYSMSG.INC
+	include syshdr.inc
 
 .xlist
 .xcref
 
-	include SYSMSG.INC		;				       ;AN000;
+	include sysmsg.inc		;				       ;AN000;
 
 .cref
 .list

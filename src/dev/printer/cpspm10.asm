@@ -9,7 +9,7 @@ TITLE	DOS - Code Page Switching - Printer Device Driver
 ;;			must be first.	CPSPInn must be last.  Everything
 ;;			before CPSPInn will be resident.
 ;;  INCLUDE FILES:
-;;			CPSPEQU.INC
+;;			cpspequ.inc
 ;;
 ;;
 ;;  This routine is structured as a DOS Device Driver.
@@ -40,7 +40,7 @@ TITLE	DOS - Code Page Switching - Printer Device Driver
 ;AN001; p2685  Long delay on CHCP before failure message	   12/10/87 J.K.
 ;******************************************************************************
 					;;
-INCLUDE CPSPEQU.INC			;;
+INCLUDE cpspequ.inc			;;
 					;;
 PUBLIC	PRINTER_DESC_NUM		;;
 PUBLIC	PRINTER_DESC_TBL		;;

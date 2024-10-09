@@ -204,33 +204,12 @@
                                         ;---------------------------------------
 
 
-;       INCLUDE DOSSYM.INC              ;also defines version of dos
 .xlist
 .xcref
-        INCLUDE DOSSYM.INC
-.cref
-.list
-
-
-;       INCLUDE IOCTL.INC               ; Get / Set Device Parameters IOCTL
-.xlist
-.xcref
-        INCLUDE IOCTL.INC
-.cref
-.list
-
-
-;       INCLUDE BOOTFORM.INC            ; Boot Record Structure
-.xlist
-.xcref
-        INCLUDE BOOTFORM.INC
-.cref
-
-
-;       INCLUDE PATHMAC.INC            ; PATH macro for PATHGEN
-.xlist
-.xcref
-        INCLUDE PATHMAC.INC
+        include dossym.inc
+        include ioctl.inc
+        include bootform.inc
+        include pathmac.inc
 .cref
 .list
 

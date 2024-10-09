@@ -39,14 +39,14 @@
 ;; ;AN002; - PTM 3090  ENABLING RIGHT CTL FOR RE-BOOTING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 				       ;;
-	INCLUDE KEYBEQU.INC	       ;;
-	INCLUDE DSEG.inc	       ;; System data segments
-	INCLUDE POSTEQU.inc	       ;; System equates
-	INCLUDE KEYBSHAR.INC	       ;;
-	INCLUDE KEYBI2F.INC	       ;;
-	INCLUDE KEYBI9.INC	       ;;
-	INCLUDE KEYBCPSD.INC	       ;;
-	INCLUDE KEYBCMD.INC	       ;;
+	include keybequ.inc	       ;;
+	include dseg.inc	       ;; system data segments
+	include postequ.inc	       ;; system equates
+	include keybshar.inc	       ;;
+	include keybi2f.inc	       ;;
+	include keybi9.inc	       ;;
+	include keybcpsd.inc	       ;;
+	include keybcmd.inc	       ;;
 				       ;;
 	PUBLIC KEYB_INT_9	       ;;
 	PUBLIC K8		       ;; CTRL case tables

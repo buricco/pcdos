@@ -77,7 +77,7 @@
 	IF1				;AN000;
 	    %OUT    COMPONENT=TREE, MODULE=TREEPAR.SAL... ;AN000;
 	ENDIF				;AN000;
-	INCLUDE PATHMAC.INC		;AN012;
+	INCLUDE pathmac.inc		;AN012;
 ; =  =	=  =  =  =  =  =  =  =	=  =
 HEADER	MACRO	TEXT			;;AN000;
 .XLIST					;;AN000;

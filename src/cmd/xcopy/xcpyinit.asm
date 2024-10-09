@@ -69,8 +69,8 @@ TITLE	XCPYINIT - XCOPY INITIALIZATION PROGRAM - Ver. 4.00
 ;
 ;****************** END OF SPECIFICATIONS *****************************
 ;EQUATES
-INCLUDE XCOPY.EQU
-INCLUDE DOS.EQU
+include xcopy.equ
+include dos.equ
 include versiona.inc
 
 ;
@@ -139,7 +139,7 @@ DSEG	ENDS
 DSEG_INIT SEGMENT PARA PUBLIC		;AN000;
 ;--- Local variables for INIT which will be free into memory after init.
 ;----include file(s)------
-INCLUDE XINITMSG.EQU			;AN000;xcopy initialization, prompt msg
+INCLUDE xinitmsg.equ			;AN000;xcopy initialization, prompt msg
 ;----variables------------
 S_INPUT_PARM DB 80 DUP (0)		;source image of input parm
 T_INPUT_PARM DB 80 DUP (0)		;target image of input parm

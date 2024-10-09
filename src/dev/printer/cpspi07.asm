@@ -10,7 +10,7 @@
 ;;			must be first.	CPSPInn must be last.  Everything
 ;;			before CPSPInn will be resident.
 ;;  INCLUDE FILES:
-;;			CPSPEQU.INC
+;;			cpspequ.inc
 ;;
 ;;  LAYOUT :		This file is divided into two main section :
 ;;			  ++++++++++++++++++++++++
@@ -22,12 +22,12 @@
 ;;			  ++++++++++++++++++++++++
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 					;;
-INCLUDE CPSPEQU.INC			;;
+INCLUDE cpspequ.inc			;;
 INT2F_LOW	EQU	(4*2FH) 	;; WGR interrupt 2F vector location	    ;AN000;
 INT2F_HI	EQU	(4*2FH)+2	;; WGR					    ;AN000;
 					;;
 .XLIST					;;
-INCLUDE SYSMSG.INC			;; WGR					    ;AN000;
+INCLUDE sysmsg.inc			;; WGR					    ;AN000;
 .LIST					;;
 					;;
 MSG_UTILNAME <PRINTER>			;; WGR					    ;AN000;
