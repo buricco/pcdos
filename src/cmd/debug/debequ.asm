@@ -43,7 +43,7 @@
 ;IBMVER EQU	TRUE		    ; These switches get set in version.inc
 ;MSVER	EQU	FALSE		    ; NOT HERE !!!
 
-	INCLUDE SYSVER.INC
+	INCLUDE sysver.inc
 
 IBMJAPAN EQU	FALSE
 

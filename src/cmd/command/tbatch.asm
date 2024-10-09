@@ -27,7 +27,7 @@ TITLE	Batch processing routines
 .xlist
 .xcref
 	INCLUDE comsw.asm
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	INCLUDE comseg.asm
 	INCLUDE comequ.asm
 	include doscntry.inc		;AN000;

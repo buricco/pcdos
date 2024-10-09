@@ -29,7 +29,7 @@ TITLE	Part6 COMMAND Transient routines.
 
 .xlist
 .xcref
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	INCLUDE comseg.asm
 	INCLUDE comequ.asm
 .list

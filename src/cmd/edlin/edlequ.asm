@@ -1,8 +1,8 @@
 	page	60,132			;
 
 	.xlist
-	include DOSSYM.INC
-	include EDLSTDSW.INC
+	include dossym.inc
+	include edlstdsw.inc
 	.list
 
 ;======================= START OF SPECIFICATIONS =========================

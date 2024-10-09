@@ -49,7 +49,7 @@ btab	macro	b,sym
 .xcref
 	INCLUDE comsw.asm				;AC000;
 	INCLUDE comseg.asm
-	INCLUDE EA.inc					;AN030;
+	INCLUDE ea.inc					;AN030;
 	INCLUDE dirent.inc				;AN042;
 .list
 .cref
@@ -63,8 +63,8 @@ ENDM
 ; WARNING: DO NOT INCLUDE DOSSYM.INC BECAUSE IT DESTROYS THE MACRO 'FMT' THAT
 ; has been defined above - RS.
 ;
-	INCLUDE CURDIR.INC
-	INCLUDE ERROR.INC
+	INCLUDE curdir.inc
+	INCLUDE error.inc
 	INCLUDE ifequ.asm
 	INCLUDE comequ.asm
 
@@ -773,7 +773,7 @@ TRANCODE	SEGMENT PUBLIC BYTE		;AN000;
 .xlist
 .xcref
 
-INCLUDE SYSMSG.INC				;AN000;
+INCLUDE sysmsg.inc				;AN000;
 
 .list
 .cref

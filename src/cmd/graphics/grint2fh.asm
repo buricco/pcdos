@@ -54,10 +54,10 @@ CODE	SEGMENT PUBLIC 'CODE'          ;;                                       ;AN
 				       ;;					;AN000;
 				       ;;					;AN000;
 .XLIST										;AN000;
-INCLUDE STRUC.INC								;AN000;
-INCLUDE GRINST.EXT								;AN000;
-INCLUDE GRCTRL.EXT								;AN000;
-INCLUDE GRCPSD.EXT								;AN000;
+include struc.inc								;an000;
+include grinst.ext								;an000;
+include grctrl.ext								;an000;
+include grcpsd.ext								;an000;
 .LIST										;AN000;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;					;AN000;
 ;;										;AN000;

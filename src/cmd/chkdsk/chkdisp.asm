@@ -40,12 +40,12 @@ page	,132	;								;an000;bgb
 .xlist										;an000;bgb
 include pathmac.inc								;an040;bgb
 include chkseg.inc								;an000;bgb
-INCLUDE CPMFCB.INC								;an000;bgb
-INCLUDE CHKEQU.INC								;an000;bgb
+include cpmfcb.inc								;an000;bgb
+include chkequ.inc								;an000;bgb
 .list										;an000;bgb
-INCLUDE CHKMSG.INC								;an000;bgb
+include chkmsg.inc								;an000;bgb
 .xlist										;an000;bgb
-INCLUDE SYSMSG.INC								;an000;bgb
+include sysmsg.inc								;an000;bgb
 .list										;an000;bgb
       ; 									;an000;bgb
 cstack	 segment para stack 'STACK'                                             ;an000;bgb

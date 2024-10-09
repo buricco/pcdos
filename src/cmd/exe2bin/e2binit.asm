@@ -23,7 +23,7 @@ Title	E2BINIT(EXE2BIN)
 ;*****************************************************************************
 
 
-INCLUDE SYSMSG.INC
+INCLUDE sysmsg.inc
 MSG_UTILNAME <EXE2BIN>							;AN000;
 
 	subttl	Main Code Area						;AN000;
@@ -137,12 +137,12 @@ LOAD	EQU	ZLOAD
 ;
 
 .xlist
-INCLUDE DOSSYM.INC			; also versiona.inc		;AN000;
-INCLUDE SYSCALL.INC							;AN000;
-INCLUDE E2BMACRO.INC							;AN000;
-INCLUDE E2BEQU.INC							;AN000;
-INCLUDE E2BTABLE.INC							;AN000;
-INCLUDE E2BPARSE.INC							;AN000;
+include dossym.inc			; also versiona.inc		;an000;
+include syscall.inc							;an000;
+include e2bmacro.inc							;an000;
+include e2bequ.inc							;an000;
+include e2btable.inc							;an000;
+include e2bparse.inc							;an000;
 include version.inc
 .list
 
@@ -430,7 +430,7 @@ Parse_Command_Line endp 						;AN000;
 
 ;*****************************************************************************
 
-INCLUDE PARSE.ASM
+include parse.asm
 
 ;*****************************************************************************
 

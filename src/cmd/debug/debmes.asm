@@ -84,7 +84,7 @@ FALSE	EQU	0
 TRUE	EQU	NOT FALSE
 
 ;SYSVER 	 EQU FALSE		 ;if true, i/o direct to bios
-	INCLUDE SYSVER.INC
+	INCLUDE sysver.inc
 
 ;=========================================================================
 ; macro disp_message: the macro takes the message obtained in get_message

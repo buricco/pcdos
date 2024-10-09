@@ -272,7 +272,7 @@ old_parse_ptr	DW	0			;AN057; SI position before calling parser
 .xlist
 .xcref
 
-INCLUDE SYSMSG.INC				;AN000; get message services routine
+INCLUDE sysmsg.inc				;AN000; get message services routine
 
 .list
 .cref

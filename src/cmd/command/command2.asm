@@ -26,7 +26,7 @@ TITLE	COMMAND2 - resident code for COMMAND.COM part II
 NAME	COMMAND2
 .XCREF
 .XLIST
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	INCLUDE comsw.asm
 	INCLUDE comequ.asm
 	INCLUDE resmsg.equ		;AN000;

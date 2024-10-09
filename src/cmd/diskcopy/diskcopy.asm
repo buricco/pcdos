@@ -51,7 +51,7 @@
 ;	INCLUDE DCPYMACR.INC		;(formerly called MACRO.DEF)
 ;	INCLUDE DISKCOPY.EQU		;EQUATES
 ;	INCLUDE BOOTFORM.INC		;DEFINE EXT_BPB_INFO & EXT_IBMBOOT_HEADER
-;	INCLUDE PATHMAC.INC		;PATHGEN MACRO
+;	INCLUDE pathmac.inc		;PATHGEN MACRO
 
 ; INTERNAL REFERENCES:
 ;    ROUTINES:
@@ -177,9 +177,9 @@
 ;									     *
 ;*****************************************************************************
 
-	INCLUDE PATHMAC.INC		;AN015;PATHGEN MACRO
-	INCLUDE DCPYMACR.INC		;(formerly called MACRO.DEF)
-	INCLUDE DISKCOPY.EQU		;EQUATES
+	INCLUDE pathmac.inc		;AN015;PATHGEN MACRO
+	INCLUDE dcpymacr.inc		;(formerly called MACRO.DEF)
+	INCLUDE diskcopy.equ		;EQUATES
 
 ;	       $salut (4,16,22,36) ;AN000;
 MY_BPB	       STRUC		   ;
@@ -199,7 +199,7 @@ BIG_TOT_SECT   DD    0		   ;
 	       DB    6 DUP (0)	   ;
 MY_BPB	       ENDS		   ;
 
-	       INCLUDE BOOTFORM.INC ;AN013;DEFINE EXT_BPB_INFO & EXT_IBMBOOT_HEADER
+	       INCLUDE bootform.inc ;AN013;DEFINE EXT_BPB_INFO & EXT_IBMBOOT_HEADER
 
 CSEG	       SEGMENT PARA PUBLIC 'CODE' ;AN000;
 	       ASSUME CS:CSEG, DS:CSEG, ES:CSEG, SS:CSEG ;

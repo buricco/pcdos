@@ -279,21 +279,21 @@ data	ends
 
 debug	equ	0
 	.xlist
-	INCLUDE VERSIONA.INC
-	INCLUDE DOSMAC.INC
-	INCLUDE SYSCALL.INC
-	INCLUDE ERROR.INC
-	INCLUDE DPB.INC
-	INCLUDE CPMFCB.INC
-	INCLUDE DIRENT.INC
-	INCLUDE CURDIR.INC
-	INCLUDE PDB.INC
-	INCLUDE BPB.INC
-	INCLUDE FOREQU.INC
-	INCLUDE FORMACRO.INC
-	INCLUDE IOCTL.INC
-	INCLUDE FORSWTCH.INC
-	INCLUDE SYSVAR.INC
+	include versiona.inc
+	include dosmac.inc
+	include syscall.inc
+	include error.inc
+	include dpb.inc
+	include cpmfcb.inc
+	include dirent.inc
+	include curdir.inc
+	include pdb.inc
+	include bpb.inc
+	include forequ.inc
+	include formacro.inc
+	include ioctl.inc
+	include forswtch.inc
+	include sysvar.inc
 	.list
 
 

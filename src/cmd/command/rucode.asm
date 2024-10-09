@@ -26,12 +26,12 @@ TITLE	COMMAND Language modifiable Code Resident
 
 .xlist
 .xcref
-INCLUDE DOSSYM.INC			;AC000;
+INCLUDE dossym.inc			;AC000;
 include doscntry.inc			;AC000;
 DEBUG = 0				; NEED TO SET IT TO WHAT IT IS IN DOSSYM.INC
 
 
-	INCLUDE DEVSYM.INC
+	INCLUDE devsym.inc
 	INCLUDE comsw.asm
 	INCLUDE comseg.asm
 	INCLUDE comequ.asm
@@ -741,7 +741,7 @@ ASSUME	DS:RESGROUP, ES:RESGROUP
 .xlist
 .xcref
 
-INCLUDE SYSMSG.INC				;AN000; include message services
+INCLUDE sysmsg.inc				;AN000; include message services
 
 .list
 .cref

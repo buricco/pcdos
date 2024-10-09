@@ -67,7 +67,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 				       ;;
-INCLUDE        VERSIONA.INC	       ;;AN003;;
+INCLUDE        versiona.inc	       ;;AN003;;
 
 FALSE	       = 0		       ;;
 TRUE	       = NOT FALSE	       ;;    List message services and flags
@@ -302,7 +302,7 @@ MSG_UTILNAME  Macro   utilname	       ;
 				       ;
    INCLUDE &utilname.CTL	       ;  Include the control file for the utility
    $M_STRUC = TRUE		       ;
-   INCLUDE MSGSERV.ASM		       ;  Get structure definitions
+   INCLUDE msgserv.asm		       ;  Get structure definitions
 				       ;
 ENDM				       ;
 				       ;
@@ -347,7 +347,7 @@ MSG_SERVICES2  <varlist>
    ENDM 				  ;  NEXT variable
 					  ;
    IF $M_SERVICE			  ;	IF it any services were requested THEN
-     INCLUDE MSGSERV.ASM		  ;	   THEN include module to get service
+     INCLUDE msgserv.asm		  ;	   THEN include module to get service
    ENDIF				  ;	ENDIF
 
 ENDM

@@ -339,7 +339,7 @@ NAME	COMMAND
 
 .XCREF
 .XLIST
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	INCLUDE comsw.asm
 	INCLUDE comequ.asm
 	INCLUDE resmsg.equ		;AN000;

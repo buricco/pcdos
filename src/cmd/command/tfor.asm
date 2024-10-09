@@ -29,8 +29,8 @@ TITLE	Part3 COMMAND Transient Routines
 .xlist
 .xcref
 	include comsw.asm
-	INCLUDE DOSSYM.INC
-	INCLUDE DEVSYM.INC
+	INCLUDE dossym.inc
+	INCLUDE devsym.inc
 	include comseg.asm
 	include comequ.asm
 .list

@@ -29,7 +29,7 @@ TITLE	Part7 COMMAND Transient Routines
 .xlist
 .xcref
 	INCLUDE comsw.asm
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	INCLUDE comseg.asm
 	INCLUDE comequ.asm
 	INCLUDE ioctl.inc

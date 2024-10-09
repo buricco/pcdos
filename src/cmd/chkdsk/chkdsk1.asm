@@ -24,12 +24,12 @@ page	,132					;
 
 	.xlist
 	include chkseg.inc							;an005;bgb
-	INCLUDE CHKCHNG.INC
-	INCLUDE DOSSYM.INC
-	INCLUDE syscall.inc							;an041;bgb
-	INCLUDE ioctl.inc							;an041;bgb;an041;bgb
-	INCLUDE CHKEQU.INC
-	INCLUDE CHKMACRO.INC
+	include chkchng.inc
+	include dossym.inc
+	include syscall.inc							;an041;bgb
+	include ioctl.inc							;an041;bgb;an041;bgb
+	include chkequ.inc
+	include chkmacro.inc
 	include chkdata.inc							;an005;bgb
 	include pathmac.inc
 

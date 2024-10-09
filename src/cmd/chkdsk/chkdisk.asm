@@ -24,10 +24,10 @@ page	,132					;
 
 	.xlist
 	include chkseg.inc							;an005;bgb
-	INCLUDE CHKCHNG.INC
-	INCLUDE DOSSYM.INC
-	INCLUDE CHKEQU.INC
-	INCLUDE CHKMACRO.INC
+	include chkchng.inc
+	include dossym.inc
+	include chkequ.inc
+	include chkmacro.inc
 	include pathmac.inc
 
 

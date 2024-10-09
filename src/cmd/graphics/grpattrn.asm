@@ -43,7 +43,7 @@
 .list										;AN000;
 CODE	SEGMENT PUBLIC 'CODE'                                                   ;AN000;
 	ASSUME		CS:CODE,DS:CODE 					;AN000;
-INCLUDE GRPATTRN.STR								;AN000;
+INCLUDE grpattrn.str								;AN000;
 										;AN000;
 PUBLIC	TAB_DIRECTORY								;AN000;
 PUBLIC	TAB_DIR_NB_ENTRIES							;AN000;

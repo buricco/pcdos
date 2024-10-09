@@ -6,7 +6,7 @@
 ;AN002 - D304 Modify Boot record structure for OS2		  11/09/87 J.K.
 ;******************************************************************************
 
-INCLUDE FORCHNG.INC
+INCLUDE forchng.inc
 debug	equ	0
 ;-------------------------------------------------------------------------------
 ; Public for debugging only
@@ -126,13 +126,13 @@ data	ends
 ; Constants
 
 .xlist
-INCLUDE DOSMAC.INC
-INCLUDE FORMACRO.INC
-INCLUDE FOREQU.INC
-INCLUDE FORSWTCH.INC
+include dosmac.inc
+include formacro.inc
+include forequ.inc
+include forswtch.inc
 
 ; This defines all the int 21H system calls
-INCLUDE SYSCALL.INC
+include syscall.inc
 
 ; Limits
 
@@ -141,9 +141,9 @@ INCLUDE filesize.inc
 ;-------------------------------------------------------------------------------
 ; These are the data structures which we will need
 
-INCLUDE DIRENT.INC
-INCLUDE ioctl.INC
-INCLUDE version.inc
+include dirent.inc
+include ioctl.inc
+include version.inc
 
 .list
 
@@ -188,16 +188,16 @@ boot2	db	0,0,0, "Boot 1.x"
 
 REORG2	LABEL	BYTE
 	ORG	BOOT2
-	INCLUDE BOOT11.INC
+	INCLUDE boot11.inc
 	ORG	REORG2
 
 
 
-INCLUDE BOOTFORM.INC
+INCLUDE bootform.inc
 
 
 BOOT	LABEL	BYTE
-	INCLUDE BOOT.INC
+	INCLUDE boot.inc
 
 scratchBuffer db 512 dup(?)
 

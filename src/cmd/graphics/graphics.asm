@@ -58,7 +58,7 @@ CODE	SEGMENT PUBLIC 'CODE'          ;;                                       ;AN
 	ORG   100H		       ;; required for .COM			;AN000;
 				       ;;					;AN000;
 				       ;;					;AN000;
-	INCLUDE GRINST.EXT	       ;; Bring in external declarations	;AN000;
+	INCLUDE grinst.ext	       ;; Bring in external declarations	;AN000;
 				       ;;  for transient command processing	;AN000;
 START:				       ;;					;AN000;
 				       ;;					;AN000;

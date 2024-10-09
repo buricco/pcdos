@@ -30,9 +30,9 @@ IFNDEF	DEBUG
 ENDIF
 
 include dbcs.sw
-include dosmac.INC
+include dosmac.inc
 
-include VERSIONA.INC
+include versiona.inc
 
 IF2
     %OUT    DOSSYM in Pass 2
@@ -68,9 +68,9 @@ BREAK <Read This and Weep>
 ;									   ;
 ;----+----+----+----+----+----+----+----+----+----+----+----+----+----+----;
 
-include bpb.INC
+include bpb.inc
 
-include buffer.INC
+include buffer.inc
 
 BREAK <User stack inside of system call and SysVars>
 ; Location of user registers relative user stack pointer
@@ -90,11 +90,11 @@ user_CS     DW	    ?
 user_F	    DW	    ?
 user_environ	ENDS
 
-include sysvar.INC
+include sysvar.inc
 
-include vector.INC
+include vector.inc
 
-include mult.INC
+include mult.inc
 
 BREAK <Disk map>
 ;  MSDOS partitions the disk into 4 sections:
@@ -118,7 +118,7 @@ BREAK <Disk map>
 ; All partition boundaries are sector boundaries.  The size of the FAT is
 ; adjusted to maximize the file space addressable.
 
-include dirent.INC
+include dirent.inc
 
 BREAK <File allocation Table information>
 ;
@@ -142,35 +142,35 @@ BREAK <File allocation Table information>
 ; number is selected so that disk checking programs know what to do (ie.  a
 ; cluster with entry FF7H which is not in a chain is not an error).
 
-include dpb.INC
+include dpb.inc
 
-include curdir.INC
+include curdir.inc
 
-include cpmfcb.INC
+include cpmfcb.inc
 
-include find.INC
+include find.inc
 
-include pdb.INC
+include pdb.inc
 
-include exe.INC
+include exe.inc
 
-include sf.INC
+include sf.inc
 
-include arena.INC
+include arena.inc
 
-include intnat.INC
+include intnat.inc
 
-include mi.INC
+include mi.inc
 
 fChk	equ 1
 fDelim	equ 2
 fSpChk	equ 4
 fFCB	equ 8
 
-include filemode.INC
+include filemode.inc
 
-include error.INC
+include error.inc
 
-include syscall.INC
+include syscall.inc
 
 SUBTTL

@@ -301,6 +301,6 @@ data	ends									;an028;bgb
 
 code	segment PUBLIC para 'CODE'                                              ;an028;bgb
 pathlabl parser 								;an028;bgb
-INCLUDE PARSE.ASM				;AN000; 			;an028;bgb
+INCLUDE parse.asm				;AN000; 			;an028;bgb
 pathlabl parser 								;an028;bgb
 code	ends									;an000;bgb

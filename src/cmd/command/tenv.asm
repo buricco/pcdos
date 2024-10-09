@@ -29,10 +29,10 @@ TITLE	Part6 COMMAND Transient routines.
 
 .xlist
 .xcref
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	INCLUDE comseg.asm
 	INCLUDE comequ.asm
-	INCLUDE DOSCNTRY.INC		;AN000;
+	INCLUDE doscntry.inc		;AN000;
 .list
 .cref
 

@@ -26,10 +26,10 @@ TITLE	COMMAND Transient Uninitialized DATA
 	INCLUDE comsw.asm
 .xlist
 .xcref
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	INCLUDE comequ.asm
 	INCLUDE comseg.asm
-	INCLUDE EA.inc			;AN030;
+	INCLUDE ea.inc			;AN030;
 .list
 .cref
 

@@ -96,7 +96,7 @@
 	    %OUT    COMPONENT=GRAFTABL, MODULE=GRTABPAR.SAL... ;AN000;
 	ENDIF				;AN000;
 ; =  =	=  =  =  =  =  =  =  =	=  =
-	INCLUDE PATHMAC.INC		;AN006;
+	INCLUDE pathmac.inc		;AN006;
 ; =  =	=  =  =  =  =  =  =  =	=  =
 HEADER	MACRO	TEXT			;;AN000;
 .XLIST					;AN000;

@@ -28,7 +28,7 @@ TITLE	COMMAND Initialization
 
 .xlist
 .xcref
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	include doscntry.inc		;AC000;
 	INCLUDE comseg.asm
 	INCLUDE comequ.asm
@@ -1690,7 +1690,7 @@ ASSUME	DS:RESGROUP, ES:RESGROUP
 .xlist
 .xcref
 
-INCLUDE SYSMSG.INC				;AN000; include message services
+INCLUDE sysmsg.inc				;AN000; include message services
 
 .list
 .cref

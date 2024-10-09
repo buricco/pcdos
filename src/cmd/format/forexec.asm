@@ -52,10 +52,10 @@ code	ends
 ;
 
 .xlist
-INCLUDE FORCHNG.INC
-INCLUDE FORMACRO.INC
-INCLUDE SYSCALL.INC
-INCLUDE FOREQU.INC
+INCLUDE forchng.inc
+include formacro.inc
+include syscall.inc
+include forequ.inc
 .list
 
 ;

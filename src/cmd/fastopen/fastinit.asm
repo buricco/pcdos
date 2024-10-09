@@ -137,7 +137,7 @@ include	   version.inc
 
 INCLUDE    fastsegs.inc 									   ;AN000;
 INCLUDE    fastopen.inc 									   ;AN000;
-INCLUDE    SYSCALL.INC ;									   ;AN000;
+INCLUDE    syscall.inc ;									   ;AN000;
 
 ;-----------------------------------------------------------------------
 ;		       EQUATES

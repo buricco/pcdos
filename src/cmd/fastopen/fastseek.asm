@@ -5,7 +5,7 @@ Title	FASTOPEN
 .xcref
 .xlist
 debug=0 		  ;this is an equate only for DOSMAC.inc
-INCLUDE DOSMAC.inc
+INCLUDE dosmac.inc
 .list
 .cref
 INCLUDE dirent.inc

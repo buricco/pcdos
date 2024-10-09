@@ -165,6 +165,6 @@ SUBLIST 	  ENDS								;AN000;
 ;(deleted ;AN011;) MI_Label	   db	   11 dup (' ')    ;Volume Label
 ;(deleted ;AN011;) MI_System	   db	    8 dup (' ')    ;File System type
 ;(deleted ;AN011;) A_MEDIA_ID_INFO ends
-		INCLUDE BOOTFORM.INC	;GET DESCRIPTION OF BOOT RECORD
+		INCLUDE bootform.inc	;GET DESCRIPTION OF BOOT RECORD
 VOL_SERIAL	EQU	EXT_BOOT_SERIAL ;LOCATION IN BOOT RECORD OF VOLSER NUM	;AN000;
 

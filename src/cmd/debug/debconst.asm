@@ -5,8 +5,8 @@
 	   ENDIF
 .XLIST
 .XCREF
-INCLUDE    DOSSYM.INC
-INCLUDE    DEBEQU.ASM
+INCLUDE    dossym.inc
+INCLUDE    debequ.asm
 .LIST
 .CREF
 

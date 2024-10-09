@@ -594,7 +594,7 @@ RESMSGEND	DW	0			;AN000;; holds offset of msg end (end of resident)
 .xlist
 .xcref
 
-INCLUDE SYSMSG.INC				;AN000; include message services
+INCLUDE sysmsg.inc				;AN000; include message services
 
 .list
 .cref

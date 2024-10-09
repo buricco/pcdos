@@ -83,13 +83,13 @@ code	ends
 ;
 
 .xlist
-INCLUDE FORCHNG.INC
-INCLUDE FORMACRO.INC
-INCLUDE SYSCALL.INC
-INCLUDE IOCTL.INC
-INCLUDE FOREQU.INC
-INCLUDE FORPARSE.INC
-INCLUDE FORSWTCH.INC
+INCLUDE forchng.inc
+include formacro.inc
+include syscall.inc
+include ioctl.inc
+include forequ.inc
+include forparse.inc
+include forswtch.inc
 .list
 
 ;

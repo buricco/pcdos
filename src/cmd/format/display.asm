@@ -53,10 +53,10 @@ End_Of_Memory    ends                           ;
 ;
 
 .xlist
-INCLUDE FORCHNG.INC
-INCLUDE FOREQU.INC
-INCLUDE FORMSG.INC
-INCLUDE SYSMSG.INC
+INCLUDE forchng.inc
+include forequ.inc
+include formsg.inc
+include sysmsg.inc
 .list
 
 ;

@@ -77,13 +77,13 @@ page	,132					;
 .xlist										;an000;bgb
 include chkseg.inc					   ;an005;bgb		;an000;bgb
 include pathmac.inc								;an000;bgb
-INCLUDE CHKEQU.INC				;				;an000;bgb;AN000;
-INCLUDE CHKCHNG.INC				;List of changes		;an000;bgb
+include chkequ.inc				;				;an000;bgb;an000;
+include chkchng.inc				;List of changes		;an000;bgb
 include dossym.inc								;an000;bgb
-INCLUDE SYSCALL.INC				;				;an000;bgb;AN000;
-INCLUDE CHKMACRO.INC				;				;an000;bgb;AN000;
-INCLUDE CHKPARSE.INC				;				;an000;bgb;AN000;
-INCLUDE IOCTL.INC								;an000;bgb
+include syscall.inc				;				;an000;bgb;an000;
+include chkmacro.inc				;				;an000;bgb;an000;
+include chkparse.inc				;				;an000;bgb;an000;
+include ioctl.inc								;an000;bgb
 .list										;an000;bgb
 										;an000;bgb
 										;an000;bgb

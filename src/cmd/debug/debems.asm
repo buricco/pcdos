@@ -42,7 +42,7 @@
 ;
 ;======================= END OF SPECIFICATIONS ===========================
 
-INCLUDE DOSSYM.INC
+INCLUDE dossym.inc
 include debequ.asm
 
 

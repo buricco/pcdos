@@ -27,7 +27,7 @@ TITLE	PART8 COMMAND Transient routines.
 	INCLUDE comsw.asm
 .xlist
 .xcref
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	INCLUDE comseg.asm
 	INCLUDE comequ.asm
 .list

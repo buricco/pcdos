@@ -82,7 +82,7 @@
 	    %OUT    COMPONENT=DISKCOPY, MODULE=DCOPYPAR.SAL... ;AN000;
 	ENDIF				;AN000;
 ; =  =	=  =  =  =  =  =  =  =	=  =
-	INCLUDE PATHMAC.INC		;AN015;PATHGEN MACRO
+	INCLUDE pathmac.inc		;AN015;PATHGEN MACRO
 ; =  =	=  =  =  =  =  =  =  =	=  =
 HEADER	MACRO	TEXT			;;AN000;
 .XLIST					;;AN000;

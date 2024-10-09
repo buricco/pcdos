@@ -28,7 +28,7 @@ TITLE	PART4 COMMAND Transient routines.
 	INCLUDE comsw.asm
 .xlist
 .xcref
-	INCLUDE DOSSYM.INC
+	INCLUDE dossym.inc
 	INCLUDE comseg.asm
 	INCLUDE comequ.asm		;AC000;
 	include ioctl.inc		;AN000;

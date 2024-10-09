@@ -116,7 +116,7 @@ ENDM
 ;---------------------------;
 .xlist                      ;
 .xcref                      ;
-        INCLUDE SYSCALL.INC ;
+        INCLUDE syscall.inc ;
         INCLUDE sysmsg.inc  ;   ;AN000; Include message equates and MACROS
         INCLUDE find.inc    ;   ;AN000; Include find equates and MACROS
 .list                       ;
@@ -469,7 +469,7 @@ crlf            db      CR,LF   ;AN000;
 ;*
 ;**************************************************************************
 
-        MSG_SERVICES <FIND.ctl,FIND.cla,FIND.cl1,FIND.cl2>      ;AN000;
+        MSG_SERVICES <FIND.CTL,FIND.CLA,FIND.CL1,FIND.CL2>      ;AN000;
         MSG_SERVICES <DISPLAYmsg,LOADmsg,CHARmsg,NOCHECKSTDIN>  ;AN003; Make retriever services available
 START:
 
@@ -580,7 +580,8 @@ openit:
         mov     ah,open
         mov     al,0                    ;file open for reading
         int     021h                    ;call the DOS
-        ljc      do_open_error           ;AN000;
+        jnc     cp_check
+        jmp     do_open_error
 ;-------Open was successful. Make sure codepages are the same
 cp_check:
         cmp     cs:cpsw_state,CPSWNotActive ;AN000; Is Code Page support active
@@ -1392,8 +1393,9 @@ parse_loop:                                             ;AN000;
         jne     p_next                                  ;AN004; No eol found
         mov     cs:got_eol,TRUE                         ;AN004; no more filenames to get!
         cmp     cs:did_file,TRUE                        ;AN004; did we do a file already ?
-        lje     doexit                                  ;AN004; yes, exit
-        jmp     end_parse                               ;AN004; Yes, done here
+        jne     @f
+        jmp     doexit
+@@:     jmp     end_parse                               ;AN004; Yes, done here
 p_next:                                                 ;AN004; continue
         and     ax,ax                                   ;AN007; ;AN000; Was there an error?
         je      CONT2                                   ;AN000; No, continue processing

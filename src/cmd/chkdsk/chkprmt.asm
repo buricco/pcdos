@@ -24,10 +24,10 @@ page	,132					;				;an000;bgb
 										;an000;bgb
 	.xlist									;an000;bgb
 	include chkseg.inc							;an000;bgb
-	INCLUDE CHKCHNG.INC							;an000;bgb
-	INCLUDE SYSCALL.INC							;an000;bgb
-	INCLUDE CHKEQU.INC							;an000;bgb
-	INCLUDE CHKMACRO.INC							;an000;bgb
+	include chkchng.inc							;an000;bgb
+	include syscall.inc							;an000;bgb
+	include chkequ.inc							;an000;bgb
+	include chkmacro.inc							;an000;bgb
 	include pathmac.inc							;an000;bgb
 	.list									;an000;bgb
 										;an000;bgb

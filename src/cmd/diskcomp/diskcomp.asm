@@ -162,9 +162,9 @@
 ;									     *
 ;*****************************************************************************
 
-	INCLUDE PATHMAC.INC		;AN013;
-	INCLUDE DCMPMACR.INC		;(FORMERLY CALLED MACRO.DEF)
-	INCLUDE DISKCOMP.EQU		;EQUATES
+	INCLUDE pathmac.inc		;AN013;
+	INCLUDE dcmpmacr.inc		;(FORMERLY CALLED MACRO.DEF)
+	INCLUDE diskcomp.equ		;EQUATES
 
 ;	       $salut (4,16,22,36) ;						;AN000;
 ;THIS MESSAGE DESCRIPTOR CONTROL BLOCK IS GENERATED, ONE PER MESSAGE,

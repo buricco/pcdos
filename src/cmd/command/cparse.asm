@@ -25,8 +25,8 @@
 
 .xlist
 .xcref
-	INCLUDE DOSSYM.INC
-	INCLUDE DEVSYM.INC
+	INCLUDE dossym.inc
+	INCLUDE devsym.inc
 	INCLUDE comseg.asm
 	INCLUDE comequ.asm
 .list

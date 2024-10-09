@@ -517,7 +517,7 @@ Val3SW	equ	Do_Include			;				;AN001;
 DrvSW	equ	Do_Include			;				;AN000;
 QusSW	equ	Do_Include			;				;AN000;
 
-INCLUDE PARSE.ASM				;				;AN000;
+INCLUDE parse.asm				;				;AN000;
 
 
 code	ends

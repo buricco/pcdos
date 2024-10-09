@@ -135,11 +135,11 @@ page
 DEBUG	=	0
 
 .xlist
-	INCLUDE SYSMSG.INC		;AN000;
-	INCLUDE SYSVAR.INC
-	INCLUDE CURDIR.INC
-	INCLUDE MULT.INC
-	INCLUDE PDB.INC
+	include sysmsg.inc		;AN000;
+	include sysvar.inc
+	include curdir.inc
+	include mult.inc
+	include pdb.inc
 
 MSG_UTILNAME <ASSIGN>
 
@@ -1143,8 +1143,8 @@ inv		dd	?
 STring		dd	?			;AN000;string holder
 
 
-INCLUDE ASSGPARM.INC				;AN000;
-INCLUDE ASSGMSG.INC				;AN000;
+include assgparm.inc				;AN000;
+include assgmsg.inc				;AN000;
 
 
 assume	cs:code, ds:code, ss:code, es:code
@@ -1779,8 +1779,8 @@ MSG_SERVICES <MSGDATA>
 msg_services <NEARmsg>
 msg_services <LOADmsg>
 msg_services <DISPLAYmsg,CHARmsg>
-msg_services <assign.cla,assign.cl1>
-msg_services <assign.cl2>
+msg_services <ASSIGN.CLA,ASSIGN.CL1>
+msg_services <ASSIGN.CL2>
 .list
 
 include msgdcl.inc

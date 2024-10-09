@@ -23,7 +23,7 @@ DOS_PAGE1	   EQU	   0FEH 								   ;AN000;
 .xcref
 .xlist
 debug=0 		   ; an equate only for DOSMAC.inc				     ;AN000;
-INCLUDE  DOSMAC.inc										    ;AN000;
+INCLUDE  dosmac.inc										    ;AN000;
 .list
 .cref
 INCLUDE  dirent.inc										    ;AN000;

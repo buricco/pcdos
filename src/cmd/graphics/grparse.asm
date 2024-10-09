@@ -53,7 +53,7 @@
 				       ;;					;AN000;
 CODE	SEGMENT PUBLIC 'CODE'          ;;                                       ;AN000;
 				       ;;					;AN000;
-	INCLUDE STRUC.INC	       ;;					;AN000;
+	INCLUDE struc.inc	       ;;					;AN000;
 				       ;;					;AN000;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;					;AN000;
 ;;										;AN000;
@@ -81,7 +81,7 @@ KeySW	      EQU     0 							;AN000;
 ;Val2SW        EQU     0							;AN000;
 										;AN000;
        PUBLIC  SYSPARSE 	       ;;					;AN000;
-       INCLUDE PARSE.ASM	       ;; parser code				;AN000;
+       INCLUDE parse.asm	       ;; parser code				;AN000;
 				       ;;					;AN000;
 CODE	ENDS			       ;;					;AN000;
 	END									;AN000;
