@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 S. V. Nickolas.
+ * Copyright 2024, 2025 S. V. Nickolas.
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the Software), to
@@ -18,6 +18,10 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
+ * 
+ * Revision 2025.0425 by usotsuki:
+ *   some class files use tab separator instead of space; an extra check added
+ *   to catch these circumstances.
  */
 
 #include <stdio.h>
@@ -193,7 +197,7 @@ int main (int argc, char **argv)
    printf ("Utility name is now: %s\n", utilnam);
    continue;
   }
-  if (!strncasecmp(linbuf, ":class ", 7))
+  if ((!strncasecmp(linbuf, ":class ", 7))||(!strncasecmp(linbuf, ":class\t", 7)))
   {
    printf ("Writing class: %c\n", linbuf[7]);
    sprintf (clasnam, "%s.CL%c", utilnam, linbuf[7]);
