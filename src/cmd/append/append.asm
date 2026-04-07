@@ -1,5 +1,5 @@
-; Copyright 1981-1988
-;     International Business Machines Corp. & Microsoft Corp.
+; Copyright 1986-88 Microsoft Corp. & International Business Machines Corp.
+; Copyright 2026 S. V. Nickolas.
 ;
 ; Permission is hereby granted, free of charge, to any person obtaining a copy
 ; of this software and associated documentation files (the Software), to deal
@@ -24,7 +24,7 @@ page	60,120
 .sall
 title	APPEND
 include sysmsg.inc
-msg_utilname<APPEND>
+;msg_utilname<APPEND>
 ;-----------------------------------------------------------------------------
 ;
 ;      Title:	       APPEND
@@ -130,31 +130,31 @@ DPL_XID 	DW	0		;RESERVED
 DPL_UID 	DW	0		;SERVER USER ID
 DPL_PID 	DW	0		;REDIRECTOR PROCESS ID
 DPL		ENDS
-include sysmac.lib
+include sysmac.inc
 include versiona.inc
 include appendp.inc			; parseing stuff for append			 ;AN004;
 .list
 ;		extrn	end_address:near	; end of stay resident stuff
 
-;		extrn	bad_append_msg:byte	; messages
-;		extrn	path_error_msg:byte
-;		extrn	parm_error_msg:byte
-;		extrn	path_parm_error_msg:byte
-;		extrn	no_append_msg:byte		; @@05
-;		extrn	append_assign_msg:byte
-;		extrn	append_TV_msg:byte		; @@01
-;		extrn	bad_DOS_msg:byte
-;		extrn	second_APPEND_msg:byte		; @@04
+		extrn	bad_append_msg:byte	; messages
+		extrn	path_error_msg:byte
+		extrn	parm_error_msg:byte
+		extrn	path_parm_error_msg:byte
+		extrn	no_append_msg:byte		; @@05
+		extrn	append_assign_msg:byte
+		extrn	append_TV_msg:byte		; @@01
+		extrn	bad_DOS_msg:byte
+		extrn	second_APPEND_msg:byte		; @@04
 
-;		extrn	len_bad_append_msg:word 	;@@11
-;		extrn	len_path_error_msg:word 	;@@11
-;		extrn	len_parm_error_msg:word 	;@@11
-;		extrn	len_path_parm_error_msg:word	;@@11
-;		extrn	len_no_append_msg:word		;@@11
-;		extrn	len_append_assign_msg:word	;@@11
-;		extrn	len_append_TV_msg:word		;@@11
-;		extrn	len_bad_DOS_msg:word		;@@11
-;		extrn	len_second_APPEND_msg:word	;@@11
+		extrn	len_bad_append_msg:word 	;@@11
+		extrn	len_path_error_msg:word 	;@@11
+		extrn	len_parm_error_msg:word 	;@@11
+		extrn	len_path_parm_error_msg:word	;@@11
+		extrn	len_no_append_msg:word		;@@11
+		extrn	len_append_assign_msg:word	;@@11
+		extrn	len_append_TV_msg:word		;@@11
+		extrn	len_bad_DOS_msg:word		;@@11
+		extrn	len_second_APPEND_msg:word	;@@11
 
 ;	Environmental Vector
 
@@ -284,9 +284,10 @@ dirlst_segment	dw	0
 tv_vec_off	dw	0		; save TV vector here
 tv_vec_seg	dw	0
 
-pars_off	dd	cseg: SysParse	; save pointer to parser here
+;pars_off	dd	cseg: SysParse	; save pointer to parser here
 ;pars_off	 dw	 offset SysParse ; save pointer to parser here
 ;pars_seg	 dw	 0
+pars_off	dd	0
 
 app_dirs_seg	dw	0		; save ES here during FCB
 
@@ -448,9 +449,9 @@ si_seg	    dw	0	;put segment of command line here			;an010;bgb
 ;
 ;-------------------------------------------------------------------
 
-MSG_SERVICES <MSGDATA>
-MSG_SERVICES <DISPLAYmsg,CHARmsg>						;an010;bgb
-MSG_SERVICES <APPEND.CLA,APPEND.CL1,APPEND.CTL>
+;MSG_SERVICES <MSGDATA>
+;MSG_SERVICES <DISPLAYmsg,CHARmsg>						;an010;bgb
+;MSG_SERVICES <APPEND.CLA,APPEND.CL1,APPEND.CTL>
 
 .xlist
 ;-----------------------------------------------------------------------------
@@ -1645,14 +1646,12 @@ ck4:					;
 	push	cs
 	pop	ds
 
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,1			; message number		 ;AN000;
-	mov	bx,STDERR		; handle			 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
-	call	sysdispmsg						 ;AN000;
+ 	mov	cx,len_bad_append_msg					 ;AN000;   ; @@07
+ 	lea	dx,bad_append_msg	; bad app message		 ;AN000;   ; @@07
+ 	call	print_STDERR						 ;AN000;   ; @@07
+ 	lea	dx,crlf 		; carriage return, line feed	  ; @@07
+ 	mov	cx,crlf_len		; length of string		  ; @@07
+ 	call	print_STDERR						  ; @@07
 
 	pop	ds
 	mov	al,1
@@ -2503,40 +2502,23 @@ main_begin:				; DOS entry point
 	cmp	dx,word ptr version_loc ; does the version match?	  ; @@07
 	jne	bad_append_ver		; no, cough up an error messsage  ; @@07
 
-
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,9			; message number		 ;AN000;
-	mov	bx,STDERR		; handle			 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
-	call	sysdispmsg						 ;AN000;
-;	mov	cx,len_second_APPEND_msg; length of string		 ;AN000;   ; @@04
-;	lea	dx,second_APPEND_msg	; second load message		 ;AN000;   ; @@04
-;	call	print_STDERR		; display error message 	 ;AN000;   ; @@04
-;	lea	dx,crlf 		; carriage return, line feed	  ; @@04
-;	mov	cx,crlf_len		; length of string		  ; @@04
-;	call	print_STDERR						  ; @@04
+	mov	cx,len_second_APPEND_msg; length of string		 ;AN000;   ; @@04
+	lea	dx,second_APPEND_msg	; second load message		 ;AN000;   ; @@04
+	call	print_STDERR		; display error message 	 ;AN000;   ; @@04
+	lea	dx,crlf 		; carriage return, line feed	  ; @@04
+	mov	cx,crlf_len		; length of string		  ; @@04
+	call	print_STDERR						  ; @@04
 									  ; @@04
 	mov	al,0fch 		; second load			  ; @@05
 	call	terminate		; exit to DOS			  ; @@05
 
 bad_append_ver: 			; append version mismatch	  ; @@07
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,1			; message number		 ;AN000;
-	mov	bx,STDERR		; handle			 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
-	call	sysdispmsg						 ;AN000;
-;	mov	cx,len_bad_append_msg					 ;AN000;   ; @@07
-;	lea	dx,bad_append_msg	; bad app message		 ;AN000;   ; @@07
-;	call	print_STDERR						 ;AN000;   ; @@07
-;	lea	dx,crlf 		; carriage return, line feed	  ; @@07
-;	mov	cx,crlf_len		; length of string		  ; @@07
-;	call	print_STDERR						  ; @@07
+	mov	cx,len_bad_append_msg					 ;AN000;   ; @@07
+	lea	dx,bad_append_msg	; bad app message		 ;AN000;   ; @@07
+	call	print_STDERR						 ;AN000;   ; @@07
+	lea	dx,crlf 		; carriage return, line feed	  ; @@07
+	mov	cx,crlf_len		; length of string		  ; @@07
+	call	print_STDERR						  ; @@07
 	mov	ax,0feh 		; bad APPEND version		  ; @@05
 	call	terminate		; exit to DOS			  ; @@05
 
@@ -2680,54 +2662,35 @@ do_command:				; APPEND process
 ;	APPEND
 
 not_already_there:
-;	mov	ah,get_version		; lets find out if we should do it
-;	call	int_21			; try the open
-;	cmp	ax,expected_version	; compare with DOS version
-;	jne	bad_DOS
+	mov	ah,get_version		; lets find out if we should do it
+	call	int_21			; try the open
+        xchg    ah, al
+        cmp     ax, 0400h               ; compare with DOS version
+        jb      bad_DOS
 
-;	jmp	check_assign		; valid range
+	jmp	check_assign		; valid range
 					; lets see if assign has been loaded
 
 ;	Break it to the user that he's trying to do an APPEND with
 ;	the wrong DOS version
 
-;bad_DOS:
-;	cmp	al,01			; DOS 1x or below has no handle fcns ; fixed P134 9/10/87 - gga
-;	ja	use_STDERR
-;;	lea	dx,bad_DOS_msg		; bad DOS message				  ;AN000;
-;;	mov	ah,print_string 							  ;AN000;
-;;	call	int_21									  ;AN000;
-;	call	sysloadmsg						 ;AN000;
-;									 ;AN000;
-;	mov	ax,8			; message number		 ;AN000;
-;	mov	bx,NO_HANDLE		; no handle			 ;AN000;
-;	xor	cx,cx			; sub count			 ;AN000;
-;	xor	dl,dl			; no input			 ;AN000;
-;	mov	dh,-1			; message class 		 ;AN000;
-;	call	sysdispmsg						 ;AN000;
+bad_DOS:
+	cmp	al,01			; DOS 1x or below has no handle fcns ; fixed P134 9/10/87 - gga
+	ja	use_STDERR
+	lea	dx,bad_DOS_msg		; bad DOS message				  ;AN000;
+	mov	ah,print_string 							  ;AN000;
+	call	int_21									  ;AN000;
+	call	ctrl_break_rest
+	int	termpgm 		; return to DOS 		  ; @@05
 
+use_STDERR:
+	mov	cx,len_bad_DOS_msg	; length of string		 ;AN000;
+	lea	dx,bad_DOS_msg		; bad DOS message		 ;AN000;
+	call	print_STDERR		; display error message 	 ;AN000;
 
-;	call	ctrl_break_rest
-;	int	termpgm 		; return to DOS 		  ; @@05
-
-;use_STDERR:
-;									 ;AN000;
-;	call	sysloadmsg						 ;AN000;
-;									 ;AN000;
-;	mov	ax,8			; message number		 ;AN000;
-;	mov	bx,STDERR		; handle			 ;AN000;
-;	xor	cx,cx			; sub count			 ;AN000;
-;	xor	dl,dl			; no input			 ;AN000;
-;	mov	dh,-1			; message class 		 ;AN000;
-;	call	sysdispmsg						 ;AN000;
-
-;;	mov	cx,len_bad_DOS_msg	; length of string		 ;AN000;
-;;	lea	dx,bad_DOS_msg		; bad DOS message		 ;AN000;
-;;	call	print_STDERR		; display error message 	 ;AN000;
-
-;	call	ctrl_break_rest
-;	mov	al,0ffh 		; bad DOS version		  ; @@05
-;	call	terminate		; exit to DOS			  ; @@05
+	call	ctrl_break_rest
+	mov	al,0ffh 		; bad DOS version		  ; @@05
+	call	terminate		; exit to DOS			  ; @@05
 
 check_assign:
 	mov	ax,0600h
@@ -2739,18 +2702,9 @@ check_assign:
 ;	ASSIGN has been loaded before APPEND, bad news!
 
 assign_there:
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,6			; message number		 ;AN000;
-	mov	bx,STDERR		; handle			 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
-	call	sysdispmsg						 ;AN000;
-
-;	mov	cx,len_append_assign_msg; length of string
-;	lea	dx,append_assign_msg
-;	call	print_STDERR		; display error message
+	mov	cx,len_append_assign_msg; length of string
+	lea	dx,append_assign_msg
+	call	print_STDERR		; display error message
 	jmp	conflict_exit						  ; @@01
 									  ; @@01
 check_Topview:								  ; @@01
@@ -2764,18 +2718,9 @@ check_Topview:								  ; @@01
 ;	TopView has been loaded before APPEND, bad news!		  ; @@01
 									  ; @@01
 TopView_there:								  ; @@01
-;	mov	cx,len_append_TV_msg	; length of string		  ; @@01
-;	lea	dx,append_TV_msg					  ; @@01
-;	call	print_STDERR		; display error message 	  ; @@01
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,7			; message number		 ;AN000;
-	mov	bx,STDERR		; handle			 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
-	call	sysdispmsg						 ;AN000;
-
+	mov	cx,len_append_TV_msg	; length of string		  ; @@01
+	lea	dx,append_TV_msg					  ; @@01
+	call	print_STDERR		; display error message 	  ; @@01
 									  ; @@01
 conflict_exit:								  ; @@01
 	call	ctrl_break_rest
@@ -2800,316 +2745,119 @@ already_there:
 
 process_args:				; process all arguments
 
-;-------------------------------------------------------------------
-	mov	si,0081h		; DS:SI points to argument area
-	mov	cs:byte ptr e_switch+9,0	; turn /E switch off
+	 mov	 si,0081h		 ; point si to argument area
+	 mov	 bx,ss
+	 mov	 ds,bx
 
-process_argsx:				; process all arguments
-;
+process_argsx: 			 ; process all arguments
+	 mov	 di,0			 ; set incase int 2f not installed ; @@08
+	 mov	 es,di							   ; @@08
+	 mov	 ax,append_2f*256+dir_ptr  ; es:di -> internal result area ; @@08
+	 int	 int_function						   ; @@08
+	 mov	 ax,es			 ; see if active yet		   ; @@08
+	 or	 ax,di							   ; @@08
+	 jnz	 have_ptr						   ; @@08
+	 push	 cs			 ; not active, set myself	   ; @@08
+	 pop	 es							   ; @@08
+	 lea	 di,app_dirs						   ; @@08
+have_ptr:								   ; @@08
 
+;	 step through the DOS command line argument area, and copy the new dir
+;	 list to the proper place in APPEND. This requires some parsing for
+;	 spaces, tabs chars, equal signs, as well as conversion to upper case
 
-;	make sure that the /PATH and /X switches are re-enabled, and
-;	various flags are cleared
+	 cmp	 byte ptr[si],"="	 ; APPEND=path is OK syntax
+	 jne	 skip_leading
+	 inc	 si
+skip_leading:				 ; skip leading spaces
+	 lodsb
+	 cmp	 al," "
+	 je	 skip_leading
+	 cmp	 al,tab_char
+	 je	 skip_leading
+	 cmp	 al,"," 						   ; @@15
+	 je	 skip_leading						   ; @@15
+	 cmp	 al,"=" 						   ; @@15
+	 je	 skip_leading						   ; @@15
+	 cmp	 al,cr			 ; did we have command line arguments?
+	 jump	 E,display_dirs 	 ; no, display the dirs currently appended
+	 cmp	 al,"/" 		 ; is it a parm starter?	   ; @@05
+	 jump	 E,bad_path_parm	 ; yes, it's an error              ; @@05
+	 dec	 si
 
-	mov	ah,"/"
-	mov	cs:byte ptr x_switch+9,ah		; re-enable /X switch
-	mov	cs:byte ptr path_switch+9,ah		; re-enable /PATH switch
-	mov	cs:byte ptr x_result.$P_Type,0		; clear flag
-	mov	cs:byte ptr path_result.$P_Type,0	; clear flag
-	mov	cs:byte ptr dirs_result.$P_Type,0	; clear flag
-	mov	cs:parse_flag,0 			; clear parse flag
+copy_args:
+	 lodsb				 ; get char from command line area
+	 cmp	 al,cr			 ; are we at the end?
+	 jump	 E,found_end		 ; yes, display the currently appended dirs
+	 cmp	 al," " 		 ; is it a space?
+	 je	 found_space		 ; yes, at end
+	 cmp	 al,tab_char		 ; is it a tab?
+	 je	 found_space		 ; yes, treat it like a space
+	 cmp	 al,"/" 		 ; is it a parm starter?
+	 je	 bad_path_parm		 ; yes, it's an error              ; @@05
+	 cmp	 al,"a" 		 ; find out if we have a lower case char
+	 jb	 copy_char						   ; @@14
+	 cmp	 al,"z"
+	 ja	 copy_char						   ; @@14
+	 sub	 al,"a"-"A"		 ; convert char to upper case	   ; @@14
 
-;	set up things to call PARSER
+copy_char:
+	 mov	 in_middle,-1		 ; say that we made it to the middle
+	 stosb				 ; no, copy char into resident storage area
+	 jmp	 copy_args		 ; do it some more
 
-	push	cs			; make sure ES points to segment where
-	pop	es			; parm block info is
-	lea	di,cs:p_block2		; ES:DI points to parm block, for secondary parsing
+found_space:
+	 cmp	 in_middle,0		 ; set the space flag then go through
+	 jump	 E,copy_args		 ; loop some more
 
+found_end:
+	 cmp	 in_middle,0		 ; if I found the end of string but not
+	 jump	 E,display_dirs 	 ; in the middle, go display some dirs
 
-	xor	cx,cx			; ordinal value, must start as 0
-	xor	dx,dx			; must be 0
+	 mov	 es:byte ptr [di],0	 ; null terminate the string
+	 mov	 in_middle,0
+	 cmp	 al,cr
+	 je	 past_trailing
 
-	call	Scan_For_Equal		; yes - let's see if we have "=" symbol ;an008; dms;
-					; parse past it if we do
+skip_trailing: 			 ; skip end spaces
+	 lodsb
+	 cmp	 al," "
+	 je	 skip_trailing
+	 cmp	 al,tab_char
+	 je	 skip_trailing
+	 cmp	 al,"/" 		 ; path and parm not together	   ; @@05
+	 je	 bad_path_parm						   ; @@05
+	 cmp	 al,cr			 ; only white space allowed at end
+	 jne	 bad_path
+past_trailing:
 
-get_pars_info:
-	call	dword ptr pars_off	; call to COMMAND.COM's parser
-
-	cmp	ax,-1			; end of line?
-	jne	not_end_of_line 	; no, carry on
-	jmp	end_of_line_reached	; yes, go figure out what we got
-
-not_end_of_line:
-
-	cmp	ax,0			; no, find out if there an error
-	je	not_parse_error 	; no, carry on
-	jmp	parse_error		; yes, go display the error message
-
-;	got here without any errors, set the proper bits in mode_flags
-
-not_parse_error:
-	mov	cs: parse_flag,0ffh	; set parse flag
-
-
-check_e:
-	cmp	e_result.$P_Type,3	; was there a /E in this pass?
-	jne	check_x 		; no, look for an X
-
-	mov	byte ptr e_switch+9,0	; turn this off so we don't allow another
-	mov	e_result.$P_Type,0	; clear this so we don't get fooled later
-
-	or	mode_flags,E_mode	; set E mode on
-
-	jmp	get_pars_info		; go get another argument
-
-check_x:
-	cmp	x_result.$P_Type,3	; was there a /X on this pass? list index
-	je	set_x			; yes, and it was /X w/o ON or OFF
-
-	cmp	x_result.$P_Type,2	; was there a /X on this pass? list index
-	jne	check_path
-
-	mov	byte ptr x_switch+9,0	; turn this off so we don't allow  another
-	mov	x_result.$P_Type,0	; clear this so we don't get fooled later
-
-	cmp	x_result.$P_Item_Tag,1	; was /X or /X:ON specified?
-	je	set_x			; yes, set X mode on
-	and	mode_flags,NOT x_mode	; no, clear it
-	jmp	get_pars_info
-
-set_x:
-	or	mode_flags,x_mode
-	jmp	get_pars_info
-
-check_path:
-	cmp	path_result.$P_Type,2	; was there a /path on this pass? list index
-	jne	check_dirs
-
-	xor	ah,ah			; turn this off so we don't allow
-	mov	byte ptr path_switch+9,ah	 ; another
-	mov	path_result.$P_Type,0	; clear this so we don't get fooled later
-
-
-	cmp	path_result.$P_Item_Tag,1	; was /PATH:ON specified?
-	je	set_path			; yes, set PATH mode
-	and	mode_flags,NOT path_mode	; no, clear it
-	jmp	get_pars_info
-
-set_path:
-	or	mode_flags,path_mode	; set PATH mode on
-	jmp	get_pars_info
-
-;	find out if dirs specified
-
-check_dirs:
-	cmp	dirs_result.$P_Type,3	; was a simple string returned?
-	je	check_dirs2		; yes, carry on
-	jmp	get_pars_info		; no, all done for now
-
-;	set up stuff to do the dirs copy
-
-check_dirs2:
-	push	es
-	push	ds
-	push	si
-	push	di
-
-	lds	si,dword ptr dirs_result.$P_Picked_Val	  ; get pointer to dirs string
-	mov	dirs_result.$P_Type,0	; clear this so we don't get fooled later
-
-	mov	di,0			; set incase int 2f not installed ; @@08
-	mov	es,di							  ; @@08
-	mov	ax,append_2f*256+dir_ptr  ; es:di -> internal result area ; @@08
-	int	int_function						  ; @@08
-	mov	ax,es			; see if active yet		  ; @@08
-	or	ax,di							  ; @@08
-	jnz	copy_dirs_loop		; ok, do the copy		  ; @@08
-	push	cs			; not active, set myself	  ; @@08
-	pop	es							  ; @@08
-	lea	di,app_dirs						  ; @@08
-
-copy_dirs_loop:
-	movs	es: byte ptr[di],ds:[si]; copy char
-
-	cmp	byte ptr ds:[si-1],0	; is char a null
-	je	done_copy_dirs
-
-	jmp	copy_dirs_loop
-
-done_copy_dirs:
-
-	pop	di
-	pop	si
-	pop	ds
-	pop	es
-
-	jmp	get_pars_info		; no error yet, loop till done
-
-end_of_line_reached:
-	mov	old_syntax,0		; process old format operands
-
-	cmp	cs:initial_pass,-1	; is this the first APPEND			 ;AN006;
-	je	first_one		; yes, clear flag and exit			 ;AN006;
-
-	cmp	cs:parse_flag,0 	; if this flag is off, means null command line
-					; was nothing on the command line
-	je	display_dirs		; go display the dirs
-
-first_one:										 ;AN006;
-	mov	cs:initial_pass,0	; clear first pass flag 			 ;AN006;
-
-done_for_now:
+	 cmp	 old_syntax,0		 ; go back to normal mode
+	 je	 normal_exit
+	 jmp	 exit_append2
 normal_exit:
-	call	ctrl_break_rest 	; reset control break checking
-	mov	ax,0			; set string
-	ret				; exit to COMMAND
-
-
-parse_error:
-	push	ax			;save parser error code 		;an010;bgb
-	call	sysloadmsg						 ;AN000;
-	pop	ax			;restore parser error coed		;an010;bgb
-	call	do_parse_err							;an010;bgb
-	jmp	bad_parmx		; display message and get out
-
-;-------------------------------------------------------------------
-
-;	 mov	 si,0081h		 ; point si to argument area
-;	 mov	 bx,ss
-;	 mov	 ds,bx
-;
-;process_argsx: 			 ; process all arguments
-;	 mov	 di,0			 ; set incase int 2f not installed ; @@08
-;	 mov	 es,di							   ; @@08
-;	 mov	 ax,append_2f*256+dir_ptr  ; es:di -> internal result area ; @@08
-;	 int	 int_function						   ; @@08
-;	 mov	 ax,es			 ; see if active yet		   ; @@08
-;	 or	 ax,di							   ; @@08
-;	 jnz	 have_ptr						   ; @@08
-;	 push	 cs			 ; not active, set myself	   ; @@08
-;	 pop	 es							   ; @@08
-;	 lea	 di,app_dirs						   ; @@08
-;have_ptr:								   ; @@08
-;
-;;	 step through the DOS command line argument area, and copy the new dir
-;;	 list to the proper place in APPEND. This requires some parsing for
-;;	 spaces, tabs chars, equal signs, as well as conversion to upper case
-;
-;	 cmp	 byte ptr[si],"="	 ; APPEND=path is OK syntax
-;	 jne	 skip_leading
-;	 inc	 si
-;skip_leading:				 ; skip leading spaces
-;	 lodsb
-;	 cmp	 al," "
-;	 je	 skip_leading
-;	 cmp	 al,tab_char
-;	 je	 skip_leading
-;	 cmp	 al,"," 						   ; @@15
-;	 je	 skip_leading						   ; @@15
-;	 cmp	 al,"=" 						   ; @@15
-;	 je	 skip_leading						   ; @@15
-;	 cmp	 al,cr			 ; did we have command line arguments?
-;	 jump	 E,display_dirs 	 ; no, display the dirs currently appended
-;	 cmp	 al,"/" 		 ; is it a parm starter?	   ; @@05
-;	 jump	 E,bad_path_parm	 ; yes, it's an error              ; @@05
-;	 dec	 si
-;
-;copy_args:
-;	 lodsb				 ; get char from command line area
-;	 cmp	 al,cr			 ; are we at the end?
-;	 jump	 E,found_end		 ; yes, display the currently appended dirs
-;	 cmp	 al," " 		 ; is it a space?
-;	 je	 found_space		 ; yes, at end
-;	 cmp	 al,tab_char		 ; is it a tab?
-;	 je	 found_space		 ; yes, treat it like a space
-;	 cmp	 al,"/" 		 ; is it a parm starter?
-;	 je	 bad_path_parm		 ; yes, it's an error              ; @@05
-;	 cmp	 al,"a" 		 ; find out if we have a lower case char
-;	 jb	 copy_char						   ; @@14
-;	 cmp	 al,"z"
-;	 ja	 copy_char						   ; @@14
-;	 sub	 al,"a"-"A"		 ; convert char to upper case	   ; @@14
-;
-;copy_char:
-;	 mov	 in_middle,-1		 ; say that we made it to the middle
-;	 stosb				 ; no, copy char into resident storage area
-;	 jmp	 copy_args		 ; do it some more
-;
-;found_space:
-;	 cmp	 in_middle,0		 ; set the space flag then go through
-;	 jump	 E,copy_args		 ; loop some more
-;
-;found_end:
-;	 cmp	 in_middle,0		 ; if I found the end of string but not
-;	 jump	 E,display_dirs 	 ; in the middle, go display some dirs
-;
-;	 mov	 es:byte ptr [di],0	 ; null terminate the string
-;	 mov	 in_middle,0
-;	 cmp	 al,cr
-;	 je	 past_trailing
-;
-;skip_trailing: 			 ; skip end spaces
-;	 lodsb
-;	 cmp	 al," "
-;	 je	 skip_trailing
-;	 cmp	 al,tab_char
-;	 je	 skip_trailing
-;	 cmp	 al,"/" 		 ; path and parm not together	   ; @@05
-;	 je	 bad_path_parm						   ; @@05
-;	 cmp	 al,cr			 ; only white space allowed at end
-;	 jne	 bad_path
-;past_trailing:
-;
-;	 cmp	 old_syntax,0		 ; go back to normal mode
-;	 je	 normal_exit
-;	 jmp	 exit_append2
-;normal_exit:
-;	 call	 ctrl_break_rest	 ; reset control break checking
-;	 mov	 ax,0			 ; set string
-;	 ret				 ; exit to COMMAND
+	 call	 ctrl_break_rest	 ; reset control break checking
+	 mov	 ax,0			 ; set string
+	 ret				 ; exit to COMMAND
 
 bad_path:				; bad paath operand
-;	mov	cx,len_path_error_msg	; length of string
-;	lea	dx,path_error_msg
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,3			; message number		 ;AN000;
-	mov	bx,STDERR		; handle			 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
-;gga	call	sysdispmsg						 ;AN000;
-
+	mov	cx,len_path_error_msg	; length of string
+	lea	dx,path_error_msg
 	jmp	short bad_parmx
 
 bad_path_parm:				; bad parameter 		  ; @@05
-;	mov	cx,len_path_parm_error_msg   ; length of string 	  ; @@05
-;	lea	dx,path_parm_error_msg					  ; @@05
-	call	sysloadmsg						 ;AN000;
-	mov	ax,3			; message number		 ;AN000;
-	mov	bx,STDERR		; standard error		 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
+	mov	cx,len_path_parm_error_msg   ; length of string 	  ; @@05
+	lea	dx,path_parm_error_msg					  ; @@05
 	jmp	short bad_parmx 					  ; @@05
+
 bad_parm:				; bad parameter
-;	mov	cx,len_parm_error_msg	; length of string
-;	lea	dx,parm_error_msg
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,3			; message number		 ;AN000;
-	mov	bx,STDERR		; standard error		 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
+	mov	cx,len_parm_error_msg	; length of string
+	lea	dx,parm_error_msg
 
 bad_parmx:				; bad parameter
 	push	ds
 	push	cs
 	pop	ds
-;	call	print_STDERR		; display error message
-	lea	si,inv_parm		; point to msg parm			;an010;bgb
-	call	sysdispmsg						 ;AN000;
+	call	print_STDERR		; display error message
 	pop	ds
 	call	ctrl_break_rest
 	mov	al,1							  ; @@05
@@ -3184,18 +2932,9 @@ no_dirs_appended:
 	push	cs
 	pop	ds
 
-	call	sysloadmsg						 ;AN000;
-									 ;AN000;
-	mov	ax,5			; message number		 ;AN000;
-	mov	bx,STDERR		; handle			 ;AN000;
-	xor	cx,cx			; sub count			 ;AN000;
-	xor	dl,dl			; no input			 ;AN000;
-	mov	dh,-1			; message class 		 ;AN000;
-	call	sysdispmsg						 ;AN000;
-
-;	lea	dx,no_append_msg	; no dirs message		 ;AN000;
-;	mov	cx,len_no_append_msg	; length of string		 ;AN000;
-;	call	print_STDOUT						 ;AN000;
+	lea	dx,no_append_msg	; no dirs message		 ;AN000;
+	mov	cx,len_no_append_msg	; length of string		 ;AN000;
+	call	print_STDOUT						 ;AN000;
 	pop	ds
 	jmp	exit_append2		; APPEND = = fix		    ;GGA
 
@@ -3216,45 +2955,45 @@ replace_vector:
 ;	Process /X and /E parameters
 
 skip_leading2:				; skip leading spaces
-;	lodsb
-;	cmp	al," "
-;	je	skip_leading2
-;	cmp	al,tab_char
-;	je	skip_leading2
-;	cmp	al,cr			; at end
-;	jump	E,parms_done
-;	cmp	al,"/"
-;	jne	set_old_syntax
+	lodsb
+	cmp	al," "
+	je	skip_leading2
+	cmp	al,tab_char
+	je	skip_leading2
+	cmp	al,cr			; at end
+	jump	E,parms_done
+	cmp	al,"/"
+	jne	set_old_syntax
 
 found_slash:
-;	lodsb
-;	cmp	al,"e"
-;	je	slash_E
-;	cmp	al,"E"
-;	je	slash_E
-;	cmp	al,"x"
-;	je	slash_X
-;	cmp	al,"X"
-;	je	slash_X
+	lodsb
+	cmp	al,"e"
+	je	slash_E
+	cmp	al,"E"
+	je	slash_E
+	cmp	al,"x"
+	je	slash_X
+	cmp	al,"X"
+	je	slash_X
 bad_parmy:
-;	pop	ds
-;	jmp	bad_parm
+	pop	ds
+	jmp	bad_parm
 bad_path_parmy:
-;	pop	ds
-;	jmp	bad_path_parm
+	pop	ds
+	jmp	bad_path_parm
 
 slash_X:
-;	test	mode_flags,X_mode	; no duplicates allowed
-;	jnz	bad_parmy
-;	or	mode_flags,X_mode
-;	jmp	short slashx
+	test	mode_flags,X_mode	; no duplicates allowed
+	jnz	bad_parmy
+	or	mode_flags,X_mode
+	jmp	short slashx
 
 slash_E:
-;	test	mode_flags,E_mode	; no duplicates allowed
-;	jnz	bad_parmy
-;	or	mode_flags,E_mode
+	test	mode_flags,E_mode	; no duplicates allowed
+	jnz	bad_parmy
+	or	mode_flags,E_mode
 slashx:
-;	jmp	skip_leading2		; loop some more
+	jmp	skip_leading2		; loop some more
 set_old_syntax:
 ;;	test	mode_flags,0		; no /? switches on old mode
 ;;	jne	bad_path_parmy
@@ -3457,18 +3196,17 @@ public nextsi									;an010;bgb
 	ret					; return to caller		;an010;bgb
 do_parse_err	ENDP								;an010;bgb
 
-
 ;-------------------------------------------------------------------
 ;
 ;-------------------------------------------------------------------
 
-MSG_SERVICES <LOADmsg>
-MSG_SERVICES <APPEND.CLB,APPEND.CL2,APPEND.CTL>
+;MSG_SERVICES <LOADmsg>
+;MSG_SERVICES <APPEND.CLB,APPEND.CL2,APPEND.CTL>
 
 end_address:				; this is the end of the TSR stuff		 ;AN004;
 
-include parse.asm			; include the parser code
-include msgdcl.inc
+;include parse.asm			; include the parser code
+;include msgdcl.inc
 
 cseg	ends
 sseg	segment para stack 'STACK'

@@ -1,5 +1,5 @@
-; Copyright 1981-1988
-;     International Business Machines Corp. & Microsoft Corp.
+; Copyright 1986-88 Microsoft Corp. & International Business Machines Corp.
+; Copyright 2026 S. V. Nickolas.
 ;
 ; Permission is hereby granted, free of charge, to any person obtaining a copy
 ; of this software and associated documentation files (the Software), to deal
