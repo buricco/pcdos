@@ -132,7 +132,7 @@ DPL_PID 	DW	0		;REDIRECTOR PROCESS ID
 DPL		ENDS
 include sysmac.inc
 include versiona.inc
-include appendp.inc			; parseing stuff for append			 ;AN004;
+;include appendp.inc			; parseing stuff for append			 ;AN004;
 .list
 ;		extrn	end_address:near	; end of stay resident stuff
 
@@ -2795,11 +2795,12 @@ copy_args:
 	 je	 found_space		 ; yes, treat it like a space
 	 cmp	 al,"/" 		 ; is it a parm starter?
 	 je	 bad_path_parm		 ; yes, it's an error              ; @@05
-	 cmp	 al,"a" 		 ; find out if we have a lower case char
-	 jb	 copy_char						   ; @@14
-	 cmp	 al,"z"
-	 ja	 copy_char						   ; @@14
-	 sub	 al,"a"-"A"		 ; convert char to upper case	   ; @@14
+;	 cmp	 al,"a" 		 ; find out if we have a lower case char
+;	 jb	 copy_char						   ; @@14
+;	 cmp	 al,"z"
+;	 ja	 copy_char						   ; @@14
+;	 sub	 al,"a"-"A"		 ; convert char to upper case	   ; @@14
+	 call	 smash			 ; uso: optimize
 
 copy_char:
 	 mov	 in_middle,-1		 ; say that we made it to the middle
@@ -2839,7 +2840,7 @@ normal_exit:
 	 mov	 ax,0			 ; set string
 	 ret				 ; exit to COMMAND
 
-bad_path:				; bad paath operand
+bad_path:				; bad path operand
 	mov	cx,len_path_error_msg	; length of string
 	lea	dx,path_error_msg
 	jmp	short bad_parmx
@@ -2963,18 +2964,100 @@ skip_leading2:				; skip leading spaces
 	cmp	al,cr			; at end
 	jump	E,parms_done
 	cmp	al,"/"
-	jne	set_old_syntax
+;	jne	set_old_syntax
+	je	found_slash
+	jmp	set_old_syntax
+
+;found_slash:
+;	lodsb
+;	cmp	al,"e"
+;	je	slash_E
+;	cmp	al,"E"
+;	je	slash_E
+;	cmp	al,"x"
+;	je	slash_X
+;	cmp	al,"X"
+;	je	slash_X
+
+; ============================================================================
+; uso: After reinstating the PC DOS 3.3 parser, I added a simpler version of
+;      the new parser that should support any of the PC DOS 4.0 switches.
+; ============================================================================
 
 found_slash:
-	lodsb
-	cmp	al,"e"
-	je	slash_E
-	cmp	al,"E"
-	je	slash_E
-	cmp	al,"x"
-	je	slash_X
-	cmp	al,"X"
-	je	slash_X
+          lodsb
+          call      smash
+          cmp       al, 'E'
+          jne       fs2
+          jmp       slash_E
+fs2:      cmp       al, 'X'
+          je        xeval
+          cmp       al, 'P'
+          je        peval
+          jmp       bad_parmy
+
+smash:    cmp       al, 'a'
+          jb        smash2
+          cmp       al, 'z'
+          ja        smash2
+          and       al, 5Fh
+smash2:   ret
+
+xeval:    mov       al, [si+1]
+          cmp       al, ':'
+          jne       slash_X
+          lodsb               ; skip the :
+          lodsb
+          call      smash
+          cmp       al, 'O'
+          jne       bad_parmy
+          lodsb
+          call      smash
+          cmp       al, 'N'
+          je        slash_X
+          cmp       al, 'F'
+          jne       bad_parmy
+          lodsb
+          call      smash
+          cmp       al, 'F'
+          jne       bad_parmy
+          jmp short slash_X
+
+peval:    lodsb
+          call      smash
+          cmp       al, 'A'
+          jne       bad_parmy
+          lodsb
+          call      smash
+          cmp       al, 'T'
+          jne       bad_parmy
+          lodsb
+          call      smash
+          cmp       al, 'H'
+          jne       bad_parmy
+          mov       al, [si+1]
+          cmp       al, ':'
+          jne       pathon
+          lodsb               ; skip the :
+          lodsb
+          call      smash
+          cmp       al, 'O'
+          jne       bad_parmy
+          lodsb
+          call      smash
+          cmp       al, 'N'
+          je        pathon
+          cmp       al, 'F'
+          jne       bad_parmy
+          lodsb
+          call      smash
+          cmp       al, 'F'
+          jne       bad_parmy
+          and       mode_flags, NOT path_mode
+          jmp short pcomn
+pathon:   or        mode_flags, path_mode
+pcomn:    jmp       skip_leading2
+
 bad_parmy:
 	pop	ds
 	jmp	bad_parm
