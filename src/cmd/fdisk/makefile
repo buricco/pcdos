@@ -89,7 +89,7 @@ _msgret.obj : _msgret.asm $(inc)\psdata.inc \
 bootrec.obj : bootrec.asm fdboot.inc \
               makefile
 
-reboot.obj : reboot.asm \
+reboot.obj : reboot.c \
              makefile
 
 $(map)\mapper.lib:
