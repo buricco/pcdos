@@ -1,5 +1,6 @@
-; Copyright 1981-1988
-;     International Business Machines Corp. & Microsoft Corp.
+; Copyright 1983-1988 International Business Machines Corp.
+; Copyright 1985-1988 Microsoft Corp.
+; Copyright 2026 S. V. Nickolas.
 ;
 ; Permission is hereby granted, free of charge, to any person obtaining a copy
 ; of this software and associated documentation files (the Software), to deal
@@ -257,9 +258,9 @@ BLINK_TOGGLE    EQU     1003H           ; INT10 call to toggle int/blink bit.  ;
 CURSOR_FLAG     EQU     87H             ; cursor flag byte in ROM_BIOS         ;AN000;
 SET_CURSOR_CALL EQU     1               ; INT10 function call to set cursor typ;AN000;
 VIDEO_MASK      EQU     7FH             ; turn of clear buffer bit of mode value     ;AN000;
-MULT_ANSI       EQU     1Ah             ; ANSI multiplex number                ;AC003;
-INSTALL_CHECK   EQU     0               ; install check for ANSI               ;AN000;
-IOCTL_2F        EQU     1               ; 2F interface to IOCTL                ;AN000;
+;MULT_ANSI       EQU     1Ah             ; ANSI multiplex number                ;AC003;
+;INSTALL_CHECK   EQU     0               ; install check for ANSI               ;AN000;
+;IOCTL_2F        EQU     1               ; 2F interface to IOCTL                ;AN000;
 NOT_CY          EQU     0FFFEH          ; turn carry bit off                   ;AN000;
 CY              EQU     1               ; turn carry bit off                   ;AN000;
 INVALID_FLAGS   EQU     0FFFEH          ; test for invalid flags in control word     ;AN000;
@@ -274,14 +275,14 @@ UNLIMITED       EQU     0               ; unlimited message size.              ;
 ;  Request Header Structure (Generic IOCTL)
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-INIT_REQ_HDR    STRUC                   ;                                      ;AN000;
+IOCTL_REQ_HDR    STRUC                  ;                                      ;AN000;
                 DB   13 DUP(?)          ; standard request header              ;AN000;
 MAJ_FUNC        DB   ?                  ; major function                       ;AN000;
 MIN_FUNC        DB   ?                  ; minor function                       ;AN000;
 IOCTL_SI        DW   ?                  ; contents of SI                       ;AN000;
 IOCTL_DI        DW   ?                  ; contents of DI                       ;AN000;
 REQ_PCKT_PTR    DD   ?                  ; pointer to request packet            ;AN000;
-INIT_REQ_HDR    ENDS                    ;                                      ;AN000;
+IOCTL_REQ_HDR    ENDS                   ;                                      ;AN000;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; REQUEST PACKET STRUCTURE (Generic IOCTL)

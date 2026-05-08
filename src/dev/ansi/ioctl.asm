@@ -1,5 +1,6 @@
-; Copyright 1981-1988
-;     International Business Machines Corp. & Microsoft Corp.
+; Copyright 1983-1988 International Business Machines Corp.
+; Copyright 1985-1988 Microsoft Corp.
+; Copyright 2026 S. V. Nickolas.
 ;
 ; Permission is hereby granted, free of charge, to any person obtaining a copy
 ; of this software and associated documentation files (the Software), to deal
@@ -18,9 +19,6 @@
 ; LIABILITY, WHETHER IN AN ACTION OF CONTRACT,TORT OR OTHERWISE, ARISING FROM,
 ; OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 ; THE SOFTWARE.
-
-PAGE    ,132
-TITLE   ANSI Generic IOCTL Code
 
 ;****************** START OF SPECIFICATIONS **************************
 ;
@@ -105,10 +103,7 @@ TITLE   ANSI Generic IOCTL Code
 ;AN010; d398  /L option for Enforcing the number of lines          12/17/87 J.K.
 ;AN011; D425 For OS2 compatibiltiy box, /L option status query     01/14/88 J.K.
 ;******************************************************************************
-
 INCLUDE     ansi.inc                                                                               ;AN000;
-.XLIST                                                                                             ;AN000;
-INCLUDE     struc.inc                                                                              ;AN000;
 .LIST                                                                                              ;AN000;
                                                                                                    ;AN000;
 PUBLIC      GENERIC_IOCTL                                                                          ;AN000;
@@ -137,19 +132,17 @@ extrn       Switch_L:Byte                       ;AN010;Defined in ANSI.ASM
                                                                                                    ;AN000;
                                                                                                    ;AN000;
 SCAN_LINE_TABLE  LABEL    BYTE                                                                     ;AN000;
-   SCAN_LINE_STR <200,000000001B,0>            ; 200 scan lines                                    ;AN000;
+   SCAN_LINE_STR <200,000000001B,0>            ; 200 scan lines                                    ;
    SCAN_LINE_STR <344,000000010B,1>            ; 350 scan lines                                    ;AN000;
    SCAN_LINE_STR <400,000000100B,2>            ; 400 scan lines                                    ;AN000;
-SCANS_AVAILABLE  EQU  ($ - SCAN_LINE_TABLE)/TYPE SCAN_LINE_STR                                     ;AN000;
+SCANS_AVAILABLE  EQU  ($ - SCAN_LINE_TABLE)/4; TYPE SCAN_LINE_STR                                     ;AN000;
                                                                                                   ;AN000;
 ;This is used when ANSI calls Get_IOCTL, Set_IOCTL by itself.
 In_Generic_IOCTL_flag   db      0                               ;AN004;
 I_AM_IN_NOW          EQU     00000001b                          ;AN004;
 SET_MODE_BY_DISPLAY  EQU     00000010b                          ;AN004;Display.sys calls Set mode INT 10h.
 CALLED_BY_INT10COM   EQU     00000100b                          ;AN009;To prevent from calling set mode int 10h again.
-
 INT10_V_Mode    db      0ffh                                    ;AN006;Used by INT10_COM
-
 My_IOCTL_Req_Packet REQ_PCKT <0,0,0Eh,0,?,0,?,?,?,?,?>          ;AN004;
                                                                                                    ;AN000;
 FUNC_INFO        INFO_BLOCK <>                 ; data block for functionality call                 ;AN000;
@@ -165,7 +158,6 @@ GRAPHICS_FLAG    DB    TEXT_MODE               ; flag for graphics mode         
 ERROR_FLAG       DB    OFF                     ; flag for error conditions                         ;AN000;
 Display_Loaded_Before_Me db     0              ;AN008;flag
 ANSI_SetMode_Call_Flag   db     0              ;AN008;Ansi is issuing INT10,AH=0.
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: GENERIC_IOCTL
@@ -184,22 +176,26 @@ ANSI_SetMode_Call_Flag   db     0              ;AN008;Ansi is issuing INT10,AH=0
 ; NOTE: THIS PROC IS PERFORMED AS A JMP AS WITH THE OLD ANSI CALLS.
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 GENERIC_IOCTL:                                 ;                                                   ;AN000;
         LES     BX,[PTRSAV]                    ; establish addressability to request header        ;AN000;
-        .SELECT                                ; check for get or set subfunction                  ;AN000;
-          .WHEN <ES:[BX].MIN_FUNC EQ GET_FUNC> ; is this the get subfunction?                      ;AN000;
+					cmp ES:[BX].MIN_FUNC,GET_FUNC 
+					jne $l2 
             LES     DI,ES:[BX].REQ_PCKT_PTR    ; point to request packet                           ;AN000;
             CALL    GET_IOCTL                  ; yes...execute routine                             ;AN000;
-          .WHEN <ES:[BX].MIN_FUNC EQ SET_FUNC> ; is this the set subfunction?                      ;AN000;
+					jmp short $l1 
+					nop 
+$l2: 
+					cmp ES:[BX].MIN_FUNC,SET_FUNC 
+					jne $l4 
             LES     DI,ES:[BX].REQ_PCKT_PTR    ; point to request packet                           ;AN000;
             CALL    SET_IOCTL                  ; yes....execute routine                            ;AN000;
-          .OTHERWISE                           ; not for us....so..                                ;AN000;
+					jmp short $l1 
+$l4: 
             JMP     NO_OPERATION               ; call lower CON device                             ;AN000;
-        .ENDSELECT                             ;                                                   ;AN000;
-        .IF C                                  ; error?....                                        ;AN000;
+$l1: 
+					jnC $l7 
           OR     AX,CMD_ERROR                  ; yes...set error bit in status                     ;AN000;
-        .ENDIF                                 ;                                                   ;AN000;
+$l7: 
         OR     AX,DONE                         ; add done bit to status                            ;AN000;
         JMP    ERR1                            ; return with status in AX                          ;AN000;
                                                                                                    ;AN000;
@@ -219,38 +215,46 @@ GENERIC_IOCTL:                                 ;                                
 ;    ERROR: CARRY SET - ERROR CONDITION IN AX
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 GET_IOCTL PROC    NEAR                                                                             ;AN000;
-     .IF <ES:[DI].INFO_LEVEL NE 0> OR            ; check for valid info level                      ;AN000;
-     .IF <ES:[DI].DATA_LENGTH LT <TYPE MODE_TABLE+1>> ; and buffer size.                           ;AN000;
+					cmp ES:[DI].INFO_LEVEL,0 
+					jNE $l12 
+					cmp ES:[DI].DATA_LENGTH,14; TYPE MODE_TABLE+1 
+					jnl $l11 
+$l12: 
        MOV    AX,INVALID_FUNC                    ; not valid...unsupported                         ;AN000;
        STC                                       ; function..set error flag and                    ;AN000;
-     .ELSE                                       ;                                                 ;AN000;
+					jmp short $l10 
+$l11: 
        MOV     ES:[DI].INFO_LEVEL+1,0            ; set reserved byte to 0.                         ;AN000;
        MOV     AH,REQ_VID_MODE                   ; request current video mode                      ;AN000;
        INT     10H                               ;                                                 ;AN000;
        AND     AL,VIDEO_MASK                     ;                                                 ;AN000;
        LEA     SI,VIDEO_MODE_TABLE               ; point to resident video table                   ;AN000;
        CALL    GET_SEARCH                        ; perform search                                  ;AN000;
-       .IF C                                     ; found?                                          ;AN000;
+					jnC $l15 
          MOV     AX,NOT_SUPPORTED                ; no....load unsupported function                 ;AN000;
-       .ELSE                                     ;                                                 ;AN000;
+					jmp short $l10 
+$l15: 
          push    di                              ;AN001;AN003;Save Request Buffer pointer
-         MOV     WORD PTR ES:[DI].DATA_LENGTH,(TYPE MODE_TABLE)+1 ;length of data is struc size    ;AN000;
+         MOV     WORD PTR ES:[DI].DATA_LENGTH,14; (TYPE MODE_TABLE)+1 ;length of data is struc size    ;AN000;
          INC     SI                              ; skip mode value                                 ;AN000;
          ADD     DI,RP_FLAGS                     ; point to flag word                              ;AN000;
-         .IF <HDWR_FLAG GE MCGA_ACTIVE>          ; if we have an EGA or better                     ;AN000;
+					cmp HDWR_FLAG,MCGA_ACTIVE 
+					jnGE $l19 
            CALL    CTL_FLAG                      ; then ..process control flag                     ;AN000;
-         .ELSE                                   ; else...                                         ;AN000;
+					jmp short $l18 
+$l19: 
            MOV     WORD PTR ES:[DI],OFF          ; we always have blink.                           ;AN000;
-         .ENDIF                                  ;                                                 ;AN000;
+$l18: 
          INC     DI                              ; point to next field..                           ;AN000;
          INC     DI                              ; ..(display mode)                                ;AN000;
-         MOV     CX,(TYPE MODE_TABLE)-1          ; load count                                      ;AN000;
+         MOV     CX,12; (TYPE MODE_TABLE)-1          ; load count                                      ;AN000;
          REP     MOVSB                           ; transfer data from video table to request packet;AN000;
-         SUB     SI,TYPE MODE_TABLE              ; point back to start of mode data                ;AN000;
-         .IF <[SI].D_MODE EQ TEXT_MODE> AND      ; if we are in text mode and..                    ;AN000;
-         .IF <[SI].SCR_ROWS NE DEFAULT_LENGTH>   ; length <> 25 then we have an EGA or VGA         ;AN000;
+         SUB     SI,13; TYPE MODE_TABLE              ; point back to start of mode data                ;AN000;
+					cmp [SI].D_MODE,TEXT_MODE 
+					jne $l22 
+					cmp [SI].SCR_ROWS,DEFAULT_LENGTH 
+					je $l22 
            DEC    DI                             ; point back to length entry in req packet        ;AN000;
            DEC    DI                             ;                                                 ;AN000;
            PUSH   DS                             ;                                                 ;AN000;
@@ -261,16 +265,14 @@ GET_IOCTL PROC    NEAR                                                          
            INC    AX                             ; add 1 to row count                              ;AN000;
            MOV    WORD PTR ES:[DI],AX            ; and copy to request packet                      ;AN000;
            POP    DS                             ;                                                 ;AN000;
-         .ENDIF                                  ;                                                 ;AN000;
+$l22: 
          XOR    AX,AX                            ; no errors                                       ;AN000;
          CLC                                     ; clear error flag                                ;AN000;
          pop    di                               ;AN001; AN003;Restore Request Buffer pointer
-       .ENDIF                                    ;                                                 ;AN000;
-     .ENDIF                                      ;                                                 ;AN000;
+$l10: 
      RET                                         ; return to calling module                        ;AN000;
 GET_IOCTL ENDP                                                                                     ;AN000;
                                                                                                    ;AN000;
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: SET_IOCTL
@@ -288,25 +290,33 @@ GET_IOCTL ENDP                                                                  
 ;    ERROR: CARRY SET - ERROR CONDITION IN AX
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 SET_IOCTL PROC  NEAR                                                                               ;AN000;
      or cs:In_Generic_IOCTL_Flag, I_AM_IN_NOW  ;AN004; Signal GENERIC_IOCTL request being processed
      MOV    ERROR_FLAG,OFF                     ; clear any errors                                  ;AN000;
-    .IF <ES:[DI].INFO_LEVEL NE 0> OR           ; check for valid info level                        ;AN000;
-    .IF <ES:[DI].DATA_LENGTH NE <TYPE MODE_TABLE+1>> OR ; and buffer size.                         ;AN000;
+					cmp ES:[DI].INFO_LEVEL,0 
+					jNE $l27 
+					cmp ES:[DI].DATA_LENGTH,14; TYPE MODE_TABLE+1 
+					jNE $l27 
      MOV    AX,ES:[DI].RP_FLAGS                ; test for invalid flags.                           ;AN000;
-    .IF <BIT AX AND INVALID_FLAGS> OR          ;                                                   ;AN000;
-    .IF <BIT ES:[DI].RP_FLAGS AND ON> AND      ; if intensity is requested and..                   ;AN000;
-    .IF <HDWR_FLAG LT MCGA_ACTIVE>             ; hardware does not support it then..               ;AN000;
+					test AX,INVALID_FLAGS 
+					jnz $l27 
+					test ES:[DI].RP_FLAGS,ON 
+					jz $l26 
+					cmp HDWR_FLAG,MCGA_ACTIVE 
+					jnl $l26 
+$l27: 
         MOV    AX,INVALID_FUNC                 ; not valid...unsupported..                         ;AN000;
         MOV    ERROR_FLAG,ON                   ; function..set error and..                         ;AN000;
-    .ELSE                                      ;                                                   ;AN000;
+					jmp short $l25 
+$l26: 
         CALL    SET_SEARCH                     ; search table for match                            ;AN000;
-       .IF C                                   ; if match not found then..                         ;AN000;
+					jnC $l30 
           MOV    AX,NOT_SUPPORTED              ; not supported....                                 ;AN000;
           MOV    ERROR_FLAG,ON                 ;                                                   ;AN000;
-       .ELSE                                   ;                                                   ;AN000;
-         .IF <[SI].D_MODE EQ TEXT_MODE>        ; is a text mode being requested?                   ;AN000;
+					jmp short $l25 
+$l30: 
+					cmp [SI].D_MODE,TEXT_MODE 
+					jne $l34 
             PUSH   REQ_TXT_LENGTH              ; save old value in case of error                   ;AN000;
             MOV    AX,ES:[DI].RP_ROWS          ; save new requested value.                         ;AN000;
             MOV    REQ_TXT_LENGTH,AX           ;                                                   ;AN000;
@@ -315,42 +325,49 @@ SET_IOCTL PROC  NEAR                                                            
 ;           .ELSE                               ; VGA support available..                           ;AN000;
 ;             CALL   PROCESS_VGA                ; process the VGA support code.                     ;AN000;
 ;           .ENDIF                              ;                                                   ;AN000;
-           .IF <[SI].SCR_ROWS E UNOCCUPIED> OR ;AN002;
-           .IF <BIT Hdwr_Flag AND VGA_ACTIVE>  ;AN002;
+					cmp [SI].SCR_ROWS,UNOCCUPIED 
+					jE $l38 
+					test Hdwr_Flag,VGA_ACTIVE 
+					jz $l37 
+$l38: 
                call  process_VGA               ;AN002;
-           .ELSE                               ;AN002;
+					jmp short $l36 
+$l37: 
                call  process_Normal            ;AN002;
-           .ENDIF                              ;AN002;
-           .IF <ERROR_FLAG EQ OFF>             ; if we had no errors then..                        ;AN000;
+$l36: 
+					cmp ERROR_FLAG,OFF 
+					jne $l41 
               POP    AX                        ; discard saved text length                         ;AN000;
               call   DO_ROWS                   ;AN004;
-             .IF <HDWR_FLAG GE E5151_ACTIVE>   ; does hardware support gt 25 lines?                ;AN000;
+					cmp HDWR_FLAG,E5151_ACTIVE 
+					jnGE $l33 
                 CALL   SET_CURSOR_EMUL         ; yes..ensure cursor emulation is..                 ;AN000;
-             .ENDIF                            ; set accordingly.                                  ;AN000;
-           .ELSE                               ;                                                   ;AN000;
+					jmp short $l33 
+$l41: 
               POP    REQ_TXT_LENGTH            ; error...so restore old value.                     ;AN000;
-           .ENDIF                              ;                                                   ;AN000;
-         .ELSE                                 ; request is for graphics mode                      ;AN000;
+					jmp short $l33 
+$l34: 
             CALL   SET_VIDEO_MODE              ; so set video mode.                                ;AN000;
-         .ENDIF                                ;                                                   ;AN000;
-         .IF <ERROR_FLAG EQ OFF> AND           ; no errors? then..                                 ;AN000;
-         .IF <HDWR_FLAG GE MCGA_ACTIVE> AND    ; for the EGA and better ....                       ;AN000;
-         .IF <[SI].V_MODE EQ TEXT_MODE>        ; and in text mode do...                            ;AN000;
+$l33: 
+					cmp ERROR_FLAG,OFF 
+					jne $l25 
+					cmp HDWR_FLAG,MCGA_ACTIVE 
+					jnGE $l25 
+					cmp [SI].V_MODE,TEXT_MODE 
+					jne $l25 
              CALL   SET_CTL_FLAG               ; set intensity bit to control value                ;AN000;
-         .ENDIF                                ;                                                   ;AN000;
-       .ENDIF                                  ;                                                   ;AN000;
-    .ENDIF                                     ;                                                   ;AN000;
+$l25: 
      and cs:In_Generic_IOCTL_Flag, NOT I_AM_IN_NOW  ;AN004; Turn the flag off
-    .IF <ERROR_FLAG EQ OFF>                    ; no errors?                                        ;AN000;
+					cmp ERROR_FLAG,OFF 
+					jne $l52 
        XOR    AX,AX                            ; clear error register                              ;AN000;
        CLC                                     ; clear error flag                                  ;AN000;
-    .ELSE                                      ;                                                   ;AN000;
+					jmp short $l51 
+$l52: 
        STC                                     ;                                                   ;AN000;
-    .ENDIF                                     ; yes...set error flag                              ;AN000;
+$l51: 
      RET                                       ;                                                   ;AN000;
 SET_IOCTL ENDP                                                                                     ;AN000;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: PROCESS_NORMAL
@@ -368,28 +385,29 @@ SET_IOCTL ENDP                                                                  
 ;    ERROR: ERROR_FLAG IS ON. ERROR CODE IN AX.
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-PROCESS_NORMAL PROC   NEAR                                                                         ;AN000;
-             .IF <AX NE DEFAULT_LENGTH>  AND   ; no..see if length requested..                     ;AN000;
-             .IF <AX NE [SI].SCR_ROWS>         ; is valid....                                      ;AN000;
+PROCESS_NORMAL PROC   NEAR                                                                         ;
+					cmp AX,DEFAULT_LENGTH 
+					je $l56 
+					cmp AX,[SI].SCR_ROWS 
+					je $l56 
                MOV    AX,NOT_SUPPORTED         ; not valid....so                                   ;AN000;
                MOV    ERROR_FLAG,ON            ; set error flag and..                              ;AN000;
-             .ELSE                             ; length is valid so..                              ;AN000;
+					jmp short $l55 
+$l56: 
                CALL   CHECK_FOR_DISPLAY        ; see if we need and have DISPLAY.SYS..             ;AN000;
-               .IF NC                          ; support...if no problems then..                   ;AN000;
-                 .IF <HDWR_FLAG GE E5151_ACTIVE>; yes...check for cursor emulation                 ;AN000;
+					jc $l60 
+					cmp HDWR_FLAG,E5151_ACTIVE 
+					jnGE $l62 
                    CALL    SET_CURSOR_EMUL     ;                                                   ;AN000;
-                 .ENDIF                        ;                                                   ;AN000;
+$l62: 
                  CALL    SET_VIDEO_MODE        ; ..and set the mode.                               ;AN000;
-               .ELSE                           ; no..                                              ;AN000;
+					jmp short $l55 
+$l60: 
                  MOV     AX,NOT_AVAILABLE      ; font not available..                              ;AN000;
                  MOV     ERROR_FLAG,ON         ;                                                   ;AN000;
-               .ENDIF                          ;                                                   ;AN000;
-             .ENDIF                            ;                                                   ;AN000;
+$l55: 
              RET
 PROCESS_NORMAL ENDP
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: PROCESS_VGA
@@ -406,33 +424,32 @@ PROCESS_NORMAL ENDP
 ;    ERROR: ERROR_FLAG IS ON. ERROR CODE IN AX.
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 PROCESS_VGA  PROC    NEAR                                                                          ;AN000;
              CALL    TEST_LENGTH               ; check to see if screen length                     ;AN000;
-             .IF C                             ; is applicable....                                 ;AN000;
+					jnC $l67 
                MOV    AX,NOT_SUPPORTED         ; no..so set error condition                        ;AN000;
                MOV    ERROR_FLAG,ON            ;                                                   ;AN000;
-             .ELSE                             ;                                                   ;AN000;
+					jmp short $l66 
+$l67: 
                CALL   CHECK_FOR_DISPLAY        ; see if we need and have DISPLAY.SYS..             ;AN000;
-               .IF NC                          ; support.....yes so..                              ;AN000;
-                 .IF <REQ_TXT_LENGTH EQ DEFAULT_LENGTH> ; 25 lines requested?                      ;AN000;
+					jc $l71 
+					cmp REQ_TXT_LENGTH,DEFAULT_LENGTH 
+					jne $l73 
                    MOV    AL,MAX_SCANS         ; desired scan setting should be..                  ;AN000;
                    MOV    SCAN_DESIRED,AL      ; the maximum.                                      ;AN000;
-                 .ENDIF                        ;                                                   ;AN000;
+$l73: 
                  MOV    AH,ALT_SELECT          ; set the appropriate number..                      ;AN000;
                  MOV    BL,SELECT_SCAN         ; of scan lines..                                   ;AN000;
                  MOV    AL,SCAN_DESIRED        ;                                                   ;AN000;
                  INT    10H                    ;                                                   ;AN000;
                  CALL   SET_VIDEO_MODE         ; and set the mode.                                 ;AN000;
-               .ELSE                           ; DISPLAY.SYS does not have the font.               ;AN000;
+					jmp short $l66 
+$l71: 
                  MOV    AX,NOT_AVAILABLE       ; so...load error code..                            ;AN000;
                  MOV    ERROR_FLAG,ON          ;                                                   ;AN000;
-               .ENDIF                          ;                                                   ;AN000;
-             .ENDIF                            ;                                                   ;AN000;
+$l66: 
              RET                                                                                   ;AN000;
 PROCESS_VGA  ENDP                                                                                  ;AN000;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Procedure name: DO_ROWS
 ; Function:
@@ -444,27 +461,29 @@ PROCESS_VGA  ENDP                                                               
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 DO_ROWS         proc    near                            ;AN004;
-       .IF <REQ_TXT_LENGTH NE DEFAULT_LENGTH>           ;AN004;
+					cmp REQ_TXT_LENGTH,DEFAULT_LENGTH 
+					je $l77 
            push ds                                      ;AN004;
            push es                                      ;AN004;
            push di                                      ;AN004;
            push si                                      ;AN004;
            mov  ax, DISPLAY_CHECK                       ;AN004;
            int  2fh                                     ;AN004;
-          .IF <al NE INSTALLED> OR                      ;AN004;
+					cmp al,INSTALLED 
+					jNE $l82 
            mov  ax, CHECK_ACTIVE                        ;AN004;
            int  2fh                                     ;AN004;
-          .IF  C                                        ;AN004;
+					jnC $l80 
+$l82: 
                call     ROM_LOAD_8X8                    ;AN004;
-          .ENDIF                                        ;AN004;
+$l80: 
            pop  si                                      ;AN004;
            pop  di                                      ;AN004;
            pop  es                                      ;AN004;
            pop  ds                                      ;AN004;
-       .ENDIF                                           ;AN004;
+$l77: 
         ret                                             ;AN004;
 DO_ROWS         endp                                    ;AN004;
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: TEST_LENGTH
@@ -482,7 +501,6 @@ DO_ROWS         endp                                    ;AN004;
 ;    ERROR: CARRY SET
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 TEST_LENGTH PROC   NEAR                                                                            ;AN000;
             push   bp                        ;AN007;
             MOV    AX,REQ_TXT_LENGTH         ; load AX with length requested                       ;AN000;
@@ -491,32 +509,40 @@ TEST_LENGTH PROC   NEAR                                                         
             LEA    BX,SCAN_LINE_TABLE        ; load BX with scan line table start                  ;AN000;
             MOV    CX,SCANS_AVAILABLE        ; total number of scan lines settings                 ;AN000;
             MOV    BP,NOT_FOUND              ; set flag                                            ;AN000;
-            .WHILE <BP EQ NOT_FOUND> AND     ; while not found and still valid..                   ;AN000;
-            .WHILE <CX NE 0>                 ; settings left..do..                                 ;AN000;
-              .IF <AX EQ [BX].NUM_LINES>     ; pointing at the right setting..                     ;AN000;
+$l83: 
+					cmp BP,NOT_FOUND 
+					jne $l84 
+					cmp CX,0 
+					je $l84 
+					cmp AX,[BX].NUM_LINES 
+					jne $l87 
                 MOV    DL,[BX].REP_1BH       ;                                                     ;AN000;
-                .IF <BIT SCAN_LINES AND DL>  ; does the hardware have it?..                        ;AN000;
+					test SCAN_LINES,DL 
+					jz $l90 
                   MOV    BP,FOUND            ; yes....found!!                                      ;AN000;
-                .ELSE                        ;                                                     ;AN000;
+					jmp short $l83 
+$l90: 
                   XOR    CX,CX               ; no...set CX to exit loop.                           ;AN000;
-                .ENDIF                       ;                                                     ;AN000;
-              .ELSE                          ;                                                     ;AN000;
-                ADD    BX,TYPE SCAN_LINE_STR ; not this setting..point to next                     ;AN000;
+					jmp short $l83 
+$l87: 
+                ADD    BX,4; TYPE SCAN_LINE_STR ; not this setting..point to next                     ;AN000;
                 DEC    CX                    ; record and decrement count                          ;AN000;
-              .ENDIF                         ;                                                     ;AN000;
-            .ENDWHILE                        ;                                                     ;AN000;
-            .IF <BP EQ NOT_FOUND>            ; was it found and available?                         ;AN000;
+					jmp $l83 
+$l84: 
+					cmp BP,NOT_FOUND 
+					jne $l95 
               STC                            ; no....set error flag                                ;AN000;
-            .ELSE                            ; yes so.....                                         ;AN000;
+					jmp short $l94 
+$l95: 
               MOV    CL,[BX].REP_12H         ; store value to set it.                              ;AN000;
               MOV    SCAN_DESIRED,CL         ;                                                     ;AN000;
               CLC                            ; clear error flag                                    ;AN000;
-            .ENDIF                           ;                                                     ;AN000;
+$l94: 
             pop  bp                          ;AN007;
             RET                              ; return to calling module                            ;AN000;
 TEST_LENGTH ENDP                                                                                   ;AN000;
                                                                                                    ;AN000;
-                                                                                                   ;AN000;
+                                                                                                   ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: CTL_FLAG
@@ -538,7 +564,8 @@ TEST_LENGTH ENDP                                                                
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
                                                                                                    ;AN000;
 CTL_FLAG  PROC    NEAR                                                                             ;AN000;
-          .IF <BIT HDWR_FLAG AND VGA_ACTIVE>      ; VGA supported?                                 ;AN000;
+					test HDWR_FLAG,VGA_ACTIVE 
+					jz $l98 
             PUSH    ES                            ; yes...prepare for                              ;AN000;
             PUSH    DI                            ; functionality call                             ;AN000;
             PUSH    DS                            ;                                                ;AN000;
@@ -548,20 +575,20 @@ CTL_FLAG  PROC    NEAR                                                          
             XOR     BX,BX                         ; implementation type 0                          ;AN000;
             INT     10H                           ;                                                ;AN000;
             MOV     AL,ES:[DI].MISC_INFO          ; load misc info byte                            ;AN000;
-            .IF <BIT AL AND INT_BIT>              ; is blink bit set?                              ;AN000;
+					test AL,INT_BIT 
+					jz $l102 
               AND    INTENSITY_FLAG,NOT ON        ; yes....turn off intensity flag                 ;AN000;
-            .ELSE                                 ; no...                                          ;AN000;
+					jmp short $l101 
+$l102: 
               OR     INTENSITY_FLAG,ON            ; ensure that intensity is set                   ;AN000;
-            .ENDIF                                ;                                                ;AN000;
+$l101: 
             POP     DI                            ; restore registers                              ;AN000;
             POP     ES                            ;                                                ;AN000;
-          .ENDIF                                  ;                                                ;AN000;
+$l98: 
           MOV     AX,INTENSITY_FLAG               ; write the control flag..                       ;AN000;
           MOV     ES:[DI],AX                      ; to the request packet                          ;AN000;
           RET                                     ;                                                ;AN000;
 CTL_FLAG  ENDP                                                                                     ;AN000;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: SET_CTL_FLAG
@@ -579,21 +606,20 @@ CTL_FLAG  ENDP                                                                  
 ;    ERROR: N/A
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 SET_CTL_FLAG PROC   NEAR                                                                           ;AN000;
-             .IF <BIT ES:[DI].RP_FLAGS AND ON>                                                     ;AN000;
+					test ES:[DI].RP_FLAGS,ON 
+					jz $l106 
                OR     INTENSITY_FLAG,ON                                                            ;AN000;
                MOV    BL,SET_INTENSIFY                                                             ;AN000;
-             .ELSE                                                                                 ;AN000;
+					jmp short $l105 
+$l106: 
                AND    INTENSITY_FLAG,NOT ON                                                        ;AN000;
                MOV    BL,SET_BLINK                                                                 ;AN000;
-             .ENDIF                                                                                ;AN000;
+$l105: 
              MOV    AX,BLINK_TOGGLE                                                                ;AN000;
              INT    10H                                                                            ;AN000;
              RET                                                                                   ;AN000;
 SET_CTL_FLAG ENDP
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: SET_SEARCH
@@ -620,53 +646,62 @@ SET_SEARCH PROC   NEAR                                                          
             LEA    SI,VIDEO_MODE_TABLE              ; point to video table                         ;AN000;
             MOV    BP,NOT_FOUND                     ; set flag indicating not found                ;AN000;
             MOV    CX,MAX_VIDEO_TAB_NUM             ; load counter, # of tables                    ;AN000;
-           .WHILE <BP EQ NOT_FOUND> AND             ; while not found and we still..               ;AN000;
-           .WHILE <[SI].V_MODE NE UNOCCUPIED> AND   ; have valid entries..                         ;AN000;
-           .WHILE <CX NE 0>                         ; do...                                        ;AN000;
+$l109: 
+					cmp BP,NOT_FOUND 
+					jne $l110 
+					cmp [SI].V_MODE,UNOCCUPIED 
+					je $l110 
+					cmp CX,0 
+					je $l110 
              mov al, cs:INT10_V_Mode                ;AN006;
-            .if <AL NE 0FFh> AND                    ;AN006;if issued by INT10h Set Mode call,
-            .if <[SI].V_MODE NE AL>                 ;AN006; and V_MODE <> AL
-               add si, type MODE_TABLE              ;AN006; then, this is not the correct entry.
+					cmp AL,0FFh 
+					je $l113 
+					cmp [SI].V_MODE,AL 
+					je $l113 
+               add si, 13; type MODE_TABLE              ;AN006; then, this is not the correct entry.
                dec cx                               ;AN006;Let's find the next entry.
-            .else                                   ;AN006; Else, continue...
+					jmp short $l109 
+$l113: 
                MOV    AL,ES:[DI].RP_MODE             ; load register for compare.                   ;AN000;
-              .IF <[SI].D_MODE EQ AL>                ; match?......                                 ;AN000;
+					cmp [SI].D_MODE,AL 
+					jne $l116 
                  MOV    AX,ES:[DI].RP_COLORS         ; yes...prepare next field                     ;AN000;
-                .IF <[SI].COLORS EQ AX>              ; match?...                                    ;AN000;
-                  .IF <ES:[DI].RESERVED2 EQ 0>       ; yes...ensure reserved byte is 0              ;AN000;
-                    .IF <ES:[DI].RP_MODE EQ GRAPHICS_MODE> ; for graphics mode..check the following;AN000;.
+					cmp [SI].COLORS,AX 
+					jne $l116 
+					cmp ES:[DI].RESERVED2,0 
+					jne $l116 
+					cmp ES:[DI].RP_MODE,GRAPHICS_MODE 
+					jne $l126 
                        MOV    AX,ES:[DI].RP_WIDTH    ; screen width.                                ;AN000;
-                      .IF <[SI].SCR_WIDTH EQ AX>     ;                                              ;AN000;
+					cmp [SI].SCR_WIDTH,AX 
+					jne $l116 
                          MOV    AX,ES:[DI].RP_LENGTH ; screen length                                ;AN000;
-                        .IF <[SI].SCR_LENGTH EQ AX>  ; (ignore #rows and #columns                   ;AN000;
+					cmp [SI].SCR_LENGTH,AX 
+					jne $l116 
                            MOV    BP,FOUND           ; found...set flag                             ;AN000;
-                        .ENDIF                       ;                                              ;AN000;
-                      .ENDIF                         ;                                              ;AN000;
-                    .ELSE                            ; and for text check the columns..             ;AN000;
+					jmp short $l116 
+$l126: 
                        MOV    AX,ES:[DI].RP_COLS     ; the rows are matched in the main routine.    ;AN000;
-                      .IF <[SI].SCR_COLS EQ AX>      ;                                              ;AN000;
+					cmp [SI].SCR_COLS,AX 
+					jne $l116 
                          MOV    BP,FOUND             ; found...set flag                             ;AN000;
-                      .ENDIF                         ;                                              ;AN000;
-                    .ENDIF                           ;                                              ;AN000;
-                  .ENDIF                             ;                                              ;AN000;
-                .ENDIF                               ;                                              ;AN000;
-              .ENDIF                                 ;                                              ;AN000;
-               ADD    SI,TYPE MODE_TABLE             ; point to next record and..                   ;AN000;
+$l116: 
+               ADD    SI,13; TYPE MODE_TABLE             ; point to next record and..                   ;AN000;
                DEC    CX                             ; decrement count                              ;AN000;
-            .endif                                   ;AN006;
-           .ENDWHILE                                 ;                                              ;AN000;
-           .IF <BP EQ NOT_FOUND>                     ; if we never found it then..                  ;AN000;
+					jmp $l109 
+$l110: 
+					cmp BP,NOT_FOUND 
+					jne $l139 
               STC                                    ; set error flag and..                         ;AN000;
-           .ELSE                                     ;                                              ;AN000;
-              SUB    SI,TYPE MODE_TABLE              ; position us at the appropriate record        ;AN000;
+					jmp short $l138 
+$l139: 
+              SUB    SI,13; TYPE MODE_TABLE              ; position us at the appropriate record        ;AN000;
               CLC                                    ; clear error flag                             ;AN000;
-           .ENDIF                                    ;                                              ;AN000;
+$l138: 
             mov cs:INT10_V_Mode, 0FFh                ;AN006; Done. Reset the value
             pop bp                                   ;AN007;
             RET                                      ; return to calling module                     ;AN000;
 SET_SEARCH  ENDP                                                                                    ;AN000;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: GET_SEARCH
@@ -684,25 +719,31 @@ SET_SEARCH  ENDP                                                                
 ;    ERROR: CARRY SET
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 GET_SEARCH  PROC   NEAR                                                                            ;AN000;
             MOV     CX,MAX_VIDEO_TAB_NUM            ; # of total tables                               ;AN000;
-            .WHILE <[SI].V_MODE NE AL> AND          ; while we are not pointing to                 ;AN000;
-            .WHILE <[SI].V_MODE NE UNOCCUPIED> AND  ; the right mode and we are still              ;AN000;
-            .WHILE <CX NE 0>                        ; looking at valid data..do..                  ;AN000;
-              ADD     SI,TYPE MODE_TABLE            ; point to the next mode                       ;AN000;
+$l142: 
+					cmp [SI].V_MODE,AL 
+					je $l143 
+					cmp [SI].V_MODE,UNOCCUPIED 
+					je $l143 
+					cmp CX,0 
+					je $l143 
+              ADD     SI,13; TYPE MODE_TABLE            ; point to the next mode                       ;AN000;
               DEC     CX                            ; decrement counter                            ;AN000;
-            .ENDWHILE                               ;                                              ;AN000;
-            .IF <CX EQ 0> OR                        ; did we find the mode?                        ;AN000;
-            .IF <[SI].V_MODE EQ UNOCCUPIED>         ;                                              ;AN000;
+					jmp $l142 
+$l143: 
+					cmp CX,0 
+					je $l147 
+					cmp [SI].V_MODE,UNOCCUPIED 
+					jne $l146 
+$l147: 
               STC                                   ; no ...so set error flag                      ;AN000;
-            .ELSE                                   ;                                              ;AN000;
+					jmp short $l145 
+$l146: 
               CLC                                   ; yes...clear error flag                       ;AN000;
-            .ENDIF                                  ;                                              ;AN000;
+$l145: 
             RET                                     ;                                              ;AN000;
 GET_SEARCH  ENDP
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: SET_CURSOR_EMUL
@@ -720,28 +761,28 @@ GET_SEARCH  ENDP
 ;    ERROR: N/A
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 SET_CURSOR_EMUL PROC   NEAR                                                                        ;AN000;
-                .IF <BIT HDWR_FLAG AND E5154_ACTIVE> ; EGA with 5154?..                            ;AN000;
+					test HDWR_FLAG,E5154_ACTIVE 
+					jz $l149 
                   PUSH   SI                          ;                                             ;AN000;
                   PUSH   DS                          ; yes..so..                                   ;AN000;
                   MOV    AX,ROM_BIOS                 ; check cursor emulation..                    ;AN000;
                   MOV    DS,AX                       ;                                             ;AN000;
-                  MOV    SI,CURSOR_FLAG              ;                                             ;AN000;
+                  MOV    SI,CURSOR_FLAG              ;                                             ;
                   MOV    AL,BYTE PTR [SI]            ;                                             ;AN000;
-                  .IF <CS:REQ_TXT_LENGTH EQ DEFAULT_LENGTH> gt 25 lines requested?                 ;AN000;
+					cmp CS:REQ_TXT_LENGTH,DEFAULT_LENGTH 
+					jne $l153 
                     AND    AL,TURN_OFF               ; no....set it OFF                            ;AN000;
-                  .ELSE                              ;                                             ;AN000;
+					jmp short $l152 
+$l153: 
                     OR     AL,TURN_ON                ; yes...set it ON                             ;AN000;
-                  .ENDIF                             ;                                             ;AN000;
+$l152: 
                   MOV    BYTE PTR [SI],AL            ;                                             ;AN000;
                   POP    DS                          ;                                             ;AN000;
                   POP    SI                          ;                                             ;AN000;
-                .ENDIF                               ;                                             ;AN000;
+$l149: 
                 RET                                  ; return to calling module                    ;AN000;
 SET_CURSOR_EMUL ENDP                                                                               ;AN000;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: INT10_COM
@@ -774,34 +815,41 @@ SET_CURSOR_EMUL ENDP                                                            
 ;    ERROR:
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 INT10_COM  PROC   NEAR                                                                             ;AN000;
             STI                                      ; restore interrupts                          ;AN000;
-           .IF <AH NE SET_CURSOR_CALL> AND           ;                                             ;AN000;
-           .IF <AH NE SET_MODE>                                                                    ;AN000;
+					cmp AH,SET_CURSOR_CALL 
+					je $l156 
+					cmp AH,SET_MODE 
+					je $l156 
               JMP    DWORD PTR CS:ROM_INT10          ; no...pass it on.                            ;AN000;
-           .ENDIF                                                                                  ;AN000;
-           .IF <AH EQ SET_CURSOR_CALL>               ;Set cursor call?                             ;AN000;
+$l156: 
+					cmp AH,SET_CURSOR_CALL 
+					jne $l160 
               PUSH   AX                              ;                                             ;AN000;
-             .IF <BIT CS:HDWR_FLAG AND E5151_ACTIVE> AND ; yes...check if we have an ega..         ;AN000;
-             .IF <CS:REQ_TXT_LENGTH NE DEFAULT_LENGTH> AND ;                                       ;AN000;
-             .IF <CS:GRAPHICS_FLAG EQ TEXT_MODE> AND ; with 5151..so perform cursor mapping        ;AN000;
-             .IF <CL GE 8>                           ;                                             ;AN000;
+					test CS:HDWR_FLAG,E5151_ACTIVE 
+					jz $l162 
+					cmp CS:REQ_TXT_LENGTH,DEFAULT_LENGTH 
+					je $l162 
+					cmp CS:GRAPHICS_FLAG,TEXT_MODE 
+					jne $l162 
+					cmp CL,8 
+					jnGE $l162 
                 MOV    AL,CH                         ; check for cursor..                          ;AN000;
-;               AND    AL,06H                        ; off emulation.!!!!!Wrong!!! TypeO error     ;AN000;
+;               AND    AL,06H                        ; off emulation.!!!!!Wrong!!! TypeO error     ;
                 and    al, 60h                       ; off emulation. J.K.
-               .IF <AL NE 020H>                      ;                                             ;AN000;
+					cmp AL,020H 
+					je $l162 
                   MOV    AL,CH                       ; start position for cursor                   ;AN000;
                   CALL   MAP_DOWN                    ;                                             ;AN000;
                   MOV    CH,AL                       ;                                             ;AN000;
                   MOV    AL,CL                       ; end position for cursor                     ;AN000;
                   CALL   MAP_DOWN                    ;                                             ;AN000;
                   MOV    CL,AL                       ;                                             ;AN000;
-               .ENDIF                                ;                                             ;AN000;
-             .ENDIF                                  ;                                             ;AN000;
+$l162: 
               POP    AX                              ;                                             ;AN000;
               JMP    DWORD PTR CS:ROM_INT10          ; continue interrupt processing               ;AN000;
-           .ELSE NEAR                                ; must be set mode call..                     ;AN000;
+					jmp $l159 
+$l160: 
               PUSHF                                  ; prepare for IRET                            ;AN000;
               mov    cs:ANSI_SetMode_Call_Flag, 1    ;AN008; Used by INT2F_COM
               CALL   DWORD PTR CS:ROM_INT10          ; call INT10 routine                          ;AN000;
@@ -815,15 +863,16 @@ INT10_COM  PROC   NEAR                                                          
               PUSH   CX                              ;                                             ;AN000;
               PUSH   BX                              ;                                             ;AN000;
               PUSH   AX                              ;                                             ;AN000;
-              PUSH   CS                              ;                                             ;AN000;
+              PUSH   CS                              ;                                             ;
               POP    DS                              ;                                             ;AN000;
               MOV    AH,REQ_VID_MODE                 ; get current mode..                          ;AN000;
               PUSHF                                  ;                                             ;AN000;
               CALL   DWORD PTR CS:ROM_INT10          ;                                             ;AN000;
               AND    AL,VIDEO_MASK                   ; mask bit 7 (refresh)                        ;AN000;
               test   In_Generic_IOCTL_Flag, (I_AM_IN_NOW + SET_MODE_BY_DISPLAY)  ;AN004; Flag is on?
-             .IF Z   AND                          ;AN010;AN004;If not (I_AM_IN_NOW or SET_MODE_BY_DISPLAY),
-             .if <Switch_L EQ 0>                        ;AN010;
+					jnZ $l169 
+					cmp Switch_L,0 
+					jne $l169 
                  push   ax                              ;AN004;Save mode
                  push   es                              ;AN004;
                  push   cs                              ;AN004;
@@ -831,33 +880,34 @@ INT10_COM  PROC   NEAR                                                          
                  mov    di, offset My_IOCTL_Req_Packet  ;AN004;
                  mov    INT10_V_Mode, al                ;AN006;Save current mode for SET_SEARCH
                  call   Get_IOCTL                       ;AN004;
-                .IF NC                                  ;AN004;
+					jc $l172 
                     mov    di, offset MY_IOCTL_Req_Packet ;AN004;
                     or     In_Generic_IOCTL_Flag, CALLED_BY_INT10COM ;AN009;Do not set mode INT 10h again. Already done.
                     call   Set_IOCTL                    ;AN004;
                     and    In_Generic_IOCTL_Flag, not CALLED_BY_INT10COM ;AN009;
-                .ENDIF                                  ;AN004;
+$l172: 
                  pop    es                              ;AN004;
                  pop    ax                              ;AN004;Restore mode
                  mov    INT10_V_Mode, 0FFh              ;AN006;
-             .ENDIF                                     ;AN004;
+$l169: 
               LEA    SI,VIDEO_MODE_TABLE             ;                                             ;AN000;
               CALL   GET_SEARCH                      ; look through table for mode selected.       ;AN000;
-             .IF NC                                  ; if found then..                             ;AN000;
-                .IF <[SI].D_MODE NE TEXT_MODE>       ; text mode?....                              ;AN000;
+					jc $l175 
+					cmp [SI].D_MODE,TEXT_MODE 
+					je $l179 
                    MOV   GRAPHICS_FLAG,GRAPHICS_MODE ; no...set graphics flag.                    ;AN000;
-                .ELSE                                ;                                             ;AN000;
+					jmp short $l175 
+$l179: 
                    MOV   GRAPHICS_FLAG,TEXT_MODE     ; yes...set text flag..                       ;AN000;
-                .ENDIF                               ;                                             ;AN000;
-             .ENDIF                                  ;                                             ;AN000;
-
+$l175: 
               test   In_Generic_IOCTL_Flag, I_AM_IN_NOW ;AN010;
-             .if z   AND                             ;AN010;
-             .if <Graphics_Flag EQ TEXT_MODE> AND    ;
-             .if <Switch_L EQ 1>                     ;AN010;
+					jnz $l182 
+					cmp Graphics_Flag,TEXT_MODE 
+					jne $l182 
+					cmp Switch_L,1 
+					jne $l182 
                   call  DO_ROWS                      ;AN010;
-             .endif                                  ;AN010;
-
+$l182: 
 ;AN004;The following has been taken out!
 ;AN004;              .IF <REQ_TXT_LENGTH NE DEFAULT_LENGTH> ; 25 lines active?                             ;AN000;
 ;AN004;                MOV    AX,DISPLAY_CHECK              ; is DISPLAY.SYS there?                        ;AN000;
@@ -876,7 +926,6 @@ INT10_COM  PROC   NEAR                                                          
 ;AN004;that the APPS, which usually does not know the ANSI GET_IOCTL/SET_IOCTL
 ;AN004;interfaces, intend to change the screen mode.  In this case, ANSI is
 ;AN004;kind enough to call GET_IOCTL and SET_IOCTL function call for themselves.
-
               POP    AX                              ;                                             ;AN000;
               POP    BX                              ;                                             ;AN000;
               POP    CX                              ;                                             ;AN000;
@@ -886,11 +935,9 @@ INT10_COM  PROC   NEAR                                                          
               POP    DS                              ;                                             ;AN000;
               pop    es                              ;AN007;
               pop    bp                              ;AN007;
-           .ENDIF                                    ;                                             ;AN000;
+$l159: 
             IRET                                     ;                                             ;AN000;
 INT10_COM  ENDP
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: INT2F_COM
@@ -915,20 +962,29 @@ INT10_COM  ENDP
 ;    ERROR:
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 INT2F_COM  PROC   NEAR                                                                             ;AN000;
            STI                                  ;                                                  ;AN000;
-           .IF <AH NE MULT_ANSI> OR             ; is this for ANSI?                                ;AN000;
+					cmp AH,MULT_ANSI 
+					jNE $l187 
 ;           .IF <AL GT IOCTL_2F>                 ;                                                  ;AN000;
-           .IF <AL GT DA_INFO_2F>               ;AN004;=2h
+					cmp AL,DA_INFO_2F 
+					jng $l185 
+$l187: 
              JMP    DWORD PTR CS:ROM_INT2F      ; no....jump to old INT2F                          ;AN000;
-           .ENDIF                               ;                                                  ;AN000;
-           .SELECT                              ;                                                  ;AN000;
-             .WHEN <AL EQ INSTALL_CHECK> NEAR   ; if install check then..                          ;AN000;
+$l185: 
+					cmp AL,INSTALL_CHECK 
+					jne $l189 
+				nop 
+				nop 
+				nop 
                MOV     AL,INSTALLED             ; load value to indicate installed                 ;AN000;
                CLC                              ; clear error flag.                                ;AN000;
 ;             .WHEN <AL EQ IOCTL_2F>             ; request for IOCTL?                               ;AN000;
-             .WHEN <AL BE DA_INFO_2F> NEAR      ;AN004;IOCTL or INFO passing?
+					jmp $l188 
+$l189: 
+					cmp AL,DA_INFO_2F 
+					jBE $+5 
+					jmp $l188 
                PUSH   BP                        ;                                                  ;AN000;
                PUSH   AX                        ; s                                                ;AN000;
                PUSH   CX                        ;  a                                               ;AN000;
@@ -938,74 +994,88 @@ INT2F_COM  PROC   NEAR                                                          
                PUSH   DI                        ;         g                                        ;AN000;
                PUSH   SI                        ;          s.                                      ;AN000;
                PUSH   BX                        ;                                                  ;AN000;
-               PUSH   DS                        ; load ES with DS (for call)                       ;AN000;
+               PUSH   DS                        ; load ES with DS (for call)                       ;
                POP    ES                        ;                                                  ;AN000;
                MOV    DI,DX                     ; load DI with DX (for call)                       ;AN000;
                PUSH   CS                        ; setup local addressability                       ;AN000;
                POP    DS                        ;                                                  ;AN000;
-              .IF <AL EQ IOCTL_2F>              ;IOCTL request
-                 .IF <CL EQ GET_FUNC>           ; get function requested.                          ;AN000;
+					cmp AL,IOCTL_2F 
+					jne $l194 
+					cmp CL,GET_FUNC 
+					jne $l197 
                     CALL   GET_IOCTL            ;                                                  ;AN000;
-                   .IF NC AND                   ; if no error and...                               ;AN000;
-                   .IF <HDWR_FLAG GE E5151_ACTIVE> AND ; gt 25 lines supported and..               ;AN000;
-                   .IF <[SI].D_MODE EQ TEXT_MODE> ; this is a text mode then..                     ;AN000;
-                     .if <cs:Switch_L EQ 1> OR                ;AN010;
-                     .if <cs:ANSI_SetMode_Call_Flag NE 1> OR  ;AN008; if not originated by ANSI thru. AH=0, INT10,
-                     .if <cs:Display_Loaded_Before_me NE 1>   ;AN008;  or Display.sys not loaded before ANSI,
+					jc $l193 
+					cmp HDWR_FLAG,E5151_ACTIVE 
+					jnGE $l193 
+					cmp [SI].D_MODE,TEXT_MODE 
+					jne $l193 
+					cmp cs:Switch_L,1 
+					je $l204 
+					cmp cs:ANSI_SetMode_Call_Flag,1 
+					jNE $l204 
+					cmp cs:Display_Loaded_Before_me,1 
+					je $l202 
+$l204: 
                          MOV    BX,REQ_TXT_LENGTH    ; then use REQ_TXT_LENGTH instead..           ;AN000;
                          MOV    ES:[DI].RP_ROWS,BX   ;
-                     .endif
+$l202: 
                       CLC                         ;                                                  ;AN000;
-                   .ENDIF                         ;                                                  ;AN000;
-                 .ELSEIF <CL EQ SET_FUNC>         ;                                                  ;AN000;
+					jmp short $l193 
+					nop 
+$l197: 
+					cmp CL,SET_FUNC 
+					jne $l205 
                     CALL   SET_IOCTL              ; set function requested.                          ;AN000;
-                 .ELSE                            ; invalid function...                              ;AN000;
+					jmp short $l193 
+$l205: 
                     MOV    AX,INVALID_FUNC        ; load error and...                                ;AN000;
                     STC                           ; set error flag.                                  ;AN000;
-                 .ENDIF                           ;                                                  ;AN000;
-              .ELSE                               ;AN004;Info. passing
-                 .IF <ES:[DI].DA_INFO_LEVEL EQ 0> ;AN004; 0 = DA_SETMODE_FLAG request.
-                   .IF  <ES:[DI].DA_SETMODE_FLAG EQ 1>                         ;AN004;
+					jmp short $l193 
+$l194: 
+					cmp ES:[DI].DA_INFO_LEVEL,0 
+					jne $l210 
+					cmp ES:[DI].DA_SETMODE_FLAG,1 
+					jne $l213 
                         or cs:In_Generic_IOCTL_Flag, SET_MODE_BY_DISPLAY       ;AN004;Turn the flag on
-                   .ELSE                                                       ;AN004;
+					jmp short $l209 
+$l213: 
                         and cs:In_Generic_IOCTL_Flag, not SET_MODE_BY_DISPLAY  ;AN004;Turn the flag off
-                   .ENDIF                                                      ;AN004;
-                 .ELSE
-                   .IF <ES:[DI].DA_INFO_LEVEL EQ 1>        ;AN011; 1 = DA_OPTION_L_STATE query
+					jmp short $l209 
+$l210: 
+					cmp ES:[DI].DA_INFO_LEVEL,1 
+					jne $l209 
                         mov al, cs:[Switch_L]              ;AN011;
                         mov es:[di].DA_OPTION_L_STATE, al  ;AN011;
-                   .ENDIF
-                 .ENDIF                                                        ;AN004;
+$l209: 
                   clc                           ;AN004;clear carry. There is no Error in DOS 4.00 for this call.
-              .ENDIF
+$l193: 
                POP    BX                        ; restore all..                                    ;AN000;
                POP    SI                        ;                                                  ;AN000;
                POP    DI                        ;   registers except..                             ;AN000;
-               POP    ES                        ;                                                  ;AN000;
+               POP    ES                        ;                                                  ;
                POP    DS                        ;     BP.                                          ;AN000;
                POP    DX                        ;                                                  ;AN000;
                POP    CX                        ;                                                  ;AN000;
                PUSH   AX                        ; save error condition                             ;AN000;
                MOV    BP,SP                     ; setup frame pointer                              ;AN000;
                MOV    AX,[BP+10]                ; load stack flags                                 ;AN000;
-               .IF NC                           ; carry set?..                                     ;AN000;
+					jc $l221 
                  AND    AX,NOT_CY               ; no.. set carry off.                              ;AN000;
                  MOV    [BP+10],AX              ; put back on stack.                               ;AN000;
                  POP    AX                      ; remove error flag from stack                     ;AN000;
                  POP    AX                      ; no error so bring back function call             ;AN000;
                  XCHG   AH,AL                   ; exchange to show that ANSI present               ;AN000;
-               .ELSE                            ;                                                  ;AN000;
+					jmp short $l220 
+$l221: 
                  OR     AX,CY                   ; yes...set carry on.                              ;AN000;
                  MOV    [BP+10],AX              ; put back on stack.                               ;AN000;
                  POP    AX                      ; restore error flag                               ;AN000;
                  POP    BP                      ; pop off saved value of AX (destroyed)            ;AN000;
-               .ENDIF                           ;                                                  ;AN000;
+$l220: 
                POP    BP                        ; restore final register.                          ;AN000;
-           .ENDSELECT                           ;                                                  ;AN000;
+$l188: 
 ABORT:     IRET                                 ;                                                  ;AN000;
 INT2F_COM  ENDP                                                                                    ;AN000;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: MAP_DOWN
@@ -1022,7 +1092,6 @@ INT2F_COM  ENDP                                                                 
 ;    ERROR: N/A
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 MAP_DOWN   PROC   NEAR                                                                             ;AN000;
            PUSH   BX                   ;                                                           ;AN000;
            XOR    AH,AH                ; clear upper byte of cursor position                       ;AN000;
@@ -1035,8 +1104,6 @@ MAP_DOWN   PROC   NEAR                                                          
            POP    BX                   ;                                                           ;AN000;
            RET                         ;                                                           ;AN000;
 MAP_DOWN   ENDP
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: SET_VIDEO_MODE
@@ -1052,35 +1119,40 @@ MAP_DOWN   ENDP
 ;    ERROR: N/A
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 SET_VIDEO_MODE PROC   NEAR                                                                         ;AN000;
-            .if <BIT cs:In_Generic_IOCTL_Flag NAND CALLED_BY_INT10COM> ;AN009;
+					test cs:In_Generic_IOCTL_Flag,CALLED_BY_INT10COM 
+					jnz $l224 
                MOV    AL,[SI].V_MODE             ; ..issue set mode                                ;AN000;
-               .IF <BIT HDWR_FLAG AND LCD_ACTIVE> OR ; is this the LCD?                            ;AN000;
-               .IF <BIT HDWR_FLAG AND VGA_ACTIVE> ; or VGA (done for BRECON card)                  ;AN000;
+					test HDWR_FLAG,LCD_ACTIVE 
+					jnz $l229 
+					test HDWR_FLAG,VGA_ACTIVE 
+					jz $l227 
+$l229: 
                  PUSH   DS                       ; yes...                                          ;AN000;
                  MOV    BL,AL                    ; save mode                                       ;AN000;
                  MOV    AX,ROM_BIOS              ;                                                 ;AN000;
                  MOV    DS,AX                    ; get equipment status flag..                     ;AN000;
                  MOV    AX,DS:[EQUIP_FLAG]       ;                                                 ;AN000;
                  AND    AX,INIT_VID_MASK         ; clear initial video bits..                      ;AN000;
-                 .IF <BL EQ MODE7> OR            ; are we setting mono?                            ;AN000;
-                 .IF <BL EQ MODE15>              ;                                                 ;AN000;
+					cmp BL,MODE7 
+					je $l232 
+					cmp BL,MODE15 
+					jne $l231 
+$l232: 
                    OR    AX,LCD_MONO_MODE        ; yes...set bits as mono                          ;AN000;
-                 .ELSE                           ;                                                 ;AN000;
+					jmp short $l230 
+$l231: 
                    OR    AX,LCD_COLOR_MODE       ; no...set bits as color                          ;AN000;
-                 .ENDIF                          ;                                                 ;AN000;
+$l230: 
                  MOV    DS:[EQUIP_FLAG],AX       ; replace updated flag.                           ;AN000;
                  MOV    AL,BL                    ; restore mode.                                   ;AN000;
                  POP    DS                       ;                                                 ;AN000;
-               .ENDIF                            ;                                                 ;AN000;
+$l227: 
                MOV    AH,SET_MODE                ; set mode                                        ;AN000;
                INT    10H                                                                          ;AN000;
-            .endif                               ;AN009;
+$l224: 
                RET                                                                                 ;AN000;
 SET_VIDEO_MODE ENDP                                                                                ;AN000;
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: ROM_LOAD_8X8
@@ -1097,7 +1169,6 @@ SET_VIDEO_MODE ENDP                                                             
 ;    ERROR: N/A
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ROM_LOAD_8X8 PROC   NEAR                                                                           ;AN000;
              MOV    AX,LOAD_8X8              ; load 8x8 ROM font                                   ;AN000;
              XOR    BL,BL                    ;                                                     ;AN000;
@@ -1110,7 +1181,6 @@ ROM_LOAD_8X8 PROC   NEAR                                                        
              RET                                                                                   ;AN000;
 ROM_LOAD_8X8 ENDP                                                                                  ;AN000;
                                                                                                    ;AN000;
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
 ; PROCEDURE_NAME: CHECK_FOR_DISPLAY
@@ -1127,21 +1197,23 @@ ROM_LOAD_8X8 ENDP                                                               
 ;    ERROR: CARRY SET IF FONT NOT AVAILABLE.
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 CHECK_FOR_DISPLAY PROC   NEAR                                                                      ;AN000;
-               .IF <AX EQ DEFAULT_LENGTH> OR   ; is it just 25 lines needed?                       ;AN000;
+					cmp AX,DEFAULT_LENGTH 
+					je $l236 
                MOV    AX,DISPLAY_CHECK         ;                                                   ;AN000;
                INT    2FH                      ;                                                   ;AN000;
-               .IF <AL NE INSTALLED> OR        ; or is DISPLAY.SYS not there?                      ;AN000;
+					cmp AL,INSTALLED 
+					jNE $l236 
                MOV    AX,CHECK_FOR_FONT        ;                                                   ;AN000;
                INT    2FH                      ; or if it is does it have the..                    ;AN000;
-               .IF NC                          ; 8X8 font then.                                    ;AN000;
+					jc $l235 
+$l236: 
                  CLC                           ; clear carry                                       ;AN000;
-               .ELSE                           ;                                                   ;AN000;
+					jmp short $l234 
+$l235: 
                  STC                           ; no font...set carry                               ;AN000;
-               .ENDIF                          ;                                                   ;AN000;
+$l234: 
                RET                             ;                                                   ;AN000;
 CHECK_FOR_DISPLAY ENDP
-
 CODE        ENDS
             END
