@@ -1,36 +1,9 @@
-#************************ makefile for cmd\more *************************
+all:	more.com
 
-msg	=..\..\messages
-dos	=..\..\dos
-inc	=..\..\inc
-hinc	=..\..\h
+more.obj:	more.asm
+    masm -t -Mx more.asm;
 
-#
-#######################	dependencies begin here. #########################
-#
-
-all: more.com
-
-more.ctl:       more.skl \
-                $(msg)\$(COUNTRY).msg \
-                makefile
-
-more.obj: more.asm             \
-          more.inc             \
-          makefile             \
-          more.ctl             \
-          more.cla             \
-          more.cl1             \
-          more.cl2             \
-          $(inc)\syscall.inc   \
-          $(inc)\struc.inc     \
-          $(inc)\msgserv.asm   \
-          $(inc)\sysmsg.inc    \
-          $(inc)\versiona.inc  \
-          $(inc)\copyrigh.inc
-
-more.com: more.obj \
-          more.lnk 
-        link @more.lnk
-        exe2bin more.exe more.com
-        del more.exe
+more.com:	more.obj
+    link more.obj,more.exe;
+    exe2bin more.exe more.com
+    del more.exe

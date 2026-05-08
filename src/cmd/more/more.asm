@@ -1,275 +1,156 @@
-;******************************************************************************
+; Copyright 1983, 1988 Microsoft Corp.
+; Copyright 1988 International Business Machines Corp.
+; Copyright 2021, 2022, 2026 S. V. Nickolas.
 ;
-; MODULE:   more.asm
+; Permission is hereby granted, free of charge, to any person obtaining a copy
+; of this software and associated documentation files (the Software), to deal
+; in the Software without restriction, including without limitation the rights
+; to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+; copies of the Software, and to permit persons to whom the Software is
+; furnished to do so, subject to the following conditions:
 ;
-; Modification History:
+; The above copyright notice and this permission notice shall be included in
+; all copies or substantial portions of the Software.
 ;
-;  Version    Author	       date	   comment
-;  -------    ------	       ----	   -------
-;  V4.0       RussW			   ;AN000; initial extended attr. support
-;
-;  V4.0       Bill L	      9/17/87	   ;AN001; DCR 201 - extended attr. enhancement
-;					   ;AN002; DCR 191
-;					   ;AN003; PTM 3860 - add CR-LF to make DOS3.3 compat.
-;******************************************************************************
+; THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+; FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+; IN THE SOFTWARE.
 
-FALSE	EQU	0
-TRUE	EQU	NOT FALSE
+cseg      segment   para public 'CODE'
+          assume    cs:cseg, ds:cseg, es:cseg, ss:cseg
+          org       0100h
 
-IBMVER	EQU	TRUE
-IBMJAPVER   EQU FALSE
-MSVER	EQU	FALSE
+entry:    push      cs                  ; Make sure DS points to us
+          pop       ds
+          mov       ah, 30h             ; Check for DOS 1.x and die screaming
+          int       21h
+          cmp       al, 02h
+          jae       okdos
+          mov       dx, offset edos1
+          mov       ah, 09h
+          int       21h
+          int       20h
 
-STDOUT	EQU	1			 ;AN003;
-;------------------------------
-; EXTENDED ATTRIBUTE Equates
-;------------------------------
-GetExtAttr	      equ     05702h	 ;AN000; ;Int 021h function call
-SetExtAttr	      equ     05704h	 ;AN000; ;Int 021h function call
-GetCPSW 	      equ     03303h	 ;AN001;
+ansibuf:  dw        0000h               ; IOCTL buffer
+          dw        000Eh
+          dw        0000h
+d_mode:   db        00h
+          db        00h
+          dw        0000h
+          dw        0000h
+          dw        0000h
+          dw        0000h
+scr_rows: dw        0000h
 
-EAISBINARY	      equ     02h	 ;AN001; ;ea_type
-EASYSTEM	      equ     8000h	 ;AN001; ;ea_flags
+okdos:    mov       ax, 440Ch           ; This call needs DOS 4's ANSI.SYS
+          mov       bx, 0002h
+          mov       cx, 037Fh
+          mov       dx, offset ansibuf
+          int       21h
+          jc        noansi              ; Didn't work, assume 25 lines
+          mov       ah, byte ptr d_mode
+          cmp       ah, 1
+          jne       noansi              ; Not text mode, assume 25 lines
+          mov       ax, word ptr scr_rows
+          mov       byte ptr maxrow, al
+noansi:   mov       ah, 0Fh             ; Get width from BIOS
+          int       10h
+          mov       byte ptr maxcol, ah
 
-BREAK	MACRO	subtitle
-	SUBTTL	subtitle
-	PAGE
-ENDM
+          mov       dx, offset crlf
+          mov       ah, 09h
+          int       21h
+          xor       bx, bx              ; dup(stdin)
+          mov       ah, 45h
+          int       21h
+          mov       bp, ax
+          mov       ah, 3Eh             ; close
+          int       21h
+          mov       bx, 0002h
+          mov       ah, 45h             ; dup(stderr)
+          int       21h
 
-	include syscall.inc
+aloop:    cld                           ; read up to 4K at a time
+          mov       dx, offset buffer
+          mov       cx, 1000h
+          mov       bx, bp
+          mov       ah, 3Fh
+          int       21h
+          or        ax, ax              ; EOF?
+          jnz       setcx               ; no, keep going
+done:     mov       ax, 4C00h           ; yes, exit successfully
+          int       21h
+setcx:    mov       cx, ax
+          mov       si, dx
+tloop:    lodsb
+          cmp       al, 1Ah             ; EOF (^Z)?
+          jz        done                ; yes, die
+          cmp       al, 0Dh             ; CR?
+          jnz       notcr               ; no, skip
+          mov       byte ptr curcol, 1  ; act on it
+          jmp short iscntrl
+notcr:    cmp       al, 0Ah             ; linefeed?
+          jnz       notlf               ; no, skip
+          inc       byte ptr currow     ; act on it
+          jmp short iscntrl
+notlf:    cmp       al, 08h             ; backspace?
+          jnz       notbs               ; no, skip
+          cmp       byte ptr curcol, 1  ; beginning of line?
+          jz        iscntrl             ; yes, skip
+          dec       byte ptr curcol     ; act on it
+          jmp short iscntrl
+notbs:    cmp       al, 09h             ; tab?
+          jnz       nottb               ; no, skip
+          mov       ah, byte ptr curcol ; tab stops of 8 chars.
+          add       ah, 07h
+          and       ah, 0F8h
+          inc       ah
+          mov       byte ptr curcol, ah
+          jmp short iscntrl
+nottb:    cmp       al, 07h             ; bell?
+          jz        iscntrl             ; yes, act on it
+          inc       byte ptr curcol     ; add to our column position
+          mov       ah, byte ptr curcol
+          cmp       ah, byte ptr maxcol
+          jbe       iscntrl
+          inc       byte ptr currow     ; add to our row position
+          mov       byte ptr curcol, 1  ; reset column position
+iscntrl:  mov       dl, al              ; write the character to stdout
+          mov       ah, 02h
+          int       21h
+          mov       ah, byte ptr currow ; end of screen?
+          cmp       ah, byte ptr maxrow
+          jb        charloop            ; no, keep processing
+askmore:  mov       dx, offset emore    ; "-- More --" prompt
+          mov       ah, 09h
+          int       21h
+          mov       ah, 0Ch             ; flush input, get char
+          mov       al, 01h
+          int       21h
+          mov       dx, offset crlf     ; write newline
+          mov       ah, 09h
+          int       21h
+          mov       byte ptr curcol, 1  ; reset position
+          mov       byte ptr currow, 1
+charloop: dec       cx
+          jz        gobig
+          jmp       tloop
+gobig:    jmp       aloop
 
-	INCLUDE more.inc		 ;AN000; ;MORE strucs and equates
-	.XLIST				 ;AN000;
-	INCLUDE struc.inc		 ;AN000; ;Structured macros
-	INCLUDE sysmsg.inc		 ;AN000; ;Message retriever code
-	.LIST				 ;AN000;
+maxrow:   db        18h
+maxcol:   db        50h
+currow:   db        01h
+curcol:   db        01h
 
-MSG_UTILNAME <MORE>			 ;AN000;
+edos1:    db        "Incorrect DOS version"
+crlf:     db        13, 10, "$"
+emore:    db        "-- More --$"
 
-CODE	SEGMENT PUBLIC
-	ORG	100H
-ASSUME	CS:CODE,DS:CODE,ES:CODE,SS:CODE
+buffer:
 
-
-START:	JMP	START1				 ;AC000;
-;;;	DB	" The DOS 4.0 MORE Filter"       ;AC003;
-
-
-;----------------------------------------
-;- STRUCTURE TO QUERY EXTENDED ATTRIBUTES
-;----------------------------------------
-querylist   struc			 ;AN001; ;query general list
-qea_num     dw	    1			 ;AN001;
-qea_type    db	    EAISBINARY		 ;AN001;
-qea_flags   dw	    EASYSTEM		 ;AN001;
-qea_namelen db	    ?			 ;AN001;
-qea_name    db	    "        "           ;AN001;
-querylist   ends			 ;AN001;
-
-cp_qlist    querylist <1,EAISBINARY,EASYSTEM,2,"CP"> ;AN001; ;query code page attr.
-
-cp_list     label   word		 ;AN001; ;code page attr. get/set list
-	    dw	    1			 ;AN001; ; # of list entries
-	    db	    EAISBINARY		 ;AN001; ; ea type
-	    dw	    EASYSTEM		 ;AN001; ; ea flags
-	    db	    ?			 ;AN001; ; ea return code
-	    db	    2			 ;AN001; ; ea name length
-	    dw	    2			 ;AN001; ; ea value length
-	    db	    "CP"                 ;AN001; ; ea name
-cp	    dw	    ?			 ;AN001; ; ea value (code page)
-cp_len	    equ     ($ - cp_list)	 ;AN001;
-
-
-START1:
-	CALL	SYSLOADMSG		 ;AN000;
-	.IF C				 ;AN000;
-	  CALL	  SYSDISPMSG		 ;AN000;
-	  MOV	  AH,EXIT		 ;AN000;
-	  INT	  21H			 ;AN000;
-	.ENDIF				 ;AN000;
-
-	MOV	AX,ANSI_GET		 ;AN000; ;prepare for device characteristics..
-	MOV	BX,STDERR		 ;AN000; ;request.
-	MOV	CX,GET_SUBFUNC		 ;AN000; ;get subfucntion..
-	LEA	DX,ANSI_BUF		 ;AN000; ;point to buffer.
-	INT	21H			 ;AN000;
-	.IF NC				 ;AN000; ;if ANSI returns a no carry then..
-	  LEA	DI,ANSI_BUF		 ;AN000;
-	  .IF <[DI].D_MODE EQ TEXT_MODE> ;AN000; ;if we are in a text mode then..
-	    MOV    AX,[DI].SCR_ROWS	 ;AN000; ;store the screen length...else..
-	    MOV    MAXROW,AL		 ;AN000; ;default (25) is assumed.
-	  .ENDIF			 ;AN000;
-	.ENDIF				 ;AN000;
-	MOV	AH,0FH
-	INT	10H
-	MOV	MAXCOL,AH
-
-	XOR	BX,BX			; DUP FILE HANDLE 0
-	MOV	AH,XDUP
-	INT	21H
-	MOV	BP,AX			; Place new handle in BP
-
-	MOV	AH,CLOSE		; CLOSE STANDARD IN
-	INT	21H
-
-	MOV	BX,2			; DUP STD ERR TO STANDARD IN
-	MOV	AH,XDUP
-	INT	21H
-cp_check:				;AN001;
-	mov	ax,GetCPSW		;AN001;
-	int	21h			;AN001; ;DL =0 (Not supported)
-	jc	sloop			;AN001; ;no CPSW, skip cp setting
-	cmp	dl,0			;AN001; ;Is CPSW active ?
-	je	sloop			;AN001; ;no, skip cp setting
-;
-	mov	ax,GetExtAttr		;AN000; ;Get Codepage of source
-	mov	bx,bp			;AN000; ;Standard Input
-	mov	si,offset cp_qlist	;AN001; ;code page query list
-	mov	cx,cp_len		;AN001; ;length of code page list
-	mov	di,offset cp_list	;AC001; ;Input buffer address
-	int	021h			;AN000; ;Pow !
-	jc	SLOOP			;AN000; ;Do nothing if error
-				;Ok, we got CP of source. Set tgt to match...
-	mov	ax,SetExtAttr		;AN000; ;Set target codepage to that of source
-	mov	bx,1			;AN000; ;Standard Output
-	mov	di,offset cp_list	;AC001; ;Input buffer address
-	int	021h			;AN000; ;Blam !
-;-------------------------------
-SLOOP:
-	MOV	CX,CRLF_LEN		;AN003; ;display a newline
-	MOV	DX,OFFSET CRLF		;AN003;
-	MOV	BX,STDOUT		;AN003;
-	MOV	AH,WRITE		;AN003;
-	INT	21H			;AN003;
-ALOOP:
-	CLD
-	MOV	DX,OFFSET BUFFER
-	MOV	CX,4096
-	MOV	BX,BP
-	MOV	AH,READ
-	INT	21H
-	OR	AX,AX
-	JNZ	SETCX
-DONE:	INT	20H
-SETCX:	MOV	CX,AX
-	MOV	SI,DX
-
-TLOOP:
-	LODSB
-	CMP	AL,1AH
-	JZ	DONE
-	CMP	AL,13
-	JNZ	NOTCR
-	MOV	BYTE PTR CURCOL,1
-	JMP	SHORT ISCNTRL
-
-NOTCR:	CMP	AL,10
-	JNZ	NOTLF
-	INC	BYTE PTR CURROW
-	JMP	SHORT ISCNTRL
-
-NOTLF:	CMP	AL,8
-	JNZ	NOTBP
-	CMP	BYTE PTR CURCOL,1
-	JZ	ISCNTRL
-	DEC	BYTE PTR CURCOL
-	JMP	SHORT ISCNTRL
-
-NOTBP:	CMP	AL,9
-	JNZ	NOTTB
-	MOV	AH,CURCOL
-	ADD	AH,7
-	AND	AH,11111000B
-	INC	AH
-	MOV	CURCOL,AH
-	JMP	SHORT ISCNTRL
-
-NOTTB:
-	IF	MSVER			; IBM CONTROL CHARACTER PRINT
-	CMP	AL,' '
-	JB	ISCNTRL
-	ENDIF
-
-	IF	IBMVER
-	CMP	AL,7			; ALL CHARACTERS PRINT BUT BELL
-	JZ	ISCNTRL
-	ENDIF
-
-	INC	BYTE PTR CURCOL
-	MOV	AH,CURCOL
-	CMP	AH,MAXCOL
-	JBE	ISCNTRL
-	INC	BYTE PTR CURROW
-	MOV	BYTE PTR CURCOL,1
-
-ISCNTRL:
-	MOV	DL,AL
-	MOV	AH,STD_CON_OUTPUT
-	INT	21H
-	MOV	AH,CURROW
-	CMP	AH,MAXROW
-	JB	CHARLOOP
-
-ASKMORE:
-	PUSH	BP			;AN000; ;save file handle
-	PUSH	SI			;AN000; ;save pointer
-	PUSH	CX			;AN000; ;save count
-	MOV	AX,MORE_MSG		;AN000; ;use message retriever..
-	MOV	BX,STDERR		;AN000; ;to issue..
-	XOR	CX,CX			;AN000; ;-- More --
-	MOV	DL,NO_INPUT		;AN000;
-	MOV	DH,UTILITY_MSG_CLASS	;AN000;
-	CALL	SYSDISPMSG		;AN000;
-
-	MOV	AH,STD_CON_INPUT_FLUSH	 ;WAIT FOR A KEY, NO ECHO
-	MOV	AL,STD_CON_INPUT_NO_ECHO ;AC000; ;no echo
-	INT	21H
-
-	CMP	AL,EXTENDED		;AN000; ;Check for extended key?
-	JNE	NOT_EXTENDED		;AN000; ;continue
-	MOV	AH,STD_CON_INPUT_NO_ECHO ;AN000; ;clear extended key
-	INT	21H			;AN000; ;
-
-NOT_EXTENDED:
-	MOV	CX,CRLF2_LEN		;AC003; ;place cursor..
-	MOV	DX,OFFSET CRLF2 	;AC003; ;..on new line.
-	MOV	BX,STDERR		;AN000;
-	MOV	AH,WRITE		;AN000;
-	INT	21H			;AN000;
-	POP	CX			;AN000; ;restore count
-	POP	SI			;AN000; ;restore pointer
-	POP	BP			;AN000; ;restore file handle
-
-	MOV	BYTE PTR CURCOL,1
-	MOV	BYTE PTR CURROW,1
-
-CHARLOOP:
-	DEC	CX
-	JZ	GOBIG
-	JMP	TLOOP
-GOBIG:	JMP	ALOOP
-
-MAXROW	DB	25
-MAXCOL	DB	80
-CURROW	DB	1
-CURCOL	DB	1
-
-ANSI_BUF ANSI_STR <>			;AN000; ;buffer for IOCTL call
-
-.XLIST					;AN000;
-MSG_SERVICES <MSGDATA>			;AN000; ;message retriever code
-MSG_SERVICES <LOADmsg,DISPLAYmsg,NOCHECKSTDIN>	;AN002;
-MSG_SERVICES <MORE.CL1> 		;AN000;
-MSG_SERVICES <MORE.CL2> 		;AN000;
-MSG_SERVICES <MORE.CLA> 		;AN000;
-.LIST					;AN000;
-
-CRLF	    DB	   13,10		   ;AC000;
-CRLF_LEN    DW	   $ - CRLF		   ;AC000;
-CRLF2	    DB	   13,10,13,10		   ;AN003;
-CRLF2_LEN   DW	   $ - CRLF2		   ;AN003;
-
-BUFFER	LABEL BYTE
-
-CODE	ENDS
-	END	START
+cseg      ends
+          end       entry
